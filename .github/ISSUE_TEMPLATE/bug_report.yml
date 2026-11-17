@@ -1,0 +1,85 @@
+name: Bug report
+description: Report a dashboard bug (layout, script error, broken data display, link).
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. This dashboard is read-only and shows one personal
+        trading account — please **do not** include account numbers, login, server names,
+        investor passwords or any credentials in this report.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear and concise description of the problem.
+      placeholder: The equity chart stays empty after the page loads...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can the problem be triggered? Include the URL and the controls you used.
+      placeholder: |
+        1. Open https://plub-supanut.github.io/mt5-ai-performance/
+        2. Select "7D"
+        3. Click "EQUITY"
+        4. See ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to see instead?
+    validations:
+      required: true
+
+  - type: input
+    id: generated-at
+    attributes:
+      label: Snapshot timestamp (optional)
+      description: The value shown after "GENERATED" in the page footer, if visible.
+      placeholder: "2026-11-17T16:03:19+07:00"
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Where did it happen?
+      multiple: true
+      options:
+        - Live GitHub Pages site
+        - Local static server
+        - Downloadable release zip
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version (optional)
+      placeholder: "Chrome 142 / Firefox 143 / Safari 18"
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or console errors (optional)
+      description: Drag images here, or paste relevant browser console output.
+      render: shell
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: This report contains no secrets, account numbers, logins, server names or credentials.
+          required: true
+        - label: I understand this is a personal project and the dashboard data is auto-generated and unaudited.
+          required: true

@@ -1,0 +1,85 @@
+name: Data issue
+description: Report a data problem — wrong, stale, missing or inconsistent numbers on the dashboard.
+title: "[Data] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This dashboard is a read-only view of **one personal Exness USC (Cent) account**,
+        exported automatically roughly every 15 minutes. Snapshots can lag live MT5.
+        Please **do not** include account numbers, login, server names, investor passwords
+        or any other credentials.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area is affected?
+      options:
+        - Capital / balance / equity
+        - Daily P&L or risk limits
+        - Cumulative P&L / equity / drawdown chart
+        - Core performance stats
+        - Symbol matrix
+        - Open positions or pending orders
+        - Closed-trade ledger
+        - AI lessons or decision journal
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: What does the dashboard show?
+      description: The number, row or chart that looks wrong.
+      placeholder: "Net P&L shows -0.10 USC while the trade list sums to ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect, and why?
+      description: If you cross-checked against another source, say which one (do not paste credentials).
+    validations:
+      required: true
+
+  - type: input
+    id: generated-at
+    attributes:
+      label: Snapshot timestamp
+      description: The "GENERATED" value in the page footer — required so the snapshot can be located.
+      placeholder: "2026-11-17T16:03:19+07:00"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: staleness
+    attributes:
+      label: Could this simply be snapshot lag?
+      description: The JSON snapshot is rebuilt about every 15 minutes.
+      options:
+        - "No — the value is internally inconsistent"
+        - "Yes / not sure — it may be stale"
+        - "It has been wrong for more than one snapshot"
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence (optional)
+      description: Screenshots or the relevant JSON fragment. Redact anything identifying.
+      render: shell
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Checklist
+      options:
+        - label: This report contains no account numbers, login, server names, investor passwords or credentials.
+          required: true
+        - label: I understand the data reflects one personal account and is not financial advice.
+          required: true
+        - label: I did not ask for trading signals or investment recommendations.
+          required: true
