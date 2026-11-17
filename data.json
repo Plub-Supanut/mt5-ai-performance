@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-11-17T13:30:42+07:00",
+  "generated_at": "2026-11-17T13:47:44+07:00",
   "account": {
     "broker": "Exness USC (Cent)",
     "mode": "AI_TRADER",
     "status": "RUNNING",
     "balance_usc": 2449.38,
-    "equity_usc": 2439.38,
-    "equity_usd": 24.39,
-    "margin_free_usc": 2437.45,
+    "equity_usc": 2443.38,
+    "equity_usd": 24.43,
+    "margin_free_usc": 2441.45,
     "peak_equity_usc": 2511.77,
     "target_usc": 8000.0,
     "floor_usc": 1250.0,
-    "progress_pct": 30.49,
-    "daily_pnl_pct": -0.3,
+    "progress_pct": 30.54,
+    "daily_pnl_pct": -0.13,
     "daily_limit_pct": -8.0,
     "open_positions_count": 1,
     "max_open_positions": 6,
-    "pending_orders_count": 1,
+    "pending_orders_count": 4,
     "max_pending_orders": 5,
     "open_risk_usc": 26.0,
     "max_total_risk_usc": 146.96,
@@ -717,6 +717,30 @@
       "open_risk_usc": 26.0,
       "daily_pnl_pct": -0.3,
       "status": "RUNNING"
+    },
+    {
+      "ts": "2026-11-17T13:45:37+07:00",
+      "balance_usc": 2449.38,
+      "equity_usc": 2442.18,
+      "margin_free_usc": 2440.25,
+      "peak_equity_usc": 2511.77,
+      "open_positions": 1,
+      "pending_orders": 3,
+      "open_risk_usc": 26.0,
+      "daily_pnl_pct": -0.18,
+      "status": "RUNNING"
+    },
+    {
+      "ts": "2026-11-17T13:47:44+07:00",
+      "balance_usc": 2449.38,
+      "equity_usc": 2443.38,
+      "margin_free_usc": 2441.45,
+      "peak_equity_usc": 2511.77,
+      "open_positions": 1,
+      "pending_orders": 4,
+      "open_risk_usc": 26.0,
+      "daily_pnl_pct": -0.13,
+      "status": "RUNNING"
     }
   ],
   "open_positions": [
@@ -726,17 +750,53 @@
       "side": "SELL",
       "volume": 0.01,
       "price_open": 3866.0,
-      "price_current": 3876.025,
+      "price_current": 3871.954,
       "sl": 3892.0,
       "tp": 3833.0,
-      "profit_usc": -10.0,
+      "profit_usc": -6.0,
       "risk_usc": 26.0,
       "open_time_utc": "2026-11-16 19:25",
       "reason": "Aligned H4/H1/M15 BEAR pullback SELL LIMIT into H1 EMA20/M15 EMA50 (3866); SL 3892 above H1 swing high 3889.06; TP 3833 above H4 support 3832.19",
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     }
   ],
   "pending_orders": [
+    {
+      "ticket": 4730233561,
+      "symbol": "BTCUSDc",
+      "order_type": "SELL_LIMIT",
+      "volume": 0.05,
+      "price_open": 64720.0,
+      "sl": 65220.0,
+      "tp": 63850.0,
+      "setup_time_utc": "2026-11-17 06:47",
+      "reason": "H4/H1/M15 BEAR aligned; pullback limit at M15/H1 EMA20 confluence (64743/64803), SL above today_high 65146, TP above PDL 63826 (1.74R)",
+      "updated_ts": "2026-11-17T13:47:44+07:00"
+    },
+    {
+      "ticket": 4730157725,
+      "symbol": "AUDJPYc",
+      "order_type": "SELL_LIMIT",
+      "volume": 0.24,
+      "price_open": 107.38,
+      "sl": 107.62,
+      "tp": 107.0,
+      "setup_time_utc": "2026-11-17 06:33",
+      "reason": "H4/H1/M15 BEAR aligned; H1 RSI 27.5 oversold bounce toward M15 EMA20/50 (107.35-107.43); SL 107.62 above today_high 107.57 (2.7x M15 ATR); TP 107.00 (RR 1.58)",
+      "updated_ts": "2026-11-17T13:47:44+07:00"
+    },
+    {
+      "ticket": 4730157614,
+      "symbol": "UKOILc",
+      "order_type": "SELL_LIMIT",
+      "volume": 0.07,
+      "price_open": 90.4,
+      "sl": 90.92,
+      "tp": 89.58,
+      "setup_time_utc": "2026-11-17 06:33",
+      "reason": "H4/H1/M15 BEAR aligned; H1 RSI 23.2 oversold pullback into M15 swing high / today_open 90.40-90.49; SL 90.92 above M15 EMA50 (90.72) & today_high; TP 89.58 above H4 swing low 89.564 (RR 1.58)",
+      "updated_ts": "2026-11-17T13:47:44+07:00"
+    },
     {
       "ticket": 4729496990,
       "symbol": "USTECc",
@@ -747,7 +807,7 @@
       "tp": 27135.0,
       "setup_time_utc": "2026-11-17 04:17",
       "reason": "H4/H1/M15 aligned BEAR; M15 pullback limit to 27360 near EMA50 (27368) after 27444 rejection; SL 27510 above H1 EMA20 (27459) and swing high (27444); TP 27135 ahead of H4/H1 swing low (27128) for 1.5R",
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     }
   ],
   "trades": [
@@ -775,7 +835,7 @@
       "original_sl": 27425.0,
       "original_tp": 27135.0,
       "entry_reason": "H4/H1/M15 BEAR aligned, M15 pullback rejected off EMA50 (27385.88) with bearish candle 01:45, SL 27425 above swing high + ~1.3x M15 ATR, TP 27135 front-running H4 swing low 27127.9 (1.80R)",
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4727022737,
@@ -801,7 +861,7 @@
       "original_sl": 92.42,
       "original_tp": 90.12,
       "entry_reason": "H4/H1/M15 BEAR aligned (H4 RSI 41.8); M15 pullback to 92.28 rejected below EMA20 (92.35) with lower highs (92.26/92.06/91.84), targeting H4 swing low 90.06",
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4726884940,
@@ -827,7 +887,7 @@
       "original_sl": 3871.0,
       "original_tp": 3832.5,
       "entry_reason": "H4/H1/M15 BEAR aligned; M15 rejected EMA200 at 3889 and EMA20/50 at 3868.4 then broke 3861.14 support to 3858",
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4725100664,
@@ -853,7 +913,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4725046151,
@@ -879,7 +939,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4724984903,
@@ -905,7 +965,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4724344810,
@@ -931,7 +991,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4724339509,
@@ -957,7 +1017,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4723773624,
@@ -983,7 +1043,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4722560892,
@@ -1009,7 +1069,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4722681161,
@@ -1035,7 +1095,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4722536898,
@@ -1061,7 +1121,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     },
     {
       "position_id": 4722550594,
@@ -1087,7 +1147,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-17T13:30:41+07:00"
+      "updated_ts": "2026-11-17T13:47:44+07:00"
     }
   ],
   "lessons": [
@@ -1262,6 +1322,160 @@
     }
   ],
   "journal": [
+    {
+      "ts": "2026-11-17T13:47:21",
+      "action": "OPEN_LIMIT",
+      "symbol": "BTCUSDc",
+      "side": "SELL",
+      "lot": 0.05,
+      "entry": 64720.0,
+      "sl": 65220.0,
+      "tp": 63850.0,
+      "risk_usc": 25.0,
+      "ticket": 4730233561,
+      "reason": "H4/H1/M15 BEAR aligned; pullback limit at M15/H1 EMA20 confluence (64743/64803), SL above today_high 65146, TP above PDL 63826 (1.74R)",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-17T13:33:20",
+      "action": "OPEN_LIMIT",
+      "symbol": "AUDJPYc",
+      "side": "SELL",
+      "lot": 0.24,
+      "entry": 107.38,
+      "sl": 107.62,
+      "tp": 107.0,
+      "risk_usc": 36.16,
+      "ticket": 4730157725,
+      "reason": "H4/H1/M15 BEAR aligned; H1 RSI 27.5 oversold bounce toward M15 EMA20/50 (107.35-107.43); SL 107.62 above today_high 107.57 (2.7x M15 ATR); TP 107.00 (RR 1.58)",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-17T13:33:19",
+      "action": "OPEN_LIMIT",
+      "symbol": "UKOILc",
+      "side": "SELL",
+      "lot": 0.07,
+      "entry": 90.4,
+      "sl": 90.92,
+      "tp": 89.58,
+      "risk_usc": 36.4,
+      "ticket": 4730157614,
+      "reason": "H4/H1/M15 BEAR aligned; H1 RSI 23.2 oversold pullback into M15 swing high / today_open 90.40-90.49; SL 90.92 above M15 EMA50 (90.72) & today_high; TP 89.58 above H4 swing low 89.564 (RR 1.58)",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-17T13:33:17",
+      "action": "CANCEL",
+      "symbol": null,
+      "side": null,
+      "lot": null,
+      "entry": null,
+      "sl": null,
+      "tp": null,
+      "risk_usc": null,
+      "ticket": 4730154587,
+      "reason": "AI cancel",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-17T13:33:15",
+      "action": "CANCEL",
+      "symbol": null,
+      "side": null,
+      "lot": null,
+      "entry": null,
+      "sl": null,
+      "tp": null,
+      "risk_usc": null,
+      "ticket": 4730154511,
+      "reason": "AI cancel",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-17T13:32:41",
+      "action": "OPEN_LIMIT",
+      "symbol": "AUDJPYc",
+      "side": "SELL",
+      "lot": 0.48,
+      "entry": 107.38,
+      "sl": 107.62,
+      "tp": 107.0,
+      "risk_usc": 72.32,
+      "ticket": 4730154587,
+      "reason": "H4/H1/M15 BEAR aligned; H1 RSI 27.5 oversold bounce toward M15 EMA20/50 (107.35-107.43); SL 107.62 above today_high 107.57 (2.7x M15 ATR); TP 107.00 (RR 1.58)",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-17T13:32:39",
+      "action": "OPEN_LIMIT",
+      "symbol": "UKOILc",
+      "side": "SELL",
+      "lot": 0.14,
+      "entry": 90.4,
+      "sl": 90.92,
+      "tp": 89.58,
+      "risk_usc": 72.8,
+      "ticket": 4730154511,
+      "reason": "H4/H1/M15 BEAR aligned; H1 RSI 23.2 oversold pullback into M15 swing high / today_open 90.40-90.49; SL 90.92 above M15 EMA50 (90.72) & today_high; TP 89.58 above H4 swing low 89.564 (RR 1.58)",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-17T13:32:37",
+      "action": "CANCEL",
+      "symbol": null,
+      "side": null,
+      "lot": null,
+      "entry": null,
+      "sl": null,
+      "tp": null,
+      "risk_usc": null,
+      "ticket": 4730152933,
+      "reason": "AI cancel",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-17T13:32:36",
+      "action": "CANCEL",
+      "symbol": null,
+      "side": null,
+      "lot": null,
+      "entry": null,
+      "sl": null,
+      "tp": null,
+      "risk_usc": null,
+      "ticket": 4730152766,
+      "reason": "AI cancel",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-17T13:32:19",
+      "action": "OPEN_LIMIT",
+      "symbol": "AUDJPYc",
+      "side": "SELL",
+      "lot": 0.48,
+      "entry": 107.38,
+      "sl": 107.62,
+      "tp": 107.0,
+      "risk_usc": 72.32,
+      "ticket": 4730152933,
+      "reason": "H4/H1/M15 BEAR aligned; H1 RSI 27.5 oversold bounce toward M15 EMA20/50 (107.35-107.43); SL 107.62 above today_high 107.57 (2.7x M15 ATR); TP 107.00 (RR 1.58)",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-17T13:32:17",
+      "action": "OPEN_LIMIT",
+      "symbol": "UKOILc",
+      "side": "SELL",
+      "lot": 0.14,
+      "entry": 90.4,
+      "sl": 90.92,
+      "tp": 89.58,
+      "risk_usc": 72.8,
+      "ticket": 4730152766,
+      "reason": "H4/H1/M15 BEAR aligned; H1 RSI 23.2 oversold pullback into M15 swing high / today_open 90.40-90.49; SL 90.92 above M15 EMA50 (90.72) & today_high; TP 89.58 above H4 swing low 89.564 (RR 1.58)",
+      "summary": null
+    },
     {
       "ts": "2026-11-17T13:17:22",
       "action": "HOLD",
@@ -1667,160 +1881,6 @@
       "ticket": null,
       "reason": null,
       "summary": "Hold UKOILc SELL (+59.12 USC, trail SL 91.05->90.85 above 90.808 shelf) and XAUUSDc SELL (+11.70 USC, keep SL 3892/TP 3833); 2/2 slots full during OffHours/Rollover."
-    },
-    {
-      "ts": "2026-11-17T06:31:28",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "Slots full (2/2): holding UKOILc SELL (+59.12 USC, +1.93R, near TP 90.12) and XAUUSDc SELL (+9.80 USC, +0.27R, H4/H1/M15 BEAR intact). risk_guard alive, no unreviewed closed trades."
-    },
-    {
-      "ts": "2026-11-17T06:16:02",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "Hold UKOILc SELL (+59.12 USC, 1.93R, SL 91.05 locked in profit, approaching TP 90.12) & XAUUSDc SELL (+12.20 USC, 0.34R, BEAR H4/H1/M15 intact, keep SL 3892.0 above H1 swing high). Slots 2/2 full, OffHours/Rollover."
-    },
-    {
-      "ts": "2026-11-17T06:02:29",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "OffHours/Rollover: 2/2 slots full (UKOILc SELL +59.12 USC near TP 90.12, XAUUSDc SELL +6.80 USC). Bearish thesis intact on both, holding SL/TP as-is."
-    },
-    {
-      "ts": "2026-11-17T05:46:24",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "Hold 2 open positions (UKOILc SELL +59.12 USC, XAUUSDc SELL +9.80 USC); max_open_positions=2 full, OffHours/Rollover session, both H4/H1/M15 bear theses intact."
-    },
-    {
-      "ts": "2026-11-17T05:31:26",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "OffHours/Rollover 2/2 slots full. Holding UKOILc SELL (+59.12 USC, +1.93R, near TP 90.12) and XAUUSDc SELL (+9.80 USC, +0.27R, H4/H1/M15 BEAR intact)."
-    },
-    {
-      "ts": "2026-11-17T05:16:22",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "HOLD 2/2 slots (OffHours/Rollover): UKOILc SELL +59.12 USC (1.93R) near TP 90.12 with trailed SL 91.05; XAUUSDc SELL +9.80 USC (0.27R) H4/H1/M15 BEAR intact, keeping SL 3892.0 / TP 3833.0."
-    },
-    {
-      "ts": "2026-11-17T05:01:31",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "2/2 positions open (UKOILc SELL +59.12 USC / +1.93R near TP 90.12; XAUUSDc SELL +9.80 USC / +0.27R below H1/H4 EMAs). Both theses intact; holding without premature SL tightening during OffHours/Rollover."
-    },
-    {
-      "ts": "2026-11-17T04:46:00",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "HOLD: Slots full (2/2) in OffHours/Rollover. UKOILc SELL (+61.28 USC, 2.0R) approaching TP 90.12 with H4/H1/M15 BEAR structure intact; XAUUSDc SELL (+9.30 USC, 0.26R) holding below H1 EMA20/50 with BEAR thesis intact."
-    },
-    {
-      "ts": "2026-11-17T04:32:11",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "Slots full (2/2) during OffHours/Rollover (21:30 UTC). Trailed UKOILc SELL (#4727022737, +1.83R / +55.88 USC) SL from 91.55 to 91.05 above M15 EMA20 & swing high 90.971; keeping XAUUSDc SELL (#4727540012, +0.34R / +12.50 USC) SL 3892.0 / TP 3833.0 unchanged."
-    },
-    {
-      "ts": "2026-11-17T04:32:03",
-      "action": "MODIFY",
-      "symbol": "UKOILc",
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": 91.05,
-      "tp": 90.12,
-      "risk_usc": null,
-      "ticket": 4727022737,
-      "reason": "Trail SL above M15 EMA20 (91.04) and 19:15 swing high (90.971) after H1/M15 breakdown to 90.35, locking ~0.9R (+28 USC) while leaving 2.6x M15 ATR room",
-      "summary": null
-    },
-    {
-      "ts": "2026-11-17T04:16:25",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "Hold 2 open SELL positions (UKOILc +46.72 USC / +1.53R, XAUUSDc +14.50 USC / +0.40R). Both H4/H1/M15 BEAR theses remain intact; max_open_positions (2/2) reached and currently OffHours/Rollover (21:15 UTC)."
     }
   ]
 }
