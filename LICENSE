@@ -1,0 +1,23 @@
+# MT5 AI Performance — License
+
+Copyright (c) 2026 Plub-Supanut. All rights reserved.
+
+This repository is a **personal project**, published for viewing and reference only.
+
+## No license granted
+
+No permission is granted to copy, modify, merge, publish, distribute, sublicense, sell, or otherwise use the source code, the dashboard design, or the data in this repository (including `data.json` and any derived metrics or charts), in whole or in part, without the prior written permission of the copyright holder.
+
+You may view the public dashboard and link to this repository.
+
+## Trading data
+
+`data.json` contains the performance history of one personal trading account. It is published for transparency about this project only. It is not licensed for reuse, aggregation, resale, or redistribution, and it must not be presented as investment performance advice or as a track record of any product or service.
+
+## No warranty
+
+THE SOFTWARE AND DATA ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE, THE DATA, OR THE USE OR OTHER DEALINGS IN THEM.
+
+## Not financial advice
+
+Nothing in this repository is financial, investment, trading, tax, or legal advice. Trading leveraged FX/CFDs carries a high risk of loss; positions can be lost and the account can lose money. Past performance does not indicate future results.
