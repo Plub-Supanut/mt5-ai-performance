@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MT5 AI Trader — Performance Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --bg-card: #121826;
+      --bg-card-alt: #171f30;
+      --border: #232d42;
+      --text: #e6edf7;
+      --muted: #8b98b1;
+      --green: #10b981;
+      --green-soft: rgba(16, 185, 129, 0.14);
+      --red: #ef4444;
+      --red-soft: rgba(239, 68, 68, 0.14);
+      --amber: #f59e0b;
+      --amber-soft: rgba(245, 158, 11, 0.14);
+      --blue: #3b82f6;
+      --blue-soft: rgba(59, 130, 246, 0.14);
+      --purple: #8b5cf6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 20px;
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .title-group h1 { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
+    .subtitle { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+    .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 600;
+      border: 1px solid transparent;
+    }
+    .badge-green { background: var(--green-soft); color: var(--green); border-color: rgba(16,185,129,0.3); }
+    .badge-red { background: var(--red-soft); color: var(--red); border-color: rgba(239,68,68,0.3); }
+    .badge-amber { background: var(--amber-soft); color: var(--amber); border-color: rgba(245,158,11,0.3); }
+    .badge-blue { background: var(--blue-soft); color: var(--blue); border-color: rgba(59,130,246,0.3); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    button, select, input {
+      background: var(--bg-card); color: var(--text); border: 1px solid var(--border);
+      border-radius: 8px; padding: 7px 12px; font-size: 0.82rem; outline: none;
+    }
+    button { cursor: pointer; font-weight: 600; transition: background 0.15s, border-color 0.15s; }
+    button:hover { background: var(--bg-card-alt); border-color: #364563; }
+    button.active { background: var(--blue-soft); border-color: var(--blue); color: #93c5fd; }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .kpi-label { color: var(--muted); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    .kpi-value { font-size: 1.55rem; font-weight: 700; margin-top: 6px; letter-spacing: -0.02em; }
+    .kpi-sub { color: var(--muted); font-size: 0.8rem; margin-top: 4px; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .pos { color: var(--green); }
+    .neg { color: var(--red); }
+    .progress-wrap { margin-top: 10px; background: #0d121d; border-radius: 999px; height: 8px; overflow: hidden; border: 1px solid var(--border); }
+    .progress-bar { height: 100%; background: linear-gradient(90deg, var(--blue), var(--green)); transition: width 0.4s ease; }
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 980px) { .charts-grid { grid-template-columns: 1fr; } }
+    .card-header {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      margin-bottom: 14px; flex-wrap: wrap;
+    }
+    .card-title { font-size: 0.98rem; font-weight: 700; }
+    .chart-box { position: relative; height: 280px; width: 100%; }
+    .section { margin-bottom: 20px; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.8rem; }
+    .reason-cell { max-width: 340px; color: #cbd5e1; font-size: 0.8rem; }
+    .empty { color: var(--muted); text-align: center; padding: 24px; font-size: 0.88rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    @media (max-width: 980px) { .two-col { grid-template-columns: 1fr; } }
+    .feed-list { display: flex; flex-direction: column; gap: 10px; max-height: 460px; overflow-y: auto; padding-right: 4px; }
+    .feed-item {
+      background: var(--bg-card-alt); border: 1px solid var(--border); border-radius: 10px; padding: 12px;
+    }
+    .feed-meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 0.76rem; color: var(--muted); margin-bottom: 6px; flex-wrap: wrap; }
+    .feed-body { font-size: 0.84rem; color: var(--text); }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-group">
+        <h1>
+          MT5 AI Trader Performance
+          <span id="statusBadge" class="badge badge-blue"><span class="dot"></span>LOADING</span>
+        </h1>
+        <div class="subtitle" id="subHeader">Exness USC (Cent) · Loading snapshot...</div>
+      </div>
+      <div class="controls">
+        <div class="tabs">
+          <button id="btnRangeAll" class="active" onclick="setRange('all')">All-Time</button>
+          <button id="btnRange7d" onclick="setRange('7d')">Last 7 Days</button>
+        </div>
+        <button id="btnAuto" onclick="toggleAutoRefresh()">Auto: ON (60s)</button>
+        <button onclick="loadData(true)">Refresh</button>
+      </div>
+    </header>
+
+    <section class="kpi-grid" id="kpiGrid"></section>
+
+    <section class="charts-grid">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title" id="pnlChartTitle">Cumulative Net PnL (USC)</div>
+          <div class="tabs">
+            <button id="btnChartPnl" class="active" onclick="setMainChart('pnl')">Cumulative PnL</button>
+            <button id="btnChartEq" onclick="setMainChart('equity')">Equity Snapshots</button>
+          </div>
+        </div>
+        <div class="chart-box"><canvas id="mainChart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Net PnL by Symbol (USC)</div>
+        </div>
+        <div class="chart-box"><canvas id="symbolChart"></canvas></div>
+      </div>
+    </section>
+
+    <section class="two-col">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Open Positions</div>
+          <span class="badge badge-blue" id="openPosCount">0</span>
+        </div>
+        <div class="table-wrap" id="openPosWrap"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Pending Limit Orders</div>
+          <span class="badge badge-blue" id="pendingCount">0</span>
+        </div>
+        <div class="table-wrap" id="pendingWrap"></div>
+      </div>
+    </section>
+
+    <section class="card section">
+      <div class="card-header">
+        <div class="card-title">Closed Trades History</div>
+        <div class="filters">
+          <input type="text" id="filterSearch" placeholder="Search symbol / reason..." oninput="renderTrades()" />
+          <select id="filterOutcome" onchange="renderTrades()">
+            <option value="ALL">All Outcomes</option>
+            <option value="WIN">WIN</option>
+            <option value="LOSS">LOSS</option>
+            <option value="EVEN">EVEN</option>
+          </select>
+          <select id="filterExit" onchange="renderTrades()">
+            <option value="ALL">All Exits</option>
+            <option value="TP">TP</option>
+            <option value="SL">SL</option>
+            <option value="MANUAL">MANUAL</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-wrap" id="tradesWrap"></div>
+    </section>
+
+    <section class="two-col">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">AI Lessons Learned</div>
+          <span class="badge badge-amber" id="lessonsCount">0</span>
+        </div>
+        <div class="feed-list" id="lessonsList"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">AI Decision Journal</div>
+          <span class="badge badge-blue" id="journalCount">0</span>
+        </div>
+        <div class="feed-list" id="journalList"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let DATA = null;
+    let RANGE = 'all';
+    let MAIN_CHART_MODE = 'pnl';
+    let AUTO_REFRESH = true;
+    let TIMER = null;
+    let mainChartInst = null;
+    let symbolChartInst = null;
+
+    function esc(v) {
+      if (v === null || v === undefined) return '';
+      return String(v)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+    function fmt(n, d = 2) {
+      if (n === null || n === undefined || Number.isNaN(Number(n))) return '-';
+      return Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+    }
+    function signed(n, d = 2, suffix = '') {
+      if (n === null || n === undefined || Number.isNaN(Number(n))) return '-';
+      const v = Number(n);
+      return (v > 0 ? '+' : '') + fmt(v, d) + suffix;
+    }
+    function cls(n) {
+      const v = Number(n || 0);
+      return v > 0 ? 'pos' : v < 0 ? 'neg' : '';
+    }
+
+    function setRange(r) {
+      RANGE = r;
+      document.getElementById('btnRangeAll').classList.toggle('active', r === 'all');
+      document.getElementById('btnRange7d').classList.toggle('active', r === '7d');
+      renderAll();
+    }
+
+    function setMainChart(mode) {
+      MAIN_CHART_MODE = mode;
+      document.getElementById('btnChartPnl').classList.toggle('active', mode === 'pnl');
+      document.getElementById('btnChartEq').classList.toggle('active', mode === 'equity');
+      renderCharts();
+    }
+
+    function toggleAutoRefresh() {
+      AUTO_REFRESH = !AUTO_REFRESH;
+      document.getElementById('btnAuto').textContent = AUTO_REFRESH ? 'Auto: ON (60s)' : 'Auto: OFF';
+      resetTimer();
+    }
+
+    function resetTimer() {
+      if (TIMER) clearInterval(TIMER);
+      if (AUTO_REFRESH) TIMER = setInterval(() => loadData(false), 60000);
+    }
+
+    async function loadData(manual) {
+      try {
+        const res = await fetch('./data.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        DATA = await res.json();
+        renderAll();
+      } catch (err) {
+        document.getElementById('subHeader').textContent = 'Failed to load data.json: ' + err.message;
+      }
+    }
+
+    function renderAll() {
+      if (!DATA) return;
+      const acc = DATA.account || {};
+      const stats = RANGE === '7d' ? (DATA.stats_7d || {}) : (DATA.stats_all || {});
+
+      const badge = document.getElementById('statusBadge');
+      const st = acc.status || 'UNKNOWN';
+      badge.className = 'badge ' + (st === 'RUNNING' ? 'badge-green' : 'badge-red');
+      badge.innerHTML = '<span class="dot"></span>' + esc(st);
+
+      document.getElementById('subHeader').textContent =
+        `${acc.broker || 'Exness USC'} · Mode: ${acc.mode || 'AI_TRADER'} · Updated: ${DATA.generated_at || '-'}`;
+
+      const kpis = [
+        {
+          label: 'Equity / Balance',
+          value: `${fmt(acc.equity_usc)} USC`,
+          sub: `<span>Bal: ${fmt(acc.balance_usc)} USC ($${fmt(acc.equity_usd)})</span><span>Peak: ${fmt(acc.peak_equity_usc)}</span>`
+        },
+        {
+          label: `Target Progress (${fmt(acc.target_usc, 0)} USC)`,
+          value: `${fmt(acc.progress_pct, 1)}%`,
+          sub: `<span>Floor: ${fmt(acc.floor_usc, 0)} USC</span><span>Free Margin: ${fmt(acc.margin_free_usc)}</span>`,
+          progress: Math.max(0, Math.min(100, Number(acc.progress_pct || 0)))
+        },
+        {
+          label: RANGE === '7d' ? 'Net PnL (7D)' : 'Net PnL (All-Time)',
+          value: `${signed(stats.net_usc)} USC`,
+          valClass: cls(stats.net_usc),
+          sub: `<span>Trades: ${stats.total_trades || 0} (${stats.wins || 0}W / ${stats.losses || 0}L)</span><span>Max DD: ${fmt(stats.max_dd_usc)} USC</span>`
+        },
+        {
+          label: 'Win Rate & Profit Factor',
+          value: `${fmt(stats.winrate_pct, 1)}%`,
+          sub: `<span>PF: ${stats.profit_factor !== null && stats.profit_factor !== undefined ? fmt(stats.profit_factor, 2) : '∞'}</span><span>Avg R: ${signed(stats.avg_r, 2, 'R')}</span>`
+        },
+        {
+          label: 'Active Slots & Risk',
+          value: `${acc.open_positions_count || 0}/${acc.max_open_positions || 2} Pos`,
+          sub: `<span>Pending: ${acc.pending_orders_count || 0}/${acc.max_pending_orders || 3}</span><span>Open Risk: ${fmt(acc.open_risk_usc)}/${fmt(acc.max_total_risk_usc)} USC</span>`
+        },
+        {
+          label: 'Daily PnL vs Limit',
+          value: `${signed(acc.daily_pnl_pct, 2, '%')}`,
+          valClass: cls(acc.daily_pnl_pct),
+          sub: `<span>Daily Limit: -${fmt(acc.daily_limit_pct, 1)}%</span><span>1R Risk: ${fmt(acc.default_trade_risk_usc)} USC</span>`
+        }
+      ];
+
+      document.getElementById('kpiGrid').innerHTML = kpis.map(k => `
+        <div class="card">
+          <div class="kpi-label">${esc(k.label)}</div>
+          <div class="kpi-value ${k.valClass || ''}">${esc(k.value)}</div>
+          ${k.progress !== undefined ? `<div class="progress-wrap"><div class="progress-bar" style="width:${k.progress}%"></div></div>` : ''}
+          <div class="kpi-sub">${k.sub}</div>
+        </div>
+      `).join('');
+
+      renderCharts();
+      renderOpenPositions();
+      renderPendingOrders();
+      renderTrades();
+      renderLessons();
+      renderJournal();
+    }
+
+    function renderCharts() {
+      const stats = RANGE === '7d' ? (DATA.stats_7d || {}) : (DATA.stats_all || {});
+      const mainCtx = document.getElementById('mainChart').getContext('2d');
+      if (mainChartInst) mainChartInst.destroy();
+
+      if (MAIN_CHART_MODE === 'pnl') {
+        document.getElementById('pnlChartTitle').textContent = `Cumulative Net PnL (${RANGE === '7d' ? '7D' : 'All-Time'}, USC)`;
+        const curve = stats.cum_curve || [];
+        mainChartInst = new Chart(mainCtx, {
+          type: 'line',
+          data: {
+            labels: curve.map((c, i) => `#${i + 1} ${c.symbol}`),
+            datasets: [{
+              label: 'Cumulative PnL (USC)',
+              data: curve.map(c => c.cum_pnl_usc),
+              borderColor: '#3b82f6',
+              backgroundColor: 'rgba(59, 130, 246, 0.14)',
+              fill: true,
+              tension: 0.25,
+              pointRadius: 4,
+              pointBackgroundColor: curve.map(c => c.net_profit_usc >= 0 ? '#10b981' : '#ef4444')
+            }]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  afterLabel: ctx => {
+                    const p = curve[ctx.dataIndex];
+                    return `${p.side} | Trade: ${signed(p.net_profit_usc)} USC
+Exit: ${p.exit_time_utc}`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: { ticks: { color: '#8b98b1', maxRotation: 35 }, grid: { color: 'rgba(255,255,255,0.04)' } },
+              y: { ticks: { color: '#8b98b1' }, grid: { color: 'rgba(255,255,255,0.06)' } }
+            }
+          }
+        });
+      } else {
+        document.getElementById('pnlChartTitle').textContent = 'Equity & Balance Snapshots (USC)';
+        const snaps = DATA.equity_snapshots || [];
+        mainChartInst = new Chart(mainCtx, {
+          type: 'line',
+          data: {
+            labels: snaps.map(s => (s.ts || '').slice(5, 16).replace('T', ' ')),
+            datasets: [
+              {
+                label: 'Equity (USC)',
+                data: snaps.map(s => s.equity_usc),
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                fill: true,
+                tension: 0.2
+              },
+              {
+                label: 'Balance (USC)',
+                data: snaps.map(s => s.balance_usc),
+                borderColor: '#8b5cf6',
+                borderDash: [5, 4],
+                fill: false,
+                tension: 0.2
+              }
+            ]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { labels: { color: '#e6edf7' } } },
+            scales: {
+              x: { ticks: { color: '#8b98b1' }, grid: { color: 'rgba(255,255,255,0.04)' } },
+              y: { ticks: { color: '#8b98b1' }, grid: { color: 'rgba(255,255,255,0.06)' } }
+            }
+          }
+        });
+      }
+
+      const symCtx = document.getElementById('symbolChart').getContext('2d');
+      if (symbolChartInst) symbolChartInst.destroy();
+      const bySym = stats.by_symbol || [];
+      symbolChartInst = new Chart(symCtx, {
+        type: 'bar',
+        data: {
+          labels: bySym.map(s => s.symbol),
+          datasets: [{
+            label: 'Net PnL (USC)',
+            data: bySym.map(s => s.net_usc),
+            backgroundColor: bySym.map(s => s.net_usc >= 0 ? 'rgba(16, 185, 129, 0.75)' : 'rgba(239, 68, 68, 0.75)'),
+            borderRadius: 6
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                afterLabel: ctx => {
+                  const s = bySym[ctx.dataIndex];
+                  return `Trades: ${s.trades} (${s.wins}W/${s.losses}L) | WR: ${fmt(s.winrate_pct, 1)}%`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: { ticks: { color: '#8b98b1' }, grid: { color: 'rgba(255,255,255,0.06)' } },
+            y: { ticks: { color: '#e6edf7' }, grid: { display: false } }
+          }
+        }
+      });
+    }
+
+    function renderOpenPositions() {
+      const rows = DATA.open_positions || [];
+      document.getElementById('openPosCount').textContent = rows.length;
+      const wrap = document.getElementById('openPosWrap');
+      if (!rows.length) { wrap.innerHTML = '<div class="empty">No open positions</div>'; return; }
+      wrap.innerHTML = `<table><thead><tr><th>Symbol</th><th>Side</th><th>Lot</th><th>Entry / Now</th><th>SL / TP</th><th>PnL (USC)</th><th>Risk</th></tr></thead><tbody>${
+        rows.map(p => `<tr>
+          <td><strong>${esc(p.symbol)}</strong><div class="mono subtitle">#${esc(p.ticket)}</div></td>
+          <td><span class="badge ${p.side === 'BUY' ? 'badge-green' : 'badge-red'}">${esc(p.side)}</span></td>
+          <td class="mono">${esc(p.volume)}</td>
+          <td class="mono">${esc(p.price_open)}<br/><span class="subtitle">${esc(p.price_current)}</span></td>
+          <td class="mono">SL ${esc(p.sl)}<br/>TP ${esc(p.tp)}</td>
+          <td class="mono ${cls(p.profit_usc)}"><strong>${signed(p.profit_usc)}</strong></td>
+          <td class="mono">${fmt(p.risk_usc)}</td>
+        </tr>`).join('')
+      }</tbody></table>`;
+    }
+
+    function renderPendingOrders() {
+      const rows = DATA.pending_orders || [];
+      document.getElementById('pendingCount').textContent = rows.length;
+      const wrap = document.getElementById('pendingWrap');
+      if (!rows.length) { wrap.innerHTML = '<div class="empty">No pending limit orders</div>'; return; }
+      wrap.innerHTML = `<table><thead><tr><th>Symbol</th><th>Type</th><th>Lot</th><th>Entry</th><th>SL / TP</th><th>Setup UTC</th></tr></thead><tbody>${
+        rows.map(o => `<tr>
+          <td><strong>${esc(o.symbol)}</strong><div class="mono subtitle">#${esc(o.ticket)}</div></td>
+          <td><span class="badge badge-amber">${esc(o.order_type)}</span></td>
+          <td class="mono">${esc(o.volume)}</td>
+          <td class="mono">${esc(o.price_open)}</td>
+          <td class="mono">SL ${esc(o.sl)}<br/>TP ${esc(o.tp)}</td>
+          <td class="mono">${esc(o.setup_time_utc)}</td>
+        </tr>`).join('')
+      }</tbody></table>`;
+    }
+
+    function renderTrades() {
+      const q = (document.getElementById('filterSearch').value || '').toLowerCase().trim();
+      const outF = document.getElementById('filterOutcome').value;
+      const exitF = document.getElementById('filterExit').value;
+      const rows = (DATA.trades || []).filter(t => {
+        if (outF !== 'ALL' && t.outcome !== outF) return false;
+        if (exitF !== 'ALL' && t.exit_type !== exitF) return false;
+        if (q) {
+          const hay = `${t.symbol} ${t.side} ${t.entry_reason || ''} ${t.position_id}`.toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+      const wrap = document.getElementById('tradesWrap');
+      if (!rows.length) { wrap.innerHTML = '<div class="empty">No matching trades</div>'; return; }
+      wrap.innerHTML = `<table><thead><tr>
+        <th>Closed UTC</th><th>Symbol</th><th>Side</th><th>Lot</th><th>Entry → Exit</th>
+        <th>Dur</th><th>Outcome</th><th>Exit</th><th>Net (USC)</th><th>R</th><th>Entry Reason</th>
+      </tr></thead><tbody>${
+        rows.map(t => `<tr>
+          <td class="mono">${esc(t.exit_time_utc)}</td>
+          <td><strong>${esc(t.symbol)}</strong><div class="mono subtitle">#${esc(t.position_id)}</div></td>
+          <td><span class="badge ${t.side === 'BUY' ? 'badge-green' : 'badge-red'}">${esc(t.side)}</span></td>
+          <td class="mono">${esc(t.volume)}</td>
+          <td class="mono">${esc(t.entry_price)} → ${esc(t.exit_price)}</td>
+          <td class="mono">${fmt(t.duration_min, 0)}m</td>
+          <td><span class="badge ${t.outcome === 'WIN' ? 'badge-green' : t.outcome === 'LOSS' ? 'badge-red' : 'badge-blue'}">${esc(t.outcome)}</span></td>
+          <td><span class="badge badge-amber">${esc(t.exit_type)}</span></td>
+          <td class="mono ${cls(t.net_profit_usc)}"><strong>${signed(t.net_profit_usc)}</strong></td>
+          <td class="mono ${cls(t.r_mult)}">${t.r_mult !== null && t.r_mult !== undefined ? signed(t.r_mult, 2, 'R') : '-'}</td>
+          <td class="reason-cell">${esc(t.entry_reason || '-')}</td>
+        </tr>`).join('')
+      }</tbody></table>`;
+    }
+
+    function renderLessons() {
+      const rows = DATA.lessons || [];
+      document.getElementById('lessonsCount').textContent = rows.length;
+      const el = document.getElementById('lessonsList');
+      if (!rows.length) { el.innerHTML = '<div class="empty">No lessons recorded yet</div>'; return; }
+      el.innerHTML = rows.map(l => `
+        <div class="feed-item">
+          <div class="feed-meta">
+            <span><strong>${esc(l.symbol)} ${esc(l.side)}</strong> · <span class="${l.outcome === 'WIN' ? 'pos' : 'neg'}">${esc(l.outcome)} (${signed(l.profit_usc)} USC)</span> · ${esc(l.tag)}</span>
+            <span class="mono">${esc((l.ts || '').slice(0, 16).replace('T', ' '))}</span>
+          </div>
+          <div class="feed-body">${esc(l.lesson)}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderJournal() {
+      const rows = DATA.journal || [];
+      document.getElementById('journalCount').textContent = rows.length;
+      const el = document.getElementById('journalList');
+      if (!rows.length) { el.innerHTML = '<div class="empty">No journal entries yet</div>'; return; }
+      el.innerHTML = rows.map(j => `
+        <div class="feed-item">
+          <div class="feed-meta">
+            <span><span class="badge badge-blue">${esc(j.action)}</span> ${j.symbol ? `<strong>${esc(j.symbol)} ${esc(j.side || '')}</strong>` : ''} ${j.ticket ? `#${esc(j.ticket)}` : ''}</span>
+            <span class="mono">${esc((j.ts || '').slice(0, 16).replace('T', ' '))}</span>
+          </div>
+          <div class="feed-body">${esc(j.summary || j.reason || '-')}</div>
+        </div>
+      `).join('');
+    }
+
+    loadData(false);
+    resetTimer();
+  </script>
+</body>
+</html>
