@@ -1,0 +1,181 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Snapshot pushes land every ~15 minutes; cancel superseded runs politely.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate dashboard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate data.json structure and static assets
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import sys
+
+          REQUIRED_KEYS = ["generated_at", "account", "stats_all", "equity_snapshots", "trades"]
+          EXPECTED_TYPES = {
+              "generated_at": str,
+              "account": dict,
+              "stats_all": dict,
+              "equity_snapshots": list,
+              "trades": list,
+          }
+
+          errors = []
+
+          data_path = pathlib.Path("data.json")
+          if not data_path.is_file():
+              errors.append("data.json is missing")
+              data = None
+          else:
+              try:
+                  data = json.loads(data_path.read_text(encoding="utf-8"))
+              except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+                  errors.append(f"data.json does not parse: {exc}")
+                  data = None
+
+          if data is not None:
+              if not isinstance(data, dict):
+                  errors.append("data.json must be a JSON object")
+              else:
+                  for key in REQUIRED_KEYS:
+                      if key not in data:
+                          errors.append(f"data.json is missing required key: {key}")
+                  for key, expected in EXPECTED_TYPES.items():
+                      if key in data and not isinstance(data[key], expected):
+                          errors.append(
+                              f"data.json key '{key}' has type {type(data[key]).__name__}, "
+                              f"expected {expected.__name__}"
+                          )
+                  print(f"data.json OK: {len(data)} top-level keys, "
+                        f"{len(data.get('equity_snapshots', []))} equity snapshots, "
+                        f"{len(data.get('trades', []))} trades")
+
+          index_path = pathlib.Path("index.html")
+          if not index_path.is_file():
+              errors.append("index.html is missing")
+          else:
+              html = index_path.read_text(encoding="utf-8", errors="ignore")
+              if "data.json" not in html:
+                  errors.append("index.html does not reference data.json")
+              else:
+                  print("index.html OK: references data.json")
+
+          schema_path = pathlib.Path("schema.sql")
+          if not schema_path.is_file():
+              errors.append("schema.sql is missing")
+          elif not schema_path.read_text(encoding="utf-8", errors="ignore").strip():
+              errors.append("schema.sql is empty")
+          else:
+              print("schema.sql OK: non-empty")
+
+          if errors:
+              print("\nStructural validation failed:", file=sys.stderr)
+              for error in errors:
+                  print(f"  - {error}", file=sys.stderr)
+              sys.exit(1)
+
+          print("Structural validation passed.")
+          PY
+
+      - name: Scan tracked files for secrets
+        run: |
+          python - <<'PY'
+          import pathlib
+          import re
+          import subprocess
+          import sys
+
+          TEXT_SUFFIXES = {
+              ".html", ".css", ".js", ".json", ".md", ".sql", ".yml", ".yaml",
+              ".toml", ".py", ".sh", ".ps1", ".txt", ".ini", ".cfg", ".env",
+          }
+          TEXT_NAMES = {".gitattributes", ".editorconfig", ".gitignore"}
+
+          # Split literals so this workflow does not match itself.
+          PRIVATE_KEY_RE = re.compile(
+              "-----BEGIN " + r"(?:RSA |EC |DSA |OPENSSH )?" + "PRIVATE KEY" + "-----"
+          )
+          GITHUB_TOKEN_RE = re.compile(r"\bgh[pousr]_[A-Za-z0-9]{20,}\b")
+
+          PATTERNS = [
+              ("API key / client secret assignment", re.compile(
+                  r"(?i)\b(api[_-]?key|apikey|access[_-]?token|client[_-]?secret)\b"
+                  r"\s*[:=]\s*['\"]?[A-Za-z0-9_\-]{12,}"
+              )),
+              ("password assignment", re.compile(
+                  r"(?i)\b(pass(?:word|wd)?|pwd)\b\s*[:=]\s*['\"]?[^\s'\"#]{4,}"
+              )),
+              ("broker / investor password assignment", re.compile(
+                  r"(?i)\b(investor[_-]?password|mt5[_-]?password|"
+                  r"server[_-]?name)\b\s*[:=]\s*['\"]?[^\s'\"#]{3,}"
+              )),
+              ("GitHub token", GITHUB_TOKEN_RE),
+              ("private key block", PRIVATE_KEY_RE),
+          ]
+
+          # Anything that is clearly a placeholder is not a leak.
+          PLACEHOLDER_RE = re.compile(
+              r"(?i)(your[-_ ]|example|placeholder|redacted|changeme|"
+              r"<[^>]+>|\.\.\.|xxx+)"
+          )
+
+          tracked = subprocess.run(
+              ["git", "ls-files", "-z"], check=True, capture_output=True
+          ).stdout.decode("utf-8").split("\0")
+          tracked = [path for path in tracked if path]
+
+          hits = []
+          scanned = 0
+          for path in tracked:
+              file_path = pathlib.Path(path)
+              if (file_path.suffix.lower() not in TEXT_SUFFIXES
+                      and file_path.name not in TEXT_NAMES):
+                  continue
+              try:
+                  text = file_path.read_text(encoding="utf-8", errors="ignore")
+              except OSError:
+                  continue
+              scanned += 1
+              for lineno, line in enumerate(text.splitlines(), start=1):
+                  if "secret-scan: allow" in line:
+                      continue
+                  if PLACEHOLDER_RE.search(line):
+                      continue
+                  for label, pattern in PATTERNS:
+                      if pattern.search(line):
+                          hits.append((path, lineno, label, line.strip()[:160]))
+
+          if hits:
+              print("Potential secrets found in tracked files:", file=sys.stderr)
+              for path, lineno, label, snippet in hits:
+                  print(f"  {path}:{lineno} [{label}] {snippet}", file=sys.stderr)
+              print("\nRemove or rotate the value, or add a 'secret-scan: allow' "
+                    "comment only for a verified false positive.", file=sys.stderr)
+              sys.exit(1)
+
+          print(f"Secret scan passed: no obvious secrets in {scanned} text files.")
+          PY
