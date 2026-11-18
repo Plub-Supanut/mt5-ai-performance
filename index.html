@@ -1091,11 +1091,14 @@
     min-width: 0;
   }
   .ticket-meta span { overflow-wrap: anywhere; }
+  /* ---------- thesis (shared component, four surfaces) ---------- */
   details.thesis { margin-top: 8px; padding-top: 7px; border-top: 1px dashed var(--line); }
-  details.thesis summary {
-    display: inline-flex;
+  details.thesis > summary {
+    display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: flex-start;
+    gap: 4px 7px;
+    flex-wrap: wrap;
     min-height: 24px;
     font: 600 8px/1.4 var(--mono);
     letter-spacing: .1em;
@@ -1104,16 +1107,170 @@
     list-style: none;
     cursor: pointer;
   }
-  details.thesis summary::-webkit-details-marker { display: none; }
-  details.thesis summary::before { content: "+"; font: 500 11px var(--mono); color: var(--brass); }
-  details.thesis[open] summary::before { content: "–"; }
-  .thesis-text {
+  details.thesis > summary::-webkit-details-marker { display: none; }
+  details.thesis > summary::before { content: "+"; flex: none; font: 500 11px var(--mono); color: var(--brass); }
+  details.thesis[open] > summary::before { content: "–"; }
+  details.thesis > summary:focus-visible { outline: 1px solid var(--brass); outline-offset: 2px; }
+  .thesis-chips { display: inline-flex; align-items: center; gap: 3px; flex-wrap: wrap; margin-left: auto; min-width: 0; }
+  .th-chip {
+    display: inline-flex;
+    align-items: center;
+    height: 17px;
+    padding: 0 4px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    font: 500 8px/1 var(--mono);
+    letter-spacing: .04em;
+    color: var(--text-3);
+    white-space: nowrap;
+  }
+  .th-chip[data-tone="pos"] { color: var(--jade); border-color: var(--jade-line); background: var(--jade-bg); }
+  .th-chip[data-tone="neg"] { color: var(--red); border-color: var(--red-line); background: var(--red-bg); }
+  .th-chip[data-tone="brass"] { color: var(--brass); border-color: var(--brass-line); background: var(--brass-bg); }
+  .th {
+    min-width: 0;
     margin-top: 7px;
+  }
+  .th-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .th-title {
+    font: 600 7.5px/1.4 var(--mono);
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .th-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+    gap: 8px 0;
+    margin: 0;
+    padding: 0;
+  }
+  .th-fact { min-width: 0; padding: 0 10px; border-left: 1px solid var(--line-soft); }
+  .th-fact:first-child { padding-left: 0; border-left: 0; }
+  .th-fact dt {
+    font: 600 7.5px/1.3 var(--mono);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .th-fact dd { margin: 3px 0 0; min-width: 0; }
+  .th-val {
+    display: block;
+    font: 500 10.5px/1.3 var(--mono);
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
+  .th-ref {
+    display: block;
+    margin-top: 2px;
+    font: 400 8.5px/1.45 var(--mono);
+    letter-spacing: .01em;
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+  }
+  .th-facts + .th-clauses { margin-top: 9px; padding-top: 8px; border-top: 1px solid var(--line-soft); }
+  .th-clauses {
+    list-style: none;
+    display: grid;
+    gap: 6px;
+    margin: 7px 0 0;
+    padding: 0;
+  }
+  .th-clause {
+    display: grid;
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 9px;
+    align-items: baseline;
+  }
+  .th-label {
+    font: 600 7.5px/1.55 var(--mono);
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+  }
+  .th-clause[data-label="STOP"] .th-label { color: var(--red); }
+  .th-clause[data-label="TARGET"] .th-label { color: var(--jade); }
+  .th-clause[data-label="RISK"] .th-label { color: var(--brass); }
+  .th-clause[data-label="MANAGEMENT"] .th-label { color: var(--brass); }
+  .th-clause[data-label="OUTCOME"] .th-label { color: var(--jade); }
+  .th-clause[data-label="RULE"] .th-label { color: var(--brass); }
+  .th-clause--note { grid-template-columns: minmax(0, 1fr); }
+  .th-text {
     font-size: 11px;
     line-height: 1.7;
     color: var(--text-2);
     overflow-wrap: anywhere;
   }
+  .th-em {
+    font: 500 10.5px/1.5 var(--mono);
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+  .th-raw { margin-top: 8px; padding-top: 7px; border-top: 1px dashed var(--line); }
+  .th-raw > summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 22px;
+    font: 600 7.5px/1.4 var(--mono);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    list-style: none;
+    cursor: pointer;
+  }
+  .th-raw > summary::-webkit-details-marker { display: none; }
+  .th-raw > summary::before { content: "+"; font: 500 10px var(--mono); color: var(--text-3); }
+  .th-raw[open] > summary::before { content: "–"; }
+  .th-raw > summary:hover { color: var(--brass); }
+  .th-raw > summary:focus-visible { outline: 1px solid var(--brass); outline-offset: 2px; }
+  .th-raw p {
+    max-width: 92ch;
+    margin: 6px 0 0;
+    font: 400 9.5px/1.7 var(--mono);
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+  }
+  .th-empty { margin-top: 7px; font-size: 10.5px; line-height: 1.65; color: var(--text-3); }
+  .th-fallback {
+    margin-top: 7px;
+    font-size: 10.5px;
+    line-height: 1.7;
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+  }
+  .th-prose {
+    max-width: 94ch;
+    margin-top: 3px;
+    font-size: 11px;
+    line-height: 1.8;
+    color: var(--text-2);
+    overflow-wrap: anywhere;
+  }
+  .th-boilerplate {
+    margin-top: 5px;
+    font-size: 10px;
+    line-height: 1.6;
+    letter-spacing: .01em;
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+  }
+  .th-fact-chips { margin-top: 7px; }
+  .th-fact-chips .thesis-chips { margin-left: 0; }
+  .th--prose .th-clauses { margin-top: 0; gap: 7px; }
+  .th--prose .th-clause { grid-template-columns: 64px minmax(0, 1fr); }
+  .th--prose .th-clause--note { grid-template-columns: minmax(0, 1fr); }
+  .th--prose .th-text { font-size: 11px; line-height: 1.8; max-width: 94ch; }
 
   .pending-list {
     display: grid;
@@ -1711,8 +1868,15 @@
     .btn-reset { flex: 1 1 100%; height: 32px; }
     .brain-tab { min-height: 42px; }
     .btn-more { height: 38px; }
-    details.thesis summary { min-height: 32px; }
+    details.thesis > summary { min-height: 32px; }
     .t-card summary { min-height: 36px; }
+    .th-clause, .th--prose .th-clause { grid-template-columns: minmax(0, 1fr); gap: 1px; }
+    .th-label { font-size: 7px; letter-spacing: .08em; }
+    .th-facts { grid-template-columns: 1fr 1fr; }
+    .th-fact { padding: 0 8px; }
+    .th-fact:nth-child(odd) { padding-left: 0; border-left: 0; }
+    .th-text, .th--prose .th-text { font-size: 11.5px; }
+    .th-raw > summary, .th-raw p { font-size: 10px; }
     .log { grid-template-columns: minmax(0, 1fr); gap: 3px; }
     .log-time { display: flex; align-items: baseline; gap: 5px; }
     .log-time b { display: inline; }
@@ -2331,6 +2495,653 @@
     if (value === 'SL') return 'neg';
     return 'brass';
   }
+
+  /* ---------- thesis: THESIS-1 parser + one shared component ---------- */
+  var THESIS_VERSION = 'THESIS-1';
+  var THESIS_TF_ALT = 'D1|H4|H1|M15|M5|M1';
+  var THESIS_ALIGNMENT_RE = new RegExp('^(aligned\\s+)?(' + THESIS_TF_ALT + ')(?:\\s*\\/\\s*(?:' + THESIS_TF_ALT + '))*\\s+(bull|bear|bullish|bearish)\\b', 'i');
+  var THESIS_CHAIN_RE = new RegExp('((?:' + THESIS_TF_ALT + ')(?:\\s*\\/\\s*(?:' + THESIS_TF_ALT + '))*)', 'i');
+  var THESIS_ATR_RE = new RegExp('([0-9]+(?:\\.[0-9]+)?)\\s*x\\s*(' + THESIS_TF_ALT + ')\\s+ATR', 'i');
+  var THESIS_TF_TOKEN_RE = new RegExp('\\b(' + THESIS_TF_ALT + ')\\b', 'gi');
+  var THESIS_MANAGEMENT_RE = /free[- ]roll|partial|\bBE\b|break-?even|locked profit/i;
+  var THESIS_RATIONALE_RE = /\b(no new|no clean|lack|avoid|due to|holding|hold\s|wide [^;]*spread|chasing)\b/i;
+  var THESIS_CONTEXT_RE = /\b(rsi|utc|rollover|offhours|tokyo|london|asia|session)\b|overbought|oversold/i;
+  var THESIS_TRIGGER_RE = /\b(swept|sweep|pullback|retest|rejected|reject|printed|broke|break|reclaim|confluence|bounce|lower high|higher low|lower low|higher high)\b/i;
+  var THESIS_BOILERPLATE = ['ai setup', 'ai exit', 'ai adjust', 'ai cancel'];
+  var THESIS_LEVEL_RE = /\b(today_high|today_low|today_open|PDH|PDL|session low|session high|sl20|swing high|swing low|sweep high|sweep low|EMA\d{1,3}|support|resistance)\b/gi;
+  var THESIS_SESSION_RE = /OffHours\/Rollover|Rollover|London\/NY overlap|London|Tokyo|Asia|NY/;
+  var THESIS_SYMBOL_RE = /\b[A-Z]{2,6}\d{0,2}c\b/g;
+  var THESIS_SIDE_RE = /\b(BUY|SELL)\b/g;
+  var THESIS_LABEL_TEXT = {
+    ALIGNMENT: 'Alignment',
+    TRIGGER: 'Setup',
+    CONTEXT: 'Context',
+    STOP: 'Stop loss',
+    TARGET: 'Take profit',
+    MANAGEMENT: 'Management',
+    RISK: 'Risk',
+    RATIONALE: 'No trade',
+    OUTCOME: 'Result',
+    CAUSE: 'Why',
+    RULE: 'Rule',
+    BOILERPLATE: 'System',
+    NOTE: '',
+    UNPARSED: ''
+  };
+
+  function thesisRawText(value) {
+    return value === null || value === undefined ? '' : String(value);
+  }
+  function thesisTrim(text) {
+    return thesisRawText(text).replace(/^\s+|\s+$/g, '');
+  }
+  function thesisHasText(value) {
+    var text = thesisTrim(value);
+    return text !== '' && !/^(null|undefined|none|n\/a|—|-)$/i.test(text);
+  }
+  function thesisNumberLabel(value) {
+    var number = toNum(value);
+    if (number === null) return '';
+    return String(Number(number.toFixed(2)));
+  }
+  function thesisLang(raw) {
+    var thai = /[\u0E00-\u0E7F]/.test(raw);
+    var latin = /[A-Za-z]/.test(raw);
+    if (thai && latin) return 'mixed';
+    if (thai) return 'th';
+    if (latin) return 'en';
+    return 'unknown';
+  }
+  function thesisNormalizeKind(kind) {
+    return kind === 'journal' || kind === 'lesson' ? kind : 'thesis';
+  }
+  function thesisNormalizeBias(word) {
+    var value = String(word || '').toUpperCase();
+    if (value === 'BULLISH') return 'BULL';
+    if (value === 'BEARISH') return 'BEAR';
+    if (value === 'BULL' || value === 'BEAR') return value;
+    return null;
+  }
+
+  /* contract 3.2 — depth-aware segmentation, separators preserved verbatim */
+  function thesisSections(raw, kind) {
+    var separators = kind === 'lesson' ? [';', '. '] : (kind === 'journal' ? [';', ',', '. '] : [';', ',']);
+    var out = [];
+    var buffer = '';
+    var index = 0;
+    var depth = 0;
+    while (index < raw.length) {
+      var character = raw.charAt(index);
+      if (character === '(' || character === '[') depth += 1;
+      else if (character === ')' || character === ']') depth = Math.max(0, depth - 1);
+      var hit = null;
+      if (depth === 0) {
+        for (var k = 0; k < separators.length; k += 1) {
+          if (raw.slice(index, index + separators[k].length) === separators[k]) {
+            hit = separators[k];
+            break;
+          }
+        }
+      }
+      if (hit) {
+        out.push({ text: buffer, sep: hit });
+        buffer = '';
+        index += hit.length;
+        var follow = index;
+        while (follow < raw.length && raw.charAt(follow) === ' ') follow += 1;
+        out[out.length - 1].sep = raw.slice(index - hit.length, follow);
+        index = follow;
+        continue;
+      }
+      buffer += character;
+      index += 1;
+    }
+    if (buffer !== '' || out.length === 0) out.push({ text: buffer, sep: '' });
+    return out;
+  }
+
+  /* contract 3.6 — numeric tokens, offsets index into the clause text */
+  function thesisNumTokens(text) {
+    var out = [];
+    var re = /\d+(?:\.\d+)?/g;
+    var match;
+    while ((match = re.exec(text)) !== null) {
+      var start = match.index;
+      var end = start + match[0].length;
+      var before = start > 0 ? text.charAt(start - 1) : '';
+      var after = text.charAt(end);
+      if (before && /[A-Za-z:]/.test(before)) continue;
+      if (after === ':') continue;
+      if (before === '/' && /EMA\s*$/i.test(text.slice(Math.max(0, start - 8), start))) continue;
+      var sign = 0;
+      var rawStart = start;
+      if ((before === '-' || before === '+') && start >= 1) {
+        var beforeSign = start >= 2 ? text.charAt(start - 2) : '';
+        if (start === 1 || /[\s(,;]/.test(beforeSign)) {
+          sign = before === '-' ? -1 : 1;
+          rawStart = start - 1;
+        }
+      }
+      var suffix = text.slice(end, end + 14);
+      var unit = 'NONE';
+      if (/^\s*USC\b/i.test(suffix)) unit = 'USC';
+      else if (/^\s*USD\b/i.test(suffix)) unit = 'USD';
+      else if (/^\s*R\b/.test(suffix)) unit = 'R';
+      else if (/^\s*pips?\b/i.test(suffix)) unit = 'PIPS';
+      else if (/^\s*\u0e08\u0e38\u0e14/.test(suffix)) unit = 'POINTS';
+      else if (/^\s*%/.test(suffix)) unit = 'PCT';
+      else if (/^\s*lot\b/i.test(suffix)) unit = 'LOT';
+      else if (THESIS_ATR_RE.test('0' + suffix)) unit = 'ATR_MULT';
+      else if (after === '/') unit = 'RATIO';
+      else if (after === '' || /[\s),;.\]]/.test(after)) unit = 'PRICE';
+      var raw = text.slice(rawStart, end);
+      out.push({ raw: raw, value: Number(raw), unit: unit, sign: sign, start: rawStart, end: end });
+    }
+    return out;
+  }
+
+  /* contract 3.4 — label precedence, first match wins */
+  function thesisClauseLabel(text, kind) {
+    var trimmed = thesisTrim(text);
+    var low = trimmed.toLowerCase();
+    if (!trimmed) return 'NOTE';
+    if (kind === 'lesson') {
+      var stripped = trimmed.replace(/\u0e17\u0e33\u0e43\u0e2b\u0e49/g, '');
+      if (/ห้าม|ต้อง|ควร|อย่า|ไม่ควร|ให้|\bmust\b|\bshould\b|\bnever\b|\bavoid\b/i.test(stripped)) return 'RULE';
+      if (/โดน|กวาด|รีบาวด์|สวิง|ไส้|แพ้|\bswept\b|\brejected\b|\bsurvived\b|\brebound|\bhit\b/i.test(trimmed)) return 'CAUSE';
+      if (/\b(?:SL|TP)\b[\s\S]{0,40}\d{2,}/i.test(trimmed)) return 'OUTCOME';
+      return 'NOTE';
+    }
+    if (THESIS_BOILERPLATE.indexOf(low) !== -1) return 'BOILERPLATE';
+    if (THESIS_ALIGNMENT_RE.test(trimmed) || /\b(bull|bear)\s+aligned\b/i.test(trimmed)) return 'ALIGNMENT';
+    if (THESIS_MANAGEMENT_RE.test(trimmed)) return 'MANAGEMENT';
+    var stopIndex = trimmed.search(/\bSL\b/i);
+    if (stopIndex !== -1) {
+      var firstTarget = trimmed.search(/\bTP\b|\btargeting\b|\btarget\b/i);
+      if (firstTarget === -1 || stopIndex < firstTarget) return 'STOP';
+    }
+    if (/\bTP\b|\btargeting\b|\btarget\b/i.test(trimmed)) return 'TARGET';
+    if (/\b(risk|budget|slots?)\b/i.test(trimmed)) return 'RISK';
+    if (THESIS_RATIONALE_RE.test(trimmed)) return 'RATIONALE';
+    if (THESIS_CONTEXT_RE.test(trimmed)) return 'CONTEXT';
+    if (THESIS_TRIGGER_RE.test(trimmed) || new RegExp('^(?:' + THESIS_TF_ALT + ')\\b', 'i').test(trimmed)) return 'TRIGGER';
+    return 'NOTE';
+  }
+
+  /* contract 3.5 — facts mirror; nothing is invented */
+  function thesisNextBoundary(raw, from, kind) {
+    var separators = kind === 'lesson' ? [';', '. '] : (kind === 'journal' ? [';', ',', '. '] : [';', ',']);
+    var depth = 0;
+    for (var index = from; index < raw.length; index += 1) {
+      var character = raw.charAt(index);
+      if (character === '(' || character === '[') depth += 1;
+      else if (character === ')' || character === ']') depth = Math.max(0, depth - 1);
+      if (depth > 0) continue;
+      for (var k = 0; k < separators.length; k += 1) {
+        if (raw.slice(index, index + separators[k].length) === separators[k]) return index;
+      }
+    }
+    return raw.length;
+  }
+  function thesisWindow(raw, from, kind) {
+    return raw.slice(from, Math.min(thesisNextBoundary(raw, from, kind), from + 120));
+  }
+  function thesisLevelKind(name) {
+    var low = name.toLowerCase();
+    if (low === 'today_high' || low === 'today_low' || low === 'today_open') return low;
+    if (low === 'pdh' || low === 'pdl') return name;
+    if (low === 'session low') return 'session_low';
+    if (low === 'session high') return 'session_high';
+    if (low === 'sl20' || low === 'swing low') return 'swing_low';
+    if (low === 'swing high') return 'swing_high';
+    if (low === 'sweep high') return 'sweep_high';
+    if (low === 'sweep low') return 'sweep_low';
+    if (/^ema\d{1,3}$/i.test(low)) return name.toUpperCase();
+    if (low === 'support' || low === 'resistance') return low;
+    return 'unknown';
+  }
+  function thesisTimeframeBefore(raw, index) {
+    var before = raw.slice(Math.max(0, index - 7), index);
+    var match = new RegExp('(?:' + THESIS_TF_ALT + ')\\s*$', 'i').exec(before);
+    return match ? match[0].replace(/\s+$/, '').toUpperCase() : null;
+  }
+  function thesisLevels(raw) {
+    var out = [];
+    THESIS_LEVEL_RE.lastIndex = 0;
+    var match;
+    while ((match = THESIS_LEVEL_RE.exec(raw)) !== null) {
+      var name = match[0];
+      var after = raw.slice(match.index + name.length);
+      var priceMatch = /^\s+(\d+(?:\.\d+)?)/.exec(after);
+      out.push({
+        name: name,
+        kind: thesisLevelKind(name),
+        tf: thesisTimeframeBefore(raw, match.index),
+        price: priceMatch ? Number(priceMatch[1]) : null
+      });
+    }
+    return out;
+  }
+  function thesisLevelFact(raw, kind, level) {
+    var start;
+    var length;
+    if (level === 'sl') {
+      var stop = /\bSL\b/i.exec(raw);
+      if (!stop) return null;
+      start = stop.index;
+      length = stop[0].length;
+    } else {
+      var candidates = [/\bTP\b/i, /\btargeting\b/i, /\btarget\b/i];
+      var best = null;
+      candidates.forEach(function (candidate) {
+        var found = candidate.exec(raw);
+        if (found && (best === null || found.index < best.index)) best = { index: found.index, length: found[0].length };
+      });
+      if (!best) return null;
+      start = best.index;
+      length = best.length;
+    }
+    var windowText = thesisWindow(raw, start + length, kind);
+    var rest = windowText.replace(/^\s+/, '');
+    var price = null;
+    var priceMatch = /^(?:at|is|=)?\s*(\d+(?:\.\d+)?)\b/i.exec(rest);
+    if (priceMatch) price = Number(priceMatch[1]);
+    var levels = thesisLevels(windowText);
+    var atr = THESIS_ATR_RE.exec(windowText);
+    var fact = {
+      price: price,
+      ref: levels.length ? levels[0].name : null,
+      refKind: levels.length ? levels[0].kind : null,
+      refPrice: levels.length ? levels[0].price : null,
+      atrMultiple: atr ? Number(atr[1]) : null,
+      atrTf: atr ? atr[2].toUpperCase() : null
+    };
+    if (level === 'tp') {
+      var rrExplicit = /\bRR\b\s*([0-9]+(?:\.[0-9]+)?)/i.exec(windowText);
+      if (rrExplicit) fact.rr = Number(rrExplicit[1]);
+      else {
+        var rrSuffix = /([0-9]+(?:\.[0-9]+)?)\s*R\b/.exec(windowText);
+        fact.rr = rrSuffix ? Number(rrSuffix[1]) : null;
+      }
+      fact.withinAdr = /\bwithin\s+ADR\b/i.test(windowText);
+    }
+    if (fact.price === null && fact.ref === null && fact.refPrice === null && fact.atrMultiple === null &&
+      (level === 'sl' || fact.rr === null)) return null;
+    fact.raw = rest || null;
+    return fact;
+  }
+
+  function parseThesis(raw, kind) {
+    if (typeof raw !== 'string') return null;
+    if (raw.replace(/^\s+|\s+$/g, '') === '') return null;
+    var kindValue = thesisNormalizeKind(kind);
+    var thesis = {
+      version: THESIS_VERSION,
+      kind: kindValue,
+      raw: raw,
+      ok: false,
+      lang: thesisLang(raw),
+      clauses: [],
+      facts: {
+        bias: null,
+        timeframes: [],
+        alignment: [],
+        sl: null,
+        tp: null,
+        rr: null,
+        levels: [],
+        rsi: null,
+        session: null,
+        risk: null,
+        pnlUsc: null,
+        symbols: [],
+        sides: []
+      },
+      parse: { mode: 'raw', labels: [], unparsed: 0 }
+    };
+    try {
+      if (/[\n\r|`]/.test(raw) || raw.length > 1200) {
+        thesis.clauses = [{ label: 'UNPARSED', text: raw, sep: '', nums: [] }];
+        thesis.parse = { mode: 'raw', labels: ['UNPARSED'], unparsed: 0 };
+        return thesis;
+      }
+      thesis.clauses = thesisSections(raw, kindValue).map(function (section) {
+        return {
+          label: thesisClauseLabel(section.text, kindValue),
+          text: section.text,
+          sep: section.sep,
+          nums: thesisNumTokens(section.text)
+        };
+      });
+      var labels = [];
+      var noteCount = 0;
+      thesis.clauses.forEach(function (clause) {
+        if (labels.indexOf(clause.label) === -1) labels.push(clause.label);
+        if (clause.label === 'NOTE') noteCount += 1;
+      });
+      var nonEmpty = thesis.clauses.filter(function (clause) { return thesisTrim(clause.text) !== ''; });
+      var single = nonEmpty.length === 1 ? nonEmpty[0] : null;
+      var mode;
+      if (single && single.label === 'BOILERPLATE') mode = 'boilerplate';
+      else if (single && single.label === 'NOTE') mode = 'prose';
+      else if (nonEmpty.length >= 2 || single) mode = 'clauses';
+      else mode = 'prose';
+      thesis.parse = { mode: mode, labels: labels.slice().sort(), unparsed: noteCount };
+      thesis.ok = mode === 'clauses';
+      if (mode !== 'clauses') return thesis;
+
+      var facts = thesis.facts;
+      var biasMatch = /(BULLISH|BEARISH|BULL|BEAR)\b/i.exec(raw);
+      facts.bias = biasMatch ? thesisNormalizeBias(biasMatch[1]) : null;
+      var timeframes = [];
+      var alignmentMatch = THESIS_ALIGNMENT_RE.exec(raw);
+      if (alignmentMatch) {
+        var chain = THESIS_CHAIN_RE.exec(alignmentMatch[0]);
+        timeframes = chain ? chain[1].split('/').map(function (tf) { return thesisTrim(tf).toUpperCase(); }).filter(Boolean) : [];
+      } else {
+        var seenTf = {};
+        var tfMatch;
+        THESIS_TF_TOKEN_RE.lastIndex = 0;
+        while ((tfMatch = THESIS_TF_TOKEN_RE.exec(raw)) !== null) {
+          var tfValue = tfMatch[1].toUpperCase();
+          if (!seenTf[tfValue]) { seenTf[tfValue] = true; timeframes.push(tfValue); }
+        }
+      }
+      facts.timeframes = timeframes;
+      facts.alignment = facts.bias ? timeframes.map(function (tf) { return { tf: tf, bias: facts.bias }; }) : [];
+      facts.sl = thesisLevelFact(raw, kindValue, 'sl');
+      facts.tp = thesisLevelFact(raw, kindValue, 'tp');
+      facts.rr = facts.tp && facts.tp.rr !== null ? facts.tp.rr : null;
+      if (facts.rr === null) {
+        var globalRr = /\bRR\b\s*([0-9]+(?:\.[0-9]+)?)/i.exec(raw);
+        if (globalRr) facts.rr = Number(globalRr[1]);
+        else {
+          var rTokens = raw.match(/([0-9]+(?:\.[0-9]+)?)\s*R\b/g);
+          if (rTokens && rTokens.length) {
+            var lastR = /([0-9]+(?:\.[0-9]+)?)\s*R\b/.exec(rTokens[rTokens.length - 1]);
+            if (lastR) facts.rr = Number(lastR[1]);
+          }
+        }
+      }
+      facts.levels = thesisLevels(raw);
+      var rsi = new RegExp('\\b(' + THESIS_TF_ALT + ')\\s+RSI\\s+([0-9]+(?:\\.[0-9]+)?)', 'i').exec(raw);
+      if (rsi) {
+        facts.rsi = {
+          tf: rsi[1].toUpperCase(),
+          value: Number(rsi[2]),
+          state: /\boversold\b/i.test(raw) ? 'oversold' : (/\boverbought\b/i.test(raw) ? 'overbought' : null)
+        };
+      }
+      var session = THESIS_SESSION_RE.exec(raw);
+      facts.session = session ? session[0] : null;
+      var riskOpenMax = /risk\s*([0-9]+(?:\.[0-9]+)?)\s*\/\s*([0-9]+(?:\.[0-9]+)?)\s*USC/i.exec(raw);
+      if (!riskOpenMax) riskOpenMax = /([0-9]+(?:\.[0-9]+)?)\s*\/\s*([0-9]+(?:\.[0-9]+)?)\s*USC\s*(?:open\s+)?risk/i.exec(raw);
+      var slots = /([0-9]+)\s*\/\s*([0-9]+)\s*(?:open\s+)?positions/i.exec(raw);
+      if (riskOpenMax || slots) {
+        facts.risk = {
+          openUsc: riskOpenMax ? Number(riskOpenMax[1]) : null,
+          maxUsc: riskOpenMax ? Number(riskOpenMax[2]) : null,
+          slotsOpen: slots ? Number(slots[1]) : null,
+          slotsMax: slots ? Number(slots[2]) : null,
+          rMultiple: null
+        };
+      }
+      if (kindValue === 'journal') {
+        var rMultiple = /([+-][0-9]+(?:\.[0-9]+)?)\s*R\b/.exec(raw);
+        if (rMultiple) {
+          if (!facts.risk) facts.risk = { openUsc: null, maxUsc: null, slotsOpen: null, slotsMax: null, rMultiple: null };
+          facts.risk.rMultiple = Number(rMultiple[1]);
+        }
+      }
+      var pnl = /[(\s]([+-][0-9]+(?:\.[0-9]+)?)\s*USC/i.exec(raw);
+      facts.pnlUsc = pnl ? Number(pnl[1]) : null;
+      var seenSymbol = {};
+      var symbolMatch;
+      THESIS_SYMBOL_RE.lastIndex = 0;
+      while ((symbolMatch = THESIS_SYMBOL_RE.exec(raw)) !== null) {
+        if (!seenSymbol[symbolMatch[0]]) { seenSymbol[symbolMatch[0]] = true; facts.symbols.push(symbolMatch[0]); }
+      }
+      var sideMatch;
+      THESIS_SIDE_RE.lastIndex = 0;
+      while ((sideMatch = THESIS_SIDE_RE.exec(raw)) !== null) {
+        if (facts.sides.indexOf(sideMatch[0]) === -1) facts.sides.push(sideMatch[0]);
+      }
+      return thesis;
+    } catch (error) {
+      thesis.clauses = [{ label: 'UNPARSED', text: raw, sep: '', nums: [] }];
+      thesis.ok = false;
+      thesis.parse = { mode: 'raw', labels: ['UNPARSED'], unparsed: 0 };
+      return thesis;
+    }
+  }
+
+  /* ---------- component markup (same component on all four surfaces) ---------- */
+  function thesisChipMarkup(chips) {
+    if (!chips.length) return '';
+    return '<span class="thesis-chips">' + chips.slice(0, 5).map(function (chip) {
+      return '<span class="th-chip"' + (chip.tone ? ' data-tone="' + esc(chip.tone) + '"' : '') + '>' + esc(chip.label) + '</span>';
+    }).join('') + '</span>';
+  }
+  function thesisHeadChips(thesis, extraChips) {
+    if (!thesis || !thesis.ok) return '';
+    var chips = [];
+    var showStructure = thesis.kind === 'thesis' || (thesis.kind === 'journal' && !!thesis.facts.bias);
+    if (showStructure) {
+      (thesis.facts.timeframes || []).forEach(function (tf) {
+        chips.push({ label: tf, tone: '' });
+      });
+      if (thesis.facts.bias) {
+        chips.push({ label: thesis.facts.bias, tone: thesis.facts.bias === 'BULL' ? 'pos' : thesis.facts.bias === 'BEAR' ? 'neg' : 'brass' });
+      }
+    }
+    (extraChips || []).forEach(function (chip) {
+      if (chip && chip.label) chips.push(chip);
+    });
+    return thesisChipMarkup(chips);
+  }
+  function thesisContextPayload(thesis, context) {
+    var ctx = context || {};
+    return JSON.stringify({
+      surface: ctx.surface || null,
+      title: ctx.title || null,
+      symbol: ctx.symbol || (thesis && thesis.facts.symbols.length ? thesis.facts.symbols[0] : null),
+      side: ctx.side || (thesis && thesis.facts.sides.length ? thesis.facts.sides[0] : null)
+    });
+  }
+  function thesisHeadline(thesis, context) {
+    var ctx = context || {};
+    var kind = ctx.kind || (thesis ? thesis.kind : 'thesis');
+    var parts = [];
+    if (ctx.title) parts.push(ctx.title);
+    var symbol = ctx.symbol || (thesis && thesis.facts.symbols.length ? thesis.facts.symbols[0] : null);
+    var side = ctx.side || (thesis && thesis.facts.sides.length ? thesis.facts.sides[0] : null);
+    if (symbol) parts.push(side ? symbol + ' ' + side : symbol);
+    if (thesis && thesis.facts.bias && thesis.facts.timeframes.length) {
+      parts.push(thesis.facts.timeframes.join('/') + ' ' + thesis.facts.bias);
+    }
+    return parts.join(' \u00b7 ') || (kind === 'lesson' ? 'Post-trade lesson' : kind === 'journal' ? 'Journal entry' : 'Entry thesis');
+  }
+  function thesisEmptyText(kind) {
+    if (kind === 'lesson') return 'ยังไม่มีบทเรียนที่ผูกกับไม้นี้';
+    if (kind === 'journal') return 'ไม่มีรายละเอียดในบันทึกนี้';
+    return 'ไม่มีบันทึก Entry Thesis สำหรับไม้นี้ (legacy trade)';
+  }
+  function thesisNumHtml(clause) {
+    var text = clause.text;
+    var out = '';
+    var last = 0;
+    (clause.nums || []).forEach(function (num) {
+      if (num.start < last || num.end > text.length) return;
+      out += esc(text.slice(last, num.start));
+      out += '<b class="th-em">' + esc(text.slice(num.start, num.end)) + '</b>';
+      last = num.end;
+    });
+    out += esc(text.slice(last));
+    return out;
+  }
+  function thesisClauseBodyHtml(clause) {
+    var html = thesisNumHtml(clause);
+    if (clause.sep.charAt(0) === '.') html += '.';
+    return html;
+  }
+  function thesisFactRows(thesis, context) {
+    var ctx = context || {};
+    if (!thesis || thesis.kind !== 'thesis') return [];
+    var facts = thesis.facts;
+    var symbol = ctx.symbol || (facts.symbols.length ? facts.symbols[0] : '');
+    var rows = [];
+    function push(label, value, reference) {
+      if (!value) return;
+      rows.push({ label: label, value: value, reference: reference || '' });
+    }
+    function levelRow(label, fact, isTarget) {
+      if (!fact) return;
+      var decimals = priceDecimals(symbol, fact.price !== null ? fact.price : fact.refPrice);
+      var main = null;
+      if (fact.price !== null) main = fmt(fact.price, decimals);
+      else if (isTarget && fact.refPrice !== null) main = fmt(fact.refPrice, decimals);
+      else if (fact.ref) main = fact.ref;
+      else if (fact.refPrice !== null) main = fmt(fact.refPrice, decimals);
+      if (!main) return;
+      var bits = [];
+      if (fact.price !== null && fact.ref) {
+        bits.push(fact.ref + (fact.refPrice !== null ? ' ' + fmt(fact.refPrice, decimals) : ''));
+      } else if (fact.price === null && isTarget && fact.refPrice !== null && fact.ref) {
+        bits.push(fact.ref);
+      } else if (fact.price === null && !isTarget && fact.refPrice !== null) {
+        bits.push('level ' + fmt(fact.refPrice, decimals));
+      }
+      if (fact.atrMultiple !== null) bits.push(thesisNumberLabel(fact.atrMultiple) + '\u00d7 ' + (fact.atrTf || '') + ' ATR');
+      if (fact.withinAdr) bits.push('within ADR');
+      push(label, main, bits.filter(Boolean).join(' \u00b7 '));
+    }
+    levelRow('Stop loss', facts.sl, false);
+    levelRow('Take profit', facts.tp, true);
+    if (facts.rr !== null) push('Reward / risk', fmt(facts.rr, 2) + 'R', ctx.rrReference || '');
+    if (facts.rsi) push('RSI', thesisNumberLabel(facts.rsi.value), facts.rsi.tf + (facts.rsi.state ? ' \u00b7 ' + facts.rsi.state : ''));
+    return rows;
+  }
+  function thesisFactsHtml(thesis, context) {
+    var rows = thesisFactRows(thesis, context);
+    if (!rows.length) return '';
+    return '<dl class="th-facts">' + rows.map(function (row) {
+      return '<div class="th-fact"><dt>' + esc(row.label) + '</dt><dd><span class="th-val">' + esc(row.value) + '</span>' +
+        (row.reference ? '<span class="th-ref">' + esc(row.reference) + '</span>' : '') +
+      '</dd></div>';
+    }).join('') + '</dl>';
+  }
+  function thesisFactChipsHtml(thesis) {
+    if (!thesis || thesis.kind === 'lesson') return '';
+    var facts = thesis.facts;
+    var chips = [];
+    if (facts.sl) {
+      var slValue = facts.sl.price !== null
+        ? fmt(facts.sl.price, priceDecimals(facts.symbols[0], facts.sl.price))
+        : facts.sl.ref;
+      if (slValue) chips.push({ label: 'SL ' + slValue, tone: 'neg' });
+    }
+    if (facts.tp) {
+      var tpValue = facts.tp.price !== null
+        ? fmt(facts.tp.price, priceDecimals(facts.symbols[0], facts.tp.price))
+        : (facts.tp.refPrice !== null ? fmt(facts.tp.refPrice, priceDecimals(facts.symbols[0], facts.tp.refPrice)) : facts.tp.ref);
+      if (tpValue) chips.push({ label: 'TP ' + tpValue, tone: 'pos' });
+    }
+    if (facts.rr !== null) chips.push({ label: 'RR ' + fmt(facts.rr, 2) + 'R', tone: '' });
+    if (facts.risk && facts.risk.openUsc !== null && facts.risk.maxUsc !== null) {
+      chips.push({ label: 'RISK ' + fmt(facts.risk.openUsc) + ' / ' + fmt(facts.risk.maxUsc) + ' USC', tone: 'brass' });
+    }
+    if (facts.pnlUsc !== null) chips.push({ label: 'PnL ' + signed(facts.pnlUsc) + ' USC', tone: facts.pnlUsc >= 0 ? 'pos' : 'neg' });
+    if (!chips.length) return '';
+    return '<div class="th-fact-chips">' + thesisChipMarkup(chips) + '</div>';
+  }
+  function thesisClausesHtml(thesis) {
+    var clauses = thesis.clauses.filter(function (clause) { return thesisTrim(clause.text) !== ''; });
+    if (!clauses.length) return '';
+    return '<ol class="th-clauses">' + clauses.map(function (clause) {
+      var label = THESIS_LABEL_TEXT[clause.label] || '';
+      var isNote = !label;
+      return '<li class="th-clause' + (isNote ? ' th-clause--note' : '') + '" data-label="' + esc(clause.label) + '">' +
+        (isNote ? '' : '<span class="th-label">' + esc(label) + '</span>') +
+        '<span class="th-text">' + thesisClauseBodyHtml(clause) + '</span>' +
+      '</li>';
+    }).join('') + '</ol>';
+  }
+  function thesisRawHtml(thesis) {
+    if (!thesis || !thesis.raw) return '';
+    return '<details class="th-raw"><summary>Raw</summary><p>' + esc(thesis.raw) + '</p></details>';
+  }
+  function thesisBodyHtml(thesis, context) {
+    var ctx = context || {};
+    var kind = ctx.kind || (thesis ? thesis.kind : 'thesis');
+    var mode = thesis ? thesis.parse.mode : 'empty';
+    var classes = 'th' + (kind === 'journal' || kind === 'lesson' ? ' th--prose' : '');
+    var attributes = ' data-thesis-version="' + esc(thesis ? thesis.version : THESIS_VERSION) + '"' +
+      ' data-thesis-kind="' + esc(kind) + '"' +
+      ' data-thesis-mode="' + esc(mode) + '"' +
+      ' data-thesis-ok="' + (thesis && thesis.ok ? 'true' : 'false') + '"' +
+      ' data-thesis-json="' + esc(thesis ? JSON.stringify(thesis) : 'null') + '"' +
+      ' data-thesis-context="' + esc(thesisContextPayload(thesis, ctx)) + '"';
+    var html = '<div class="' + classes + '"' + attributes + '>' +
+      '<h3 class="sr-only">' + esc(thesisHeadline(thesis, ctx)) + '</h3>';
+    if (ctx.title) {
+      html += '<div class="th-head"><h3 class="th-title">' + esc(ctx.title) + '</h3>' +
+        thesisHeadChips(thesis, ctx.extraChips) + '</div>';
+    } else if (ctx.headChips !== false && thesis && thesis.ok && (thesis.facts.timeframes.length || (ctx.extraChips || []).length)) {
+      html += '<div class="th-head">' + thesisHeadChips(thesis, ctx.extraChips) + '</div>';
+    }
+    if (!thesis) {
+      return html + '<p class="th-empty">' + esc(ctx.emptyText || thesisEmptyText(kind)) + '</p></div>';
+    }
+    if (mode === 'boilerplate') {
+      return html + '<p class="th-boilerplate">' + esc(thesis.raw) + '</p></div>';
+    }
+    if (mode === 'raw') {
+      return html + '<p class="th-fallback">' + esc(thesis.raw) + '</p></div>';
+    }
+    if (mode === 'prose') {
+      return html + '<p class="th-prose">' + thesisClauseBodyHtml(thesis.clauses[0]) + '</p>' +
+        thesisFactChipsHtml(thesis) + thesisRawHtml(thesis) + '</div>';
+    }
+    html += thesisFactsHtml(thesis, ctx);
+    html += thesisClausesHtml(thesis);
+    html += thesisRawHtml(thesis);
+    return html + '</div>';
+  }
+  function thesisPanelHtml(text, context) {
+    var ctx = context || {};
+    var kind = thesisNormalizeKind(ctx.kind);
+    var thesis = parseThesis(text, kind);
+    return thesisBodyHtml(thesis, {
+      kind: kind,
+      symbol: ctx.symbol,
+      side: ctx.side,
+      title: ctx.title,
+      extraChips: ctx.extraChips,
+      emptyText: ctx.emptyText,
+      rrReference: ctx.rrReference,
+      surface: ctx.surface
+    });
+  }
+  function thesisDetailsHtml(text, context) {
+    var ctx = context || {};
+    if (!thesisHasText(text)) return '';
+    var kind = thesisNormalizeKind(ctx.kind);
+    var thesis = parseThesis(text, kind);
+    return '<details class="thesis"><summary><span>' + esc(ctx.title || 'Thesis') + '</span>' +
+      thesisHeadChips(thesis, null) + '</summary>' +
+      thesisBodyHtml(thesis, {
+        kind: kind,
+        symbol: ctx.symbol,
+        side: ctx.side,
+        headChips: false,
+        emptyText: ctx.emptyText,
+        rrReference: ctx.rrReference,
+        surface: ctx.surface
+      }) + '</details>';
+  }
+
+
+
   function isFreeRoll(position) {
     var entry = toNum(position && position.price_open);
     var stop = toNum(position && position.sl);
@@ -3212,7 +4023,7 @@
         '<span>OPEN ' + esc(stamp(position.open_time_utc)) + ' UTC</span>' +
         '<span>' + (free ? 'DOWNSIDE LOCKED' : 'DOWNSIDE OPEN') + '</span>' +
       '</div>' +
-      (position.reason ? '<details class="thesis"><summary>AI Entry Thesis</summary><p class="thesis-text">' + esc(position.reason) + '</p></details>' : '') +
+      thesisDetailsHtml(position.reason, { kind: 'thesis', title: 'AI Entry Thesis', symbol: symbol, side: side, surface: 'position' }) +
     '</article>';
   }
 
@@ -3244,7 +4055,7 @@
         '<div class="order-price"><span>TAKE PROFIT</span><b>' + fmt(target, decimals) + '</b></div>' +
         '<div class="order-price"><span>REWARD / RISK</span><b>' + (rewardRisk !== null ? fmt(rewardRisk, 2) + 'R' : '—') + '</b></div>' +
       '</div>' +
-      (order.reason ? '<details class="thesis"><summary>Trap Thesis</summary><p class="thesis-text">' + esc(order.reason) + '</p></details>' : '') +
+      thesisDetailsHtml(order.reason, { kind: 'thesis', title: 'Trap Thesis', symbol: symbol, surface: 'pending', rrReference: 'as written', side: String(order.order_type || '').indexOf('BUY') === 0 ? 'BUY' : 'SELL' }) +
     '</article>';
   }
 
@@ -3294,15 +4105,32 @@
 
   function tradeDetailHtml(trade, lesson) {
     var decimals = priceDecimals(trade.symbol, trade.entry_price);
-    var html = '<div class="detail-grid">';
-    html += '<div><span class="detail-label">Entry Thesis</span><p class="detail-text">' +
-      esc(trade.entry_reason || 'ไม่มีบันทึกเหตุผลสำหรับไม้นี้ (legacy trade)') + '</p></div>';
+    var lessonChips = [];
     if (lesson) {
-      html += '<div><span class="detail-label brass">Post-Trade Lesson · ' + esc(lesson.tag || '') + '</span><p class="detail-text">' +
-        esc(lesson.lesson || '') + '</p></div>';
-    } else {
-      html += '<div><span class="detail-label">Post-Trade Lesson</span><p class="detail-text">ยังไม่มีบทเรียนที่ผูกกับไม้นี้</p></div>';
+      var lessonOutcome = String(lesson.outcome || '').toUpperCase();
+      if (lessonOutcome) lessonChips.push({ label: lessonOutcome, tone: lessonOutcome === 'WIN' ? 'pos' : lessonOutcome === 'LOSS' ? 'neg' : 'brass' });
+      if (isNum(lesson.profit_usc)) lessonChips.push({ label: signed(lesson.profit_usc) + ' USC', tone: Number(lesson.profit_usc) >= 0 ? 'pos' : 'neg' });
+      if (lesson.scope) lessonChips.push({ label: String(lesson.scope).toUpperCase(), tone: '' });
+      if (lesson.tag) lessonChips.push({ label: lesson.tag, tone: 'brass' });
     }
+    var html = '<div class="detail-grid">';
+    html += '<div>' + thesisPanelHtml(trade.entry_reason, {
+      kind: 'thesis',
+      title: 'Entry Thesis',
+      symbol: trade.symbol,
+      side: trade.side,
+      surface: 'trade',
+      emptyText: 'ไม่มีบันทึกเหตุผลสำหรับไม้นี้ (legacy trade)'
+    }) + '</div>';
+    html += '<div>' + thesisPanelHtml(lesson ? lesson.lesson : null, {
+      kind: 'lesson',
+      title: 'Post-Trade Lesson',
+      symbol: trade.symbol,
+      side: trade.side,
+      surface: 'trade',
+      extraChips: lessonChips,
+      emptyText: lesson ? 'บทเรียนนี้ไม่มีข้อความ' : 'ยังไม่มีบทเรียนที่ผูกกับไม้นี้'
+    }) + '</div>';
     html += '</div>';
     html += '<div class="detail-facts">' +
       '<div><span>ORIGINAL SL</span><b>' + (isNum(trade.original_sl) ? fmt(trade.original_sl, decimals) : '—') + '</b></div>' +
@@ -3475,6 +4303,9 @@
     if (isNum(entry.entry)) meta.push('ENTRY ' + fmt(entry.entry, priceDecimals(entry.symbol, entry.entry)));
     if (isNum(entry.risk_usc)) meta.push('RISK ' + fmt(entry.risk_usc) + ' USC');
     if (entry.ticket) meta.push('#' + esc(entry.ticket));
+    var thesisSource = entry.summary || entry.reason;
+    var thesisKind = thesisHasText(entry.summary) ? 'journal' : (/^OPEN/.test(action) ? 'thesis' : 'journal');
+    var thesisHtml = thesisPanelHtml(thesisSource, { kind: thesisKind, symbol: entry.symbol || null, side: entry.side || null, surface: 'journal', emptyText: 'ไม่มีรายละเอียดในบันทึกนี้' });
     return '<article class="log">' +
       '<div class="log-time"><b>' + esc(parts.time || parts.date) + '</b>' + (parts.time ? esc(parts.date) : '') + '</div>' +
       '<div class="log-body">' +
@@ -3482,7 +4313,7 @@
           '<span class="tag" data-tone="' + actionTone + '">' + esc(action) + '</span>' +
           (entry.symbol ? '<span class="log-sym">' + esc(entry.symbol) + ' ' + esc(entry.side || '') + '</span>' : '') +
         '</div>' +
-        '<p class="log-text">' + esc(entry.summary || entry.reason || '—') + '</p>' +
+        thesisHtml +
         (meta.length ? '<div class="log-meta">' + meta.map(function (item) { return '<span>' + item + '</span>'; }).join('') + '</div>' : '') +
       '</div>' +
     '</article>';
@@ -3495,6 +4326,7 @@
     if (lesson.scope) meta.push('SCOPE ' + esc(String(lesson.scope).toUpperCase()));
     if (lesson.exit_type) meta.push('EXIT ' + esc(lesson.exit_type));
     if (lesson.position_id) meta.push('#' + esc(lesson.position_id));
+    var thesisHtml = thesisPanelHtml(lesson.lesson, { kind: 'lesson', symbol: lesson.symbol || null, side: lesson.side || null, surface: 'lesson', emptyText: 'บทเรียนนี้ไม่มีข้อความ' });
     return '<article class="log">' +
       '<div class="log-time"><b>' + esc(parts.time || parts.date) + '</b>' + (parts.time ? esc(parts.date) : '') + '</div>' +
       '<div class="log-body">' +
@@ -3504,7 +4336,7 @@
           (isNum(lesson.profit_usc) ? '<span class="tag" data-tone="' + (Number(lesson.profit_usc) >= 0 ? 'pos' : 'neg') + '">' + signed(lesson.profit_usc) + ' USC</span>' : '') +
           (lesson.tag ? '<span class="tag" data-tone="brass">' + esc(lesson.tag) + '</span>' : '') +
         '</div>' +
-        '<p class="log-text">' + esc(lesson.lesson || '—') + '</p>' +
+        thesisHtml +
         (meta.length ? '<div class="log-meta">' + meta.map(function (item) { return '<span>' + item + '</span>'; }).join('') + '</div>' : '') +
       '</div>' +
     '</article>';

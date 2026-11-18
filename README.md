@@ -10,7 +10,7 @@
 [![Data refresh](https://img.shields.io/badge/data-auto--updated%20every%2015%20min-6f7873?style=flat-square)](#how-the-data-updates)
 [![License](https://img.shields.io/badge/license-all%20rights%20reserved-8a948f?style=flat-square)](LICENSE)
 
-**Quick links:** [Live demo](https://plub-supanut.github.io/mt5-ai-performance/) · [Download v1.0.0](https://github.com/Plub-Supanut/mt5-ai-performance/releases/latest) · [Changelog](CHANGELOG.md) · [Release policy](https://github.com/Plub-Supanut/plub-standard/blob/main/GITHUB_STANDARD.md)
+**Quick links:** [Live demo](https://plub-supanut.github.io/mt5-ai-performance/) · [Download v1.1.0](https://github.com/Plub-Supanut/mt5-ai-performance/releases/latest) · [Changelog](CHANGELOG.md) · [Release policy](https://github.com/Plub-Supanut/plub-standard/blob/main/GITHUB_STANDARD.md)
 
 ---
 
@@ -46,6 +46,7 @@ It answers one question at a glance: *how is the bot actually doing right now, a
 - **Symbol matrix** — per-symbol P&L, win rate and trade count so weak instruments stand out.
 - **AI lessons** — the bot's own post-trade reflections, tagged and linked to positions.
 - **Decision journal** — a chronological log of the bot's decisions, risk sizing and reasoning.
+- **Structured AI theses** — every entry reason (positions, pending orders, closed trades, journal rows, lessons) is parsed into a labelled record: structure chips, a SL / TP / R:R fact row, semantic clause labels (alignment, setup, invalidation, target, result, why, rule) and the untouched original text under **RAW**. Each entry also exposes the same data as JSON (`data-thesis-json`) for AI agents and tooling — see [`docs/thesis-contract.md`](docs/thesis-contract.md).
 - **Auto-refresh** — the dashboard re-reads `data.json` every 60 seconds and can be refreshed manually; the snapshot itself is rebuilt roughly every 15 minutes.
 
 ## Screenshots
@@ -63,8 +64,10 @@ It answers one question at a glance: *how is the bot actually doing right now, a
 | `AUTO 60S` | Toggles automatic re-fetch of `data.json` every 60 seconds. |
 | `REFRESH` | Fetches `data.json` immediately. |
 | Position / trade rows | Read-only rows showing entry, exit, SL/TP, R multiple and the bot's reason. |
+| `AI Entry Thesis` / `Trap Thesis` | Expands the structured thesis: timeframe/bias chips, SL / TP / R:R, labelled clauses and **RAW** text. |
+| Trade row / `รายละเอียด` | Opens the detail drawer with the entry thesis and the linked post-trade lesson. |
 
-There are no keyboard shortcuts, no login, and no write actions — the dashboard is read-only.
+There are no keyboard shortcuts, no login, and no write actions — the dashboard is read-only. Every thesis and raw-text disclosure is a native `<details>` element, so it can be opened with Enter or Space and has a visible focus ring.
 
 ## Project structure
 
@@ -77,12 +80,17 @@ mt5-ai-performance/
 │  ├─ banner.png                  # README banner
 │  ├─ screenshot-dashboard.png    # live dashboard capture
 │  └─ social-preview.png          # 1280×640 social preview
-├─ docs/releases/                 # release notes (template + v1.0.0)
+├─ docs/
+│  ├─ thesis-contract.md           # THESIS-1: agreed thesis grammar, fields and render rules
+│  ├─ thesis-prompt-addendum.md    # proposal only — not applied to the live bot prompt
+│  └─ releases/                    # release notes (template + v1.0.0, v1.1.0)
 ├─ .github/                       # CI workflow, issue forms, PR template
 ├─ CHANGELOG.md
 ├─ LICENSE
 └─ README.md
 ```
+
+The thesis parser and component are ordinary functions in `index.html` (`parseThesis`, `thesisBodyHtml`, `thesisDetailsHtml`). They run in the browser on every render, use no dependencies and make no requests. The renderer implements [`docs/thesis-contract.md`](docs/thesis-contract.md) (`THESIS-1`) exactly: lossless clause segmentation, the 14-label enum, four `parse.mode` states and the rule that a null fact is simply absent. Thesis text is always escaped, never interpreted as HTML.
 
 ## How the data updates
 
