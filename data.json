@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-11-19T05:02:33+07:00",
+  "generated_at": "2026-11-19T05:02:42+07:00",
   "account": {
     "broker": "Exness USC (Cent)",
     "mode": "AI_TRADER",
     "status": "RUNNING",
     "balance_usc": 2279.66,
-    "equity_usc": 2295.26,
+    "equity_usc": 2295.48,
     "equity_usd": 22.95,
-    "margin_free_usc": 2284.14,
+    "margin_free_usc": 2284.36,
     "peak_equity_usc": 2511.77,
     "target_usc": 8000.0,
     "floor_usc": 1250.0,
     "progress_pct": 28.69,
-    "daily_pnl_pct": -0.18,
+    "daily_pnl_pct": -0.17,
     "daily_limit_pct": -6.0,
     "open_positions_count": 4,
     "max_open_positions": 4,
@@ -2537,6 +2537,18 @@
       "open_risk_usc": 90.4,
       "daily_pnl_pct": -0.18,
       "status": "RUNNING"
+    },
+    {
+      "ts": "2026-11-19T05:02:42+07:00",
+      "balance_usc": 2279.66,
+      "equity_usc": 2295.48,
+      "margin_free_usc": 2284.36,
+      "peak_equity_usc": 2511.77,
+      "open_positions": 4,
+      "pending_orders": 0,
+      "open_risk_usc": 90.4,
+      "daily_pnl_pct": -0.17,
+      "status": "RUNNING"
     }
   ],
   "open_positions": [
@@ -2546,14 +2558,14 @@
       "side": "SELL",
       "volume": 0.9,
       "price_open": 1755.8700000000001,
-      "price_current": 1762.61,
+      "price_current": 1762.37,
       "sl": 1786.0,
       "tp": 1705.0,
-      "profit_usc": -6.07,
+      "profit_usc": -5.85,
       "risk_usc": 27.12,
       "open_time_utc": "2026-11-18 19:05",
       "reason": "H4/H1/M15 BEAR aligned, M15 EMA20 pullback rejection (76% bear body), SL above H4/M15 EMA20-50 & 1784.91 swing",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "ticket": 4742054502,
@@ -2568,7 +2580,7 @@
       "risk_usc": 27.1,
       "open_time_utc": "2026-11-18 18:03",
       "reason": "H4/H1/M15 BEAR STRONG_TREND (ADX>31), M15 rejected H1 EMA20 (7363.32) and holding below M15 EMA20",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "ticket": 4738984313,
@@ -2583,7 +2595,7 @@
       "risk_usc": 18.07,
       "open_time_utc": "2026-11-18 10:06",
       "reason": "H4/H1/M15 BEAR aligned pullback into H1 EMA20 (87.529) and M15 EMA50 (87.500), SL above H1 EMA50 (87.692), TP 87.02 (2.08R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "ticket": 4738983889,
@@ -2598,7 +2610,7 @@
       "risk_usc": 18.12,
       "open_time_utc": "2026-11-18 10:02",
       "reason": "H4/H1 BEAR aligned; M15 09:00 and 09:45 rejected 1.2255 resistance at H1 EMA50, SL above H1 swing high 1.22654, TP 1.2214 (2.0R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     }
   ],
   "pending_orders": [],
@@ -2627,7 +2639,7 @@
       "original_sl": 27210.0,
       "original_tp": 26480.0,
       "entry_reason": "H4/H1/M15 BEAR aligned, M15 rejected bounce at 27035, SL above H1 EMA20",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4739961518,
@@ -2653,7 +2665,7 @@
       "original_sl": 1.0989,
       "original_tp": 1.0947,
       "entry_reason": "H4/H1/M15 BEAR aligned (H1 ADX 40.0), SELL LIMIT pullback to M15 EMA50 zone 1.09750, SL 1.09890 above H1 EMA20 & SwingH20 (1.26x H1 ATR), TP 1.09470 (2.0R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4730868105,
@@ -2679,7 +2691,7 @@
       "original_sl": 0.6749,
       "original_tp": 0.6708,
       "entry_reason": "H4/H1/M15 BEAR aligned; M15 swept H1 EMA20 (0.67413) & rejected bearish; SL at today_high (1.5x H1 ATR), TP 0.6708 (2.0R, within ADR)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4736305990,
@@ -2705,7 +2717,7 @@
       "original_sl": 91.45,
       "original_tp": 89.7,
       "entry_reason": "H4/H1/M15 BEAR aligned pullback to M15 EMA20/50 below H1 EMA20, SL above H1 EMA20 & swing high 91.257, targeting PDL 89.70 (2.5R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4738204982,
@@ -2731,7 +2743,7 @@
       "original_sl": 1.629,
       "original_tp": 1.6365,
       "entry_reason": "H4/H1 BULL trend pullback to H4 EMA20 / today_open demand zone below H1 EMA50, SL below PDL, TP above PDH (2.41R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4737849933,
@@ -2757,7 +2769,7 @@
       "original_sl": 7396.0,
       "original_tp": 7295.0,
       "entry_reason": "H4/H1/M15 aligned BEAR + M15 volatility squeeze coil under EMA20, SL above H1 EMA20 (>1x H1 ATR), TP ahead of PDL 7293.1",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4736305893,
@@ -2783,7 +2795,7 @@
       "original_sl": 2.397,
       "original_tp": 2.406,
       "entry_reason": "H4/H1/M15 BULL aligned pullback to 2.4000 support above today_low 2.39727, targeting PDH breakout 2.4060 (2.0R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4730157725,
@@ -2809,7 +2821,7 @@
       "original_sl": 107.62,
       "original_tp": 107.0,
       "entry_reason": "H4/H1/M15 BEAR aligned; H1 RSI 27.5 oversold bounce toward M15 EMA20/50 (107.35-107.43); SL 107.62 above today_high 107.57 (2.7x M15 ATR); TP 107.00 (RR 1.58)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4727540012,
@@ -2835,7 +2847,7 @@
       "original_sl": 3892.0,
       "original_tp": 3833.0,
       "entry_reason": "Aligned H4/H1/M15 BEAR pullback SELL LIMIT into H1 EMA20/M15 EMA50 (3866); SL 3892 above H1 swing high 3889.06; TP 3833 above H4 support 3832.19",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4734028599,
@@ -2861,7 +2873,7 @@
       "original_sl": 65000.0,
       "original_tp": 62750.0,
       "entry_reason": "H4/H1/M15/M5 BEAR aligned; pullback limit into M15 EMA20 / 16:00 resistance (64250), SL 65000 above H1 EMA20/50 (1.2x H1 ATR), TP 62750 (2.0R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4730868232,
@@ -2887,7 +2899,7 @@
       "original_sl": 1.9968,
       "original_tp": 2.0058,
       "entry_reason": "H4/H1 BULL; M15 liquidity sweep low 1.99939 & reclaim above H1 EMA20/PDH; limit pullback retest above today_open, SL below today_low/H1 EMA50, TP 2.0058 (2.21R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4734157766,
@@ -2913,7 +2925,7 @@
       "original_sl": 27240.0,
       "original_tp": 26620.0,
       "entry_reason": "H4/H1/M15 BEAR aligned; M15 EMA20 pullback zone 27040 with SL 27240 above H1 EMA20 (2.1R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4730233561,
@@ -2939,7 +2951,7 @@
       "original_sl": 65220.0,
       "original_tp": 63850.0,
       "entry_reason": "H4/H1/M15 BEAR aligned; pullback limit at M15/H1 EMA20 confluence (64743/64803), SL above today_high 65146, TP above PDL 63826 (1.74R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4731133796,
@@ -2965,7 +2977,7 @@
       "original_sl": 91.32,
       "original_tp": 89.65,
       "entry_reason": "H4/H1 BEAR aligned; M15 09:30 swept H1 EMA20 (91.03) up to 91.219 and printed SWEEP_HIGH_REJECT, M15 09:45 lower high 90.99; SL 91.32 above sweep high 91.219 (1.55x M15 ATR), TP 89.65 above H4 sl20 89.564 (2.63R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4730157614,
@@ -2991,7 +3003,7 @@
       "original_sl": 90.92,
       "original_tp": 89.58,
       "entry_reason": "H4/H1/M15 BEAR aligned; H1 RSI 23.2 oversold pullback into M15 swing high / today_open 90.40-90.49; SL 90.92 above M15 EMA50 (90.72) & today_high; TP 89.58 above H4 swing low 89.564 (RR 1.58)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4728845434,
@@ -3017,7 +3029,7 @@
       "original_sl": 27425.0,
       "original_tp": 27135.0,
       "entry_reason": "H4/H1/M15 BEAR aligned, M15 pullback rejected off EMA50 (27385.88) with bearish candle 01:45, SL 27425 above swing high + ~1.3x M15 ATR, TP 27135 front-running H4 swing low 27127.9 (1.80R)",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4727022737,
@@ -3043,7 +3055,7 @@
       "original_sl": 92.42,
       "original_tp": 90.12,
       "entry_reason": "H4/H1/M15 BEAR aligned (H4 RSI 41.8); M15 pullback to 92.28 rejected below EMA20 (92.35) with lower highs (92.26/92.06/91.84), targeting H4 swing low 90.06",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4726884940,
@@ -3069,7 +3081,7 @@
       "original_sl": 3871.0,
       "original_tp": 3832.5,
       "entry_reason": "H4/H1/M15 BEAR aligned; M15 rejected EMA200 at 3889 and EMA20/50 at 3868.4 then broke 3861.14 support to 3858",
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4725100664,
@@ -3095,7 +3107,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4725046151,
@@ -3121,7 +3133,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4724984903,
@@ -3147,7 +3159,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4724344810,
@@ -3173,7 +3185,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4724339509,
@@ -3199,7 +3211,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4723773624,
@@ -3225,7 +3237,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4722560892,
@@ -3251,7 +3263,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4722681161,
@@ -3277,7 +3289,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4722536898,
@@ -3303,7 +3315,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     },
     {
       "position_id": 4722550594,
@@ -3329,7 +3341,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-19T05:02:33+07:00"
+      "updated_ts": "2026-11-19T05:02:42+07:00"
     }
   ],
   "lessons": [
