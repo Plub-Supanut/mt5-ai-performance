@@ -38,13 +38,16 @@ It answers one question at a glance: *how is the bot actually doing right now, a
 ## Features
 
 - **Capital horizon** — balance, equity, peak equity and floor cushion against an `8,000 USC` target on one screen.
-- **Risk guardrails** — daily P&L versus the `-8.00%` limit, open risk versus ceiling, free-roll/at-risk status, and position/pending caps.
+- **Risk guardrails** — daily P&L versus the `-3.00%` limit, open risk versus ceiling, free-roll/at-risk status, and position/pending caps.
 - **Equity curve** — cumulative P&L, equity and drawdown views over the selected range (`AI ERA`, `7D`, `ALL`).
 - **Core performance stats** — net P&L, win rate, profit factor, average R, max drawdown and exit mix (SL / TP / manual).
+- **Quant telemetry & walk-forward benchmark** — Wilson 95% win-rate CI, payoff ratio, Smart Sharpe / Sortino, PSR / DSR, ulcer index, tail ratio, real loss streak (scratches ignored) and 20% risk of ruin, plus the ADR-gated out-of-sample walk-forward benchmark (35 symbols, OOS AvgR / PF / DSR versus baseline). The strip follows the selected range.
+- **Live system guardrails & rolling protections** — hard safety limits (equity floor, daily loss cap, slot and active-risk caps, news blackout, 15s guard), entry/sizing bounds, trade-management rules, and the current defensive-recovery size throttle, remaining daily-loss budget, 24h SL count, 10-trade side split and live advisories.
+- **Market intelligence feed** — cached macro risk regime and score, crypto Fear & Greed, intermarket strip (DXY, VIX with stress regime, US10Y), BTC/ETH funding and crowding, upcoming high/medium economic events and top FX headlines, with a cache timestamp.
 - **Live positions and pending orders** — open tickets with entry, SL/TP, floating P&L and the trade reason.
 - **Closed-trade ledger** — every deal with side, volume, R multiple, outcome and exit type.
 - **Symbol matrix** — per-symbol P&L, win rate and trade count so weak instruments stand out.
-- **AI lessons** — the bot's own post-trade reflections, tagged and linked to positions.
+- **AI lessons** — the bot's own post-trade reflections, tagged and linked to positions; each entry shows its `GLOBAL` / `SYMBOL` scope and the current advisory policy (reminders, not hard bans).
 - **Decision journal** — a chronological log of the bot's decisions, risk sizing and reasoning.
 - **Structured AI theses** — every entry reason (positions, pending orders, closed trades, journal rows, lessons) is parsed into a labelled record: structure chips, a SL / TP / R:R fact row, semantic clause labels (alignment, setup, invalidation, target, result, why, rule) and the untouched original text under **RAW**. Each entry also exposes the same data as JSON (`data-thesis-json`) for AI agents and tooling — see [`docs/thesis-contract.md`](docs/thesis-contract.md).
 - **Auto-refresh** — the dashboard re-reads `data.json` every 60 seconds and can be refreshed manually; the snapshot itself is rebuilt roughly every 15 minutes.

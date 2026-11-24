@@ -1622,6 +1622,16 @@
   .log-time b { display: block; font-weight: 500; font-size: 9px; color: var(--text-2); }
   .log-body { min-width: 0; }
   .log-head { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .log-head .tag {
+    max-width: 100%;
+    height: auto;
+    min-height: 19px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    line-height: 1.4;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
   .log-sym { font: 600 10px/1.4 var(--mono); color: var(--text); }
   .log-text {
     max-width: 94ch;
@@ -1660,6 +1670,446 @@
     font: 400 9.5px var(--sans);
     letter-spacing: .01em;
     color: var(--text-3);
+  }
+
+  /* ---------- 12 · synced quant · guardrails · market intel ---------- */
+  .section-kicker h3 {
+    font: 600 11.5px/1.2 var(--sans);
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--text-2);
+  }
+  .tag[data-tone="steel"] {
+    color: var(--steel);
+    border-color: rgba(143, 179, 201, .28);
+    background: rgba(143, 179, 201, .09);
+  }
+  .tag.tag-wide {
+    height: auto;
+    min-height: 19px;
+    padding: 3px 6px;
+    line-height: 1.35;
+    white-space: normal;
+    text-align: right;
+  }
+
+  .quant-panel { border-top: 1px solid var(--line); background: rgba(0, 0, 0, .12); }
+  .quant-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 11px 20px 10px;
+  }
+  .quant-head .section-kicker { margin: 0; }
+  .quant-head .panel-meta,
+  .guard-panel .panel-meta,
+  .intel-panel .panel-meta {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .quant-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--line-soft);
+  }
+  .quant-cell {
+    min-width: 0;
+    padding: 11px 16px 12px;
+    border-top: 1px solid var(--line-soft);
+    border-left: 1px solid var(--line-soft);
+  }
+  .quant-cell:nth-child(4n + 1) { border-left: 0; }
+  .quant-cell:nth-child(-n + 4) { border-top: 0; }
+  .quant-cell.span-all { grid-column: 1 / -1; border-left: 0; border-top: 0; }
+  .quant-label {
+    font: 600 8px/1.4 var(--mono);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+  }
+  .quant-value {
+    margin-top: 5px;
+    font: 500 clamp(15px, 1.35vw, 20px)/1.2 var(--mono);
+    letter-spacing: -.03em;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .quant-value .q-unit {
+    margin-left: 2px;
+    font-size: 8px;
+    letter-spacing: .04em;
+    color: var(--text-3);
+  }
+  .quant-sub {
+    margin-top: 4px;
+    font: 500 8.5px/1.55 var(--mono);
+    letter-spacing: .015em;
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+  }
+  .quant-lab {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    padding: 9px 20px 11px;
+    border-top: 1px solid var(--line-soft);
+    background: rgba(216, 185, 122, .035);
+  }
+  .quant-lab-title {
+    font: 600 8px/1.5 var(--mono);
+    letter-spacing: .11em;
+    color: var(--brass);
+    white-space: nowrap;
+  }
+  .quant-lab-item {
+    min-width: 0;
+    font: 500 8.5px/1.55 var(--mono);
+    letter-spacing: .015em;
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+  }
+  .quant-lab-item b { font-weight: 500; color: var(--text-2); }
+  .quant-lab-delta {
+    margin-left: auto;
+    font: 600 8.5px/1.55 var(--mono);
+    letter-spacing: .04em;
+    color: var(--text-2);
+  }
+  .quant-lab-asof {
+    font: 500 8px/1.55 var(--mono);
+    color: var(--text-3);
+    white-space: nowrap;
+  }
+
+  .guard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line-soft);
+  }
+  .guard-card { min-width: 0; padding: 14px 17px 15px; background: var(--panel); }
+  .guard-card.span-all { grid-column: 1 / -1; }
+  .guard-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 9px;
+  }
+  .guard-card-head h3 {
+    font: 600 9.5px/1.3 var(--mono);
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--text-2);
+  }
+  .guard-rows { display: flex; flex-direction: column; }
+  .guard-row {
+    display: grid;
+    grid-template-columns: minmax(88px, .72fr) minmax(0, 1.28fr);
+    gap: 10px;
+    padding: 7px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .guard-row:first-child { padding-top: 0; border-top: 0; }
+  .guard-key {
+    font: 500 8px/1.55 var(--mono);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+  }
+  .guard-val {
+    min-width: 0;
+    font: 500 10px/1.6 var(--mono);
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
+  .guard-val small, .guard-sub {
+    display: block;
+    margin-top: 1px;
+    font: 400 8.5px/1.55 var(--mono);
+    letter-spacing: .01em;
+    color: var(--text-3);
+  }
+  .guard-meter {
+    display: block;
+    height: 3px;
+    margin-top: 5px;
+    background: #07090a;
+    overflow: hidden;
+  }
+  .guard-meter i { display: block; height: 100%; background: var(--brass); }
+  .guard-adv {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .guard-adv li {
+    padding: 4px 0 4px 8px;
+    border-left: 1px solid var(--brass-line);
+    font-size: 9.5px;
+    line-height: 1.6;
+    color: var(--text-2);
+    overflow-wrap: anywhere;
+  }
+  .guard-adv li[data-tone="neg"] { border-left-color: var(--red-line); }
+  .guard-advisory-label {
+    margin-top: 9px;
+    font: 600 8px/1.4 var(--mono);
+    letter-spacing: .09em;
+    color: var(--text-3);
+  }
+
+  .intel-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line-soft);
+  }
+  .intel-card { min-width: 0; padding: 14px 17px 15px; background: var(--panel); }
+  .intel-card.i-3 { grid-column: span 3; }
+  .intel-card.i-7 { grid-column: span 7; }
+  .intel-card.i-5 { grid-column: span 5; }
+  .intel-card.span-all { grid-column: 1 / -1; }
+  .intel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-bottom: 9px;
+  }
+  .intel-kicker {
+    font: 600 8px/1.4 var(--mono);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .intel-value {
+    font: 500 clamp(20px, 1.9vw, 27px)/1.15 var(--mono);
+    letter-spacing: -.035em;
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
+  .intel-label {
+    margin-top: 3px;
+    font: 600 9px/1.5 var(--mono);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-2);
+  }
+  .intel-sub {
+    margin-top: 5px;
+    font: 500 8.5px/1.55 var(--mono);
+    letter-spacing: .015em;
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+  }
+  .intel-sub b { font-weight: 500; color: var(--text-2); }
+  .intel-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .intel-mini-grid span {
+    min-width: 0;
+    font: 500 7.5px/1.45 var(--mono);
+    letter-spacing: .05em;
+    color: var(--text-3);
+  }
+  .intel-mini-grid b {
+    display: block;
+    font: 500 9.5px/1.5 var(--mono);
+    letter-spacing: 0;
+    color: var(--text-2);
+  }
+  .intel-meter {
+    height: 4px;
+    margin-top: 10px;
+    background: #07090a;
+    overflow: hidden;
+  }
+  .intel-meter i { display: block; height: 100%; }
+  .intel-quote {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 8px;
+    padding: 7px 0;
+  }
+  .intel-quote + .intel-quote { border-top: 1px solid var(--line-soft); }
+  .iq-key {
+    font: 600 8.5px/1.5 var(--mono);
+    letter-spacing: .06em;
+    color: var(--text-3);
+  }
+  .intel-quote b {
+    font: 500 11px/1.5 var(--mono);
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .iq-chg { font: 500 9px/1.5 var(--mono); white-space: nowrap; }
+  .intel-note { margin-top: 6px; font-size: 9.5px; line-height: 1.6; color: var(--text-3); }
+  .crypto-row { padding: 8px 0; }
+  .crypto-row + .crypto-row { border-top: 1px solid var(--line-soft); }
+  .crypto-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+  .crypto-sym {
+    font: 600 10px/1.4 var(--mono);
+    letter-spacing: .05em;
+    color: var(--text);
+  }
+  .crypto-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 12px;
+    margin-top: 4px;
+    font: 500 8.5px/1.5 var(--mono);
+    color: var(--text-3);
+  }
+  .crypto-meta b { font-weight: 500; color: var(--text-2); }
+  .cal-list { display: flex; flex-direction: column; }
+  .cal-item { padding: 7px 0; }
+  .cal-item + .cal-item { border-top: 1px solid var(--line-soft); }
+  .cal-head { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .cal-time {
+    font: 500 8.5px/1.5 var(--mono);
+    color: var(--text-3);
+    white-space: nowrap;
+  }
+  .cal-ccy {
+    font: 600 8.5px/1.5 var(--mono);
+    color: var(--steel);
+  }
+  .cal-title {
+    margin-top: 2px;
+    font-size: 10.5px;
+    line-height: 1.55;
+    color: var(--text-2);
+    overflow-wrap: anywhere;
+  }
+  .cal-nums {
+    margin-top: 2px;
+    font: 500 8px/1.5 var(--mono);
+    color: var(--text-3);
+    overflow-wrap: anywhere;
+  }
+  .intel-empty { padding: 6px 0 2px; font-size: 10px; color: var(--text-3); }
+  .intel-details { margin-top: 9px; }
+  .intel-details > summary {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 30px;
+    padding: 0;
+    list-style: none;
+    cursor: pointer;
+    font: 600 8.5px/1.4 var(--mono);
+    letter-spacing: .07em;
+    color: var(--text-2);
+  }
+  .intel-details > summary::-webkit-details-marker { display: none; }
+  .intel-details > summary::before {
+    content: "+";
+    font: 500 11px var(--mono);
+    color: var(--brass);
+  }
+  .intel-details[open] > summary::before { content: "–"; }
+  .intel-details > summary:hover { color: var(--brass); }
+  .intel-details > summary:focus-visible {
+    outline: 1px solid var(--brass);
+    outline-offset: 2px;
+  }
+  .headline-list {
+    max-height: 186px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .headline-list:focus-visible {
+    outline: 1px solid var(--brass);
+    outline-offset: 2px;
+  }
+  .headline {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 9px;
+    padding: 7px 0;
+  }
+  .headline + .headline { border-top: 1px solid var(--line-soft); }
+  .headline-title {
+    font-size: 10px;
+    line-height: 1.55;
+    color: var(--text-2);
+    overflow-wrap: anywhere;
+  }
+  .headline-meta {
+    font: 500 7.5px/1.5 var(--mono);
+    letter-spacing: .03em;
+    color: var(--text-3);
+    white-space: nowrap;
+  }
+  .lesson-policy {
+    margin: 9px 0 2px;
+    padding: 7px 10px;
+    border: 1px solid var(--line-soft);
+    border-left: 2px solid var(--steel);
+    background: rgba(143, 179, 201, .045);
+    font-size: 9.5px;
+    line-height: 1.65;
+    color: var(--text-3);
+  }
+  .lesson-policy b {
+    font: 600 8px/1.4 var(--mono);
+    letter-spacing: .08em;
+    color: var(--steel);
+  }
+
+  @media (max-width: 1080px) {
+    .quant-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .quant-cell:nth-child(4n + 1) { border-left: 1px solid var(--line-soft); }
+    .quant-cell:nth-child(2n + 1) { border-left: 0; }
+    .quant-cell:nth-child(-n + 4) { border-top: 1px solid var(--line-soft); }
+    .quant-cell:nth-child(-n + 2) { border-top: 0; }
+    .quant-cell.span-all { border: 0; }
+    .intel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .intel-card.i-3, .intel-card.i-7, .intel-card.i-5 { grid-column: span 1; }
+    .intel-card.i-7, .intel-card.i-5 { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 820px) {
+    .guard-grid { grid-template-columns: minmax(0, 1fr); }
+    .quant-head { padding: 10px 16px 9px; }
+    .quant-lab { padding: 8px 16px 10px; }
+    .quant-cell { padding-left: 14px; padding-right: 14px; }
+    .guard-card, .intel-card { padding: 13px 14px 14px; }
+    .quant-lab-delta { margin-left: 0; }
+  }
+
+  @media (max-width: 620px) {
+    .quant-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .intel-card.i-3, .intel-card.i-7, .intel-card.i-5 { grid-column: 1 / -1; }
+    .guard-row { grid-template-columns: minmax(0, 1fr); gap: 1px; }
+    .intel-mini-grid { gap: 4px; }
+    .headline { grid-template-columns: minmax(0, 1fr); gap: 1px; }
   }
 
   .footer {
@@ -2093,6 +2543,28 @@
         </div>
       </div>
     </div>
+
+    <div class="quant-panel" aria-labelledby="quantTitle">
+      <div class="quant-head">
+        <div class="section-kicker">
+          <span class="idx">02Q</span>
+          <h3 id="quantTitle">Quant Telemetry</h3>
+          <span class="kicker-th">Wilson CI · payoff · tail risk · ruin</span>
+        </div>
+        <span class="panel-meta" id="quantRange">AI ERA</span>
+      </div>
+      <div class="quant-grid" id="quantGrid">
+        <div class="quant-cell span-all">
+          <div class="quant-label">Quant telemetry</div>
+          <div class="quant-value">—</div>
+          <div class="quant-sub">รอข้อมูล quant จาก data.json</div>
+        </div>
+      </div>
+      <div class="quant-lab" id="quantLab">
+        <span class="quant-lab-title">WALK-FORWARD LAB</span>
+        <span class="quant-lab-item">รอข้อมูล benchmark</span>
+      </div>
+    </div>
   </section>
 
   <!-- 03 / 04 · curve + symbol matrix -->
@@ -2271,6 +2743,54 @@
     </div>
   </section>
 
+  <!-- 09 · system guardrails & rolling protections -->
+  <section class="panel guard-panel" id="guardrails" aria-labelledby="guardTitle">
+    <div class="panel-head">
+      <div>
+        <div class="section-kicker">
+          <span class="idx">09</span>
+          <h2 id="guardTitle">System Guardrails &amp; Protections</h2>
+          <span class="kicker-th">เพดานความเสี่ยง · entry bounds · rolling guards</span>
+        </div>
+        <p class="panel-sub">ค่าที่ระบบใช้จริงจาก mt5_common.py / mt5_quant.py · สถานะ ณ snapshot ล่าสุด</p>
+      </div>
+      <span class="panel-meta" id="guardMeta">—</span>
+    </div>
+    <div class="guard-grid" id="guardGrid">
+      <div class="guard-card span-all">
+        <div class="empty">
+          <span class="empty-mark"></span>
+          <p class="empty-title">กำลังโหลด guardrails</p>
+          <p class="empty-sub">ข้อมูลจาก guardrails และ protections</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · cached market intelligence -->
+  <section class="panel intel-panel" id="market" aria-labelledby="marketTitle">
+    <div class="panel-head">
+      <div>
+        <div class="section-kicker">
+          <span class="idx">10</span>
+          <h2 id="marketTitle">Market Intelligence</h2>
+          <span class="kicker-th">macro regime · intermarket · crypto · calendar</span>
+        </div>
+        <p class="panel-sub">Cached advisory context — ใช้ประกอบการตัดสินใจ ไม่ใช่คำสั่งเทรด</p>
+      </div>
+      <span class="panel-meta" id="intelMeta">—</span>
+    </div>
+    <div class="intel-grid" id="intelGrid">
+      <div class="intel-card span-all">
+        <div class="empty">
+          <span class="empty-mark"></span>
+          <p class="empty-title">กำลังโหลด market intelligence</p>
+          <p class="empty-sub">ข้อมูลจาก market_intel ใน data.json</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div><b>HERMES</b> · MT5 Autonomous Prop Desk</div>
     <div>SOURCE <b>./data.json</b> · GENERATED <b id="footGenerated">—</b> · <b id="footAuto">AUTO 60S</b></div>
@@ -2419,6 +2939,83 @@
       '<p class="empty-title">' + esc(title) + '</p>' +
       '<p class="empty-sub">' + esc(subtitle) + '</p>' +
       '</div>';
+  }
+  function asObject(value) {
+    return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+  }
+  function asObjectList(value) {
+    if (!Array.isArray(value)) return [];
+    return value.filter(function (item) {
+      return item && typeof item === 'object' && !Array.isArray(item);
+    });
+  }
+  function asTextList(value) {
+    if (!Array.isArray(value)) return [];
+    return value.map(function (item) {
+      return item === null || item === undefined || typeof item === 'object' ? '' : String(item);
+    }).filter(function (text) {
+      return text !== '';
+    });
+  }
+  function safeText(value) {
+    if (value === null || value === undefined || typeof value === 'object') return '—';
+    var text = String(value).replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
+    if (!text || /^(undefined|null|nan)$/i.test(text)) return '—';
+    return text;
+  }
+  function upperSafe(value) {
+    var text = safeText(value);
+    return text === '—' ? text : text.replace(/_/g, ' ').toUpperCase();
+  }
+  function numText(value, digits, unit) {
+    var number = toNum(value);
+    if (number === null) return '—';
+    return fmt(number, digits) + (unit ? ' ' + unit : '');
+  }
+  function numCompact(value, digits, unit) {
+    var number = toNum(value);
+    if (number === null) return '—';
+    return fmt(number, digits) + (unit || '');
+  }
+  function numHtml(value, digits, unit) {
+    var number = toNum(value);
+    if (number === null) return '—';
+    return fmt(number, digits) + (unit ? '<span class="q-unit">' + esc(unit) + '</span>' : '');
+  }
+  function plusR(value, digits) {
+    var number = toNum(value);
+    if (number === null) return '—';
+    return (number > 0 ? '+' : '') + fmt(number, digits === undefined ? 2 : digits) + 'R';
+  }
+  function hoursShort(minutes) {
+    var number = toNum(minutes);
+    if (number === null) return '—';
+    if (number < 60) return fmt(number, 0) + 'm';
+    var hours = number / 60;
+    return (Number.isInteger(hours) ? String(hours) : fmt(hours, 1)) + 'h';
+  }
+  function dayStamp(value) {
+    var raw = String(value === null || value === undefined ? '' : value);
+    var match = raw.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (match) {
+      return match[3] + ' ' + MONTHS[Number(match[2]) - 1] + ' ' + match[1];
+    }
+    var date = new Date(raw);
+    if (isNaN(date.getTime())) return '—';
+    return pad2(date.getUTCDate()) + ' ' + MONTHS[date.getUTCMonth()] + ' ' + date.getUTCFullYear();
+  }
+  function guardMeter(percent, color) {
+    var value = toNum(percent);
+    var width = value === null ? 0 : clamp(value, 0, 100);
+    return '<span class="guard-meter" aria-hidden="true"><i style="width:' + width.toFixed(1) + '%;' +
+      (color ? 'background:' + color : '') + '"></i></span>';
+  }
+  function intelPrice(key, value) {
+    var number = toNum(value);
+    if (number === null) return '—';
+    if (key === 'VIX') return fmt(number, 2);
+    if (key === 'DXY' || key === 'US10Y') return fmt(number, 3);
+    return fmt(number, Math.abs(number) < 10 ? 3 : 2);
   }
   function debounce(fn, wait) {
     var timer = null;
@@ -3908,6 +4505,128 @@
     setText('#kpiRange', rangeLabel() + ' · ' + (total !== null ? fmt(total, 0) + ' CLOSED' : 'NO DATA'));
   }
 
+  /* ---------- quant telemetry ---------- */
+  function quantCellHtml(label, valueHtml, subHtml, toneName) {
+    return '<div class="quant-cell">' +
+      '<div class="quant-label">' + esc(label) + '</div>' +
+      '<div class="quant-value ' + (toneName || '') + '">' + valueHtml + '</div>' +
+      '<div class="quant-sub">' + (subHtml || '—') + '</div>' +
+      '</div>';
+  }
+
+  function renderQuant() {
+    var wrap = $('#quantGrid');
+    if (!wrap) return;
+    var stats = currentStats();
+    var quant = asObject(stats && stats.quant);
+    var trades = toNum(quant.n_trades);
+    setText('#quantRange', rangeLabel() + (trades !== null ? ' · ' + fmt(trades, 0) + ' TRADES' : ''));
+
+    if (!Object.keys(quant).length) {
+      wrap.innerHTML = '<div class="quant-cell span-all">' +
+        '<div class="quant-label">Quant telemetry</div>' +
+        '<div class="quant-value">—</div>' +
+        '<div class="quant-sub">ยังไม่มีข้อมูล quant สำหรับช่วง ' + esc(rangeLabel()) + '</div>' +
+        '</div>';
+      renderQuantLab();
+      return;
+    }
+
+    var ci = Array.isArray(quant.winrate_ci95) ? quant.winrate_ci95 : [];
+    var ciText = toNum(ci[0]) !== null && toNum(ci[1]) !== null
+      ? fmt(ci[0], 1) + '–' + fmt(ci[1], 1) + '%'
+      : '—';
+    var psr = toNum(quant.psr);
+    var dsr = toNum(quant.dsr);
+    var ruin = toNum(quant.risk_of_ruin_20pct);
+    var ruinTone = ruin === null ? '' : ruin >= 20 ? 'neg' : ruin >= 10 ? 'brass' : '';
+
+    wrap.innerHTML = [
+      quantCellHtml(
+        'Win Rate · 95% CI',
+        numHtml(quant.winrate_pct, 1, '%'),
+        '95% CI ' + ciText + ' · n ' + fmt(quant.n_trades, 0)
+      ),
+      quantCellHtml(
+        'Payoff Ratio',
+        numHtml(quant.payoff_ratio, 2, 'x'),
+        'KELLY ' + signed(quant.kelly_pct, 1, '%')
+      ),
+      quantCellHtml(
+        'Smart Sharpe / Sortino',
+        signed(quant.smart_sharpe, 2),
+        'SORTINO ' + signed(quant.sortino_per_trade, 2) + ' · t ' + signed(quant.t_stat, 2),
+        tone(quant.smart_sharpe)
+      ),
+      quantCellHtml(
+        'PSR / DSR',
+        psr !== null ? fmt(psr * 100, 2) + '<span class="q-unit">%</span>' : '—',
+        'DSR ' + (dsr !== null ? fmt(dsr * 100, 2) + '%' : '—')
+      ),
+      quantCellHtml(
+        'Ulcer Index',
+        numHtml(quant.ulcer_index_usc, 2, 'USC'),
+        'DRAWDOWN PAIN · USC'
+      ),
+      quantCellHtml(
+        'Tail Ratio',
+        numHtml(quant.tail_ratio, 2, 'x'),
+        'UPSIDE / DOWNSIDE TAIL'
+      ),
+      quantCellHtml(
+        'Real Loss Streak',
+        fmt(quant.current_loss_streak, 0) + '<span class="q-unit"> / ' + fmt(quant.max_loss_streak, 0) + '</span>',
+        'CURRENT / MAX · SCRATCHES IGNORED'
+      ),
+      quantCellHtml(
+        'Risk of Ruin · 20%',
+        numHtml(quant.risk_of_ruin_20pct, 1, '%'),
+        'PROBABILITY @ 20% RISK',
+        ruinTone
+      )
+    ].join('');
+    renderQuantLab();
+  }
+
+  function renderQuantLab() {
+    var lab = $('#quantLab');
+    if (!lab) return;
+    var source = asObject(state.data && state.data.quant_lab);
+    var adr = asObject(source.adr60_oos);
+    var base = asObject(source.baseline_oos);
+    if (!Object.keys(adr).length && !Object.keys(base).length) {
+      lab.innerHTML = '<span class="quant-lab-title">WALK-FORWARD LAB</span>' +
+        '<span class="quant-lab-item">NO BENCHMARK DATA</span>';
+      return;
+    }
+
+    var symbols = toNum(source.symbols);
+    var trials = toNum(source.n_trials);
+    var adrN = toNum(adr.n);
+    var delta = toNum(adr.avg_r) !== null && toNum(base.avg_r) !== null
+      ? Number(adr.avg_r) - Number(base.avg_r)
+      : null;
+    var scope = [];
+    if (symbols !== null) scope.push(fmt(symbols, 0) + ' SYMBOLS');
+    if (trials !== null) scope.push(fmt(trials, 0) + ' TRIALS');
+    if (adrN !== null) scope.push(fmt(adrN, 0) + ' OOS TRADES');
+    var adrIdeal = toNum(asObject(asObject(state.data.guardrails).entry_bounds).adr_ideal_pct);
+    var adrLabel = adrIdeal !== null ? 'ADR ≤' + fmt(adrIdeal, 0) + '%' : 'ADR-SCOPED';
+
+    lab.innerHTML = '<span class="quant-lab-title">WALK-FORWARD LAB</span>' +
+      '<span class="quant-lab-item">' + esc(scope.length ? scope.join(' · ') : 'OOS BENCHMARK') + '</span>' +
+      '<span class="quant-lab-item">' + esc(adrLabel) + ' · AVGR <b class="' + tone(adr.avg_r) + '">' + signed(adr.avg_r, 4, 'R') + '</b>' +
+        ' · PF <b>' + fmt(adr.pf, 2) + '</b> · OOS DSR <b>' + fmt(adr.dsr, 3) + '</b></span>' +
+      '<span class="quant-lab-item">BASELINE · AVGR <b class="' + tone(base.avg_r) + '">' + signed(base.avg_r, 4, 'R') + '</b>' +
+        ' · PF <b>' + fmt(base.pf, 2) + '</b> · OOS DSR <b>' + fmt(base.dsr, 3) + '</b></span>' +
+      (delta !== null
+        ? '<span class="quant-lab-delta ' + tone(delta) + '">EDGE ' + signed(delta, 4, 'R') + ' / OOS TRADE</span>'
+        : '') +
+      (source.cut_time
+        ? '<span class="quant-lab-asof">OOS CUT ' + esc(stamp(source.cut_time)) + '</span>'
+        : '');
+  }
+
   /* ---------- symbol matrix ---------- */
   function renderSymbols() {
     var wrap = $('#symbolList');
@@ -4322,9 +5041,11 @@
   function lessonRow(lesson) {
     var parts = stampParts(lesson.ts);
     var outcome = String(lesson.outcome || '').toUpperCase();
+    var scope = upperSafe(lesson.scope);
+    var scopeTone = scope === 'GLOBAL' ? 'steel' : scope === 'SYMBOL' ? 'brass' : 'muted';
+    var tagText = safeText(lesson.tag);
     var meta = [];
-    if (lesson.scope) meta.push('SCOPE ' + esc(String(lesson.scope).toUpperCase()));
-    if (lesson.exit_type) meta.push('EXIT ' + esc(lesson.exit_type));
+    if (lesson.exit_type) meta.push('EXIT ' + esc(safeText(lesson.exit_type)));
     if (lesson.position_id) meta.push('#' + esc(lesson.position_id));
     var thesisHtml = thesisPanelHtml(lesson.lesson, { kind: 'lesson', symbol: lesson.symbol || null, side: lesson.side || null, surface: 'lesson', emptyText: 'บทเรียนนี้ไม่มีข้อความ' });
     return '<article class="log">' +
@@ -4332,9 +5053,10 @@
       '<div class="log-body">' +
         '<div class="log-head">' +
           '<span class="tag" data-tone="' + (outcome === 'WIN' ? 'pos' : 'neg') + '">' + esc(outcome || 'LESSON') + '</span>' +
+          '<span class="tag" data-tone="' + scopeTone + '">' + esc(scope === '—' ? 'SCOPE —' : scope) + '</span>' +
           '<span class="log-sym">' + esc(lesson.symbol || '—') + ' ' + esc(lesson.side || '') + '</span>' +
           (isNum(lesson.profit_usc) ? '<span class="tag" data-tone="' + (Number(lesson.profit_usc) >= 0 ? 'pos' : 'neg') + '">' + signed(lesson.profit_usc) + ' USC</span>' : '') +
-          (lesson.tag ? '<span class="tag" data-tone="brass">' + esc(lesson.tag) + '</span>' : '') +
+          (tagText !== '—' ? '<span class="tag">' + esc(tagText) + '</span>' : '') +
         '</div>' +
         thesisHtml +
         (meta.length ? '<div class="log-meta">' + meta.map(function (item) { return '<span>' + item + '</span>'; }).join('') + '</div>' : '') +
@@ -4385,7 +5107,15 @@
     }
     var limit = Math.max(4, state.shown[state.stream] || 6);
     var visible = list.slice(0, limit);
-    wrap.innerHTML = visible.map(isJournal ? journalRow : lessonRow).join('');
+    var policyNote = '';
+    if (!isJournal) {
+      var aiPolicy = asObject(asObject(state.data.guardrails).ai_policy);
+      var policyText = safeText(aiPolicy.lesson_policy);
+      policyNote = '<p class="lesson-policy"><b>ADVISORY REMINDERS</b> ' +
+        esc(policyText === '—' ? 'Advisory context only — not hard bans.' : policyText) +
+        '</p>';
+    }
+    wrap.innerHTML = policyNote + visible.map(isJournal ? journalRow : lessonRow).join('');
     var remaining = Math.max(0, list.length - visible.length);
     if (moreWrap) {
       moreWrap.hidden = false;
@@ -4397,17 +5127,352 @@
     }
   }
 
+  /* ---------- system guardrails & rolling protections ---------- */
+  function guardRowHtml(label, valueHtml, subHtml) {
+    return '<div class="guard-row">' +
+      '<span class="guard-key">' + esc(label) + '</span>' +
+      '<span class="guard-val">' + (valueHtml || '—') +
+        (subHtml ? '<span class="guard-sub">' + subHtml + '</span>' : '') +
+      '</span>' +
+      '</div>';
+  }
+
+  function guardCardHtml(title, tagHtml, rowsHtml, extraHtml) {
+    return '<div class="guard-card">' +
+      '<div class="guard-card-head"><h3>' + esc(title) + '</h3>' + (tagHtml || '') + '</div>' +
+      '<div class="guard-rows">' + (rowsHtml || '') + '</div>' +
+      (extraHtml || '') +
+      '</div>';
+  }
+
+  function renderGuardrails() {
+    var wrap = $('#guardGrid');
+    if (!wrap) return;
+    var guard = asObject(state.data && state.data.guardrails);
+    var prot = asObject(state.data && state.data.protections);
+
+    if (!Object.keys(guard).length && !Object.keys(prot).length) {
+      wrap.innerHTML = '<div class="guard-card span-all">' +
+        emptyBlock('ยังไม่มีข้อมูล guardrails', 'รอข้อมูล guardrails และ protections ใน data.json') +
+        '</div>';
+      setText('#guardMeta', '—');
+      return;
+    }
+
+    var hard = asObject(guard.hard_safety);
+    var entry = asObject(guard.entry_bounds);
+    var mgmt = asObject(guard.trade_management);
+    var policy = asObject(guard.ai_policy);
+    var streak = asObject(prot.streak);
+    var budget = asObject(prot.daily_budget);
+    var split = asObject(prot.recent_10_side_split);
+
+    var metaParts = ['ARMED'];
+    if (toNum(hard.risk_guard_interval_sec) !== null) metaParts.push('GUARD ' + fmt(hard.risk_guard_interval_sec, 0) + 's');
+    if (toNum(hard.news_blackout_min) !== null) metaParts.push('NEWS ' + fmt(hard.news_blackout_min, 0) + 'm');
+    if (safeText(streak.mode) !== '—') metaParts.push(safeText(streak.mode).toUpperCase());
+    setText('#guardMeta', metaParts.join(' · '));
+
+    var slotText = toNum(hard.max_open_positions) !== null || toNum(hard.max_pending_orders) !== null
+      ? fmt(hard.max_open_positions, 0) + ' OPEN + ' + fmt(hard.max_pending_orders, 0) + ' PENDING'
+      : '—';
+    var hardRows =
+      guardRowHtml('Equity Floor', esc(numText(hard.equity_floor_usc, 0, 'USC')), 'TARGET ' + esc(numText(hard.target_equity_usc, 0, 'USC'))) +
+      guardRowHtml('Daily Loss Limit', esc(signed(hard.daily_loss_limit_pct, 2, '%')), 'HARD HALT · DAILY RESET') +
+      guardRowHtml('Slot Caps', esc(slotText), 'MAX CONCURRENT EXPOSURE') +
+      guardRowHtml('Active Risk Cap', esc(numCompact(hard.max_total_risk_pct, 2, '%')), 'MAX PORTFOLIO HEAT') +
+      guardRowHtml('News Blackout', esc(numCompact(hard.news_blackout_min, 0, 'm')), 'HIGH / MEDIUM IMPACT') +
+      guardRowHtml('Guard Loop', esc(numCompact(hard.risk_guard_interval_sec, 0, 's')), 'risk_guard.py');
+
+    var today = toNum(entry.trades_today);
+    var maxDaily = toNum(entry.max_daily_trades);
+    var dailyUsage = today !== null && maxDaily !== null && maxDaily > 0
+      ? clamp(today / maxDaily * 100, 0, 100)
+      : null;
+    var dailyTag = dailyUsage !== null
+      ? '<span class="tag" data-tone="' + (dailyUsage >= 100 ? 'neg' : dailyUsage >= 60 ? 'warn' : 'muted') + '">' +
+        fmt(today, 0) + ' / ' + fmt(maxDaily, 0) + ' TODAY</span>'
+      : '';
+    var dailyValue = today !== null || maxDaily !== null ? fmt(today, 0) + ' / ' + fmt(maxDaily, 0) : '—';
+
+    var adrIdeal = toNum(entry.adr_ideal_pct);
+    var adrCap = toNum(entry.adr_entry_cap_pct);
+    var adrWarn = toNum(entry.adr_warn_pct);
+    var adrValue = adrIdeal !== null ? '≤' + fmt(adrIdeal, 0) + '%' : '—';
+    var adrParts = [];
+    if (adrIdeal !== null && adrCap !== null) adrParts.push('TACTICAL ' + fmt(adrIdeal, 0) + '–' + fmt(adrCap, 0) + '%');
+    if (adrWarn !== null) adrParts.push('WARN >' + fmt(adrWarn, 0) + '%');
+
+    var slParts = [];
+    if (toNum(entry.min_sl_m15_atr) !== null) slParts.push(fmt(entry.min_sl_m15_atr, 2) + '× M15');
+    if (toNum(entry.min_sl_h1_atr) !== null) slParts.push(fmt(entry.min_sl_h1_atr, 2) + '× H1');
+    var slValue = slParts.length ? 'SL ≥' + slParts.join(' / ') + ' ATR' : '—';
+    var tpParts = [];
+    if (toNum(entry.min_tp_r) !== null) tpParts.push('≥' + fmt(entry.min_tp_r, 2) + 'R');
+    if (toNum(entry.max_tp_adr_pct) !== null) tpParts.push('≤' + fmt(entry.max_tp_adr_pct, 0) + '% ADR');
+    if (toNum(entry.max_tp_h1_atr) !== null) tpParts.push('≤' + fmt(entry.max_tp_h1_atr, 2) + '× H1 ATR');
+    var tpValue = tpParts.length ? 'TP ' + tpParts.join(' · ') : '—';
+
+    var gradeA = safeText(policy.grade_a_risk_pct);
+    var gradeB = safeText(policy.grade_b_risk_pct);
+    var gradeValue = gradeA !== '—' || gradeB !== '—' ? 'A ' + gradeA + ' · B+ ' + gradeB : '—';
+    var riskValue = toNum(entry.default_risk_pct) !== null || toNum(entry.max_risk_per_trade_pct) !== null
+      ? 'DEFAULT ' + numCompact(entry.default_risk_pct, 2, '%') + ' · MAX ' + numCompact(entry.max_risk_per_trade_pct, 2, '%')
+      : '—';
+
+    var entryRows =
+      guardRowHtml('Daily Trades', esc(dailyValue), 'REFERENCE CAP' + guardMeter(dailyUsage, 'var(--brass)')) +
+      guardRowHtml('ADR Gate', esc(adrValue), esc(adrParts.length ? adrParts.join(' · ') : '—')) +
+      guardRowHtml('SL / TP Bounds', esc(slValue), esc(tpValue)) +
+      guardRowHtml('Grade Sizing', esc(gradeValue), 'TIERED BY SETUP GRADE') +
+      guardRowHtml('Risk / Trade', esc(riskValue), 'DEFAULT VS HARD MAX') +
+      guardRowHtml('Post-Loss Cooldown', esc(hoursShort(entry.symbol_loss_cooldown_min)), 'SYMBOL-SCOPED');
+
+    var timeStopValue = toNum(mgmt.time_stop_hours) !== null ? fmt(mgmt.time_stop_hours, 0) + 'h' : '—';
+    if (toNum(mgmt.time_stop_bars) !== null) timeStopValue += ' / ' + fmt(mgmt.time_stop_bars, 0) + ' M15';
+    var staleValue = toNum(mgmt.stale_order_hours) !== null ? fmt(mgmt.stale_order_hours, 0) + 'h' : '—';
+    var mgmtRows =
+      guardRowHtml('Auto Break-even', esc(plusR(mgmt.auto_be_r)), 'AUTOMATIC BREAK-EVEN TRIGGER') +
+      guardRowHtml(
+        'Partial TP',
+        esc(fmt(mgmt.partial_tp_pct, 0) + '% @ ' + plusR(mgmt.partial_tp_r)),
+        'LOCK ' + esc(plusR(mgmt.partial_tp_lock_r))
+      ) +
+      guardRowHtml(
+        'Giveback Guard',
+        esc(plusR(mgmt.giveback_trigger_r) + ' → ' + plusR(mgmt.giveback_floor_r)),
+        'TRAILING PROFIT FLOOR'
+      ) +
+      guardRowHtml('Time Stop', esc(timeStopValue), 'MIN MFE ' + esc(plusR(mgmt.time_stop_min_mfe_r))) +
+      guardRowHtml('Stale Pending', esc(staleValue), 'AUTO-CANCEL WINDOW') +
+      guardRowHtml(
+        'Runner Trail',
+        esc('AFTER ' + plusR(mgmt.runner_trail_r) + ' · TRAIL ' + fmt(mgmt.runner_trail_dist_r, 2) + 'R'),
+        'MIN LOCK ' + esc(plusR(mgmt.runner_trail_min_lock_r))
+      );
+
+    var sizeMult = toNum(streak.recommended_size_mult);
+    var modeBadge = safeText(streak.mode) !== '—'
+      ? '<span class="tag tag-wide" data-tone="warn">' + esc(safeText(streak.mode).toUpperCase()) +
+        (sizeMult !== null ? ' · ' + fmt(sizeMult * 100, 0) + '% SIZE' : '') + '</span>'
+      : '';
+
+    var used = toNum(budget.daily_loss_used_pct);
+    var remaining = toNum(budget.remaining_daily_loss_pct);
+    var remainingUsc = toNum(budget.remaining_daily_loss_usc);
+    var capPct = toNum(budget.max_single_trade_risk_pct);
+    var capUsc = toNum(budget.max_single_trade_risk_usc);
+    var dailyLimit = Math.abs(toNum(hard.daily_loss_limit_pct) || 0);
+    var usedPct = used !== null && dailyLimit > 0 ? clamp(used / dailyLimit * 100, 0, 100) : null;
+    var budgetValue = remaining !== null || remainingUsc !== null
+      ? 'REMAIN ' + numCompact(remaining, 2, '%') + ' · ' + numText(remainingUsc, 2, 'USC')
+      : '—';
+    var singleShare = capPct !== null && remaining !== null && remaining > 0 ? capPct / remaining * 100 : null;
+    var budgetSub = 'USED ' + numCompact(used, 2, '%') +
+      ' · SINGLE-TRADE CAP ' + numCompact(capPct, 2, '%') + ' / ' + numText(capUsc, 2, 'USC') +
+      (singleShare !== null ? ' · ' + fmt(singleShare, 0) + '% OF REMAINING' : '') +
+      guardMeter(usedPct, usedPct !== null && usedPct >= 55 ? 'var(--red)' : 'var(--brass)');
+
+    var buyCount = toNum(split.BUY);
+    var sellCount = toNum(split.SELL);
+    var splitValue = buyCount !== null || sellCount !== null
+      ? esc('BUY ' + fmt(buyCount, 0) + ' · SELL ' + fmt(sellCount, 0))
+      : '—';
+    if (buyCount !== null && sellCount !== null && (buyCount === 0 || sellCount === 0)) {
+      splitValue += ' <span class="tag" data-tone="warn">SIDE SKEW</span>';
+    }
+
+    var protRows =
+      guardRowHtml('Loss Streak', esc(fmt(streak.current_loss_streak, 0)), 'REAL STREAK · SCRATCHES IGNORED') +
+      guardRowHtml('Daily Loss Budget', esc(budgetValue), budgetSub) +
+      guardRowHtml('24h SL Guard', esc(fmt(prot.stoploss_guard_24h_count, 0)), 'ROLLING STOP-LOSS EVENTS') +
+      guardRowHtml('Recent 10 Split', splitValue, 'BUY / SELL SIDE COUNT');
+
+    var pairs = asObjectList(prot.low_profit_pairs_advisory).filter(function (pair) {
+      return safeText(pair.symbol) !== '—';
+    });
+    var pairHtml = '';
+    if (pairs.length) {
+      pairHtml = '<div class="guard-advisory-label">LOW-PROFIT PAIRS</div><div class="guard-rows">' +
+        pairs.map(function (pair) {
+          return guardRowHtml(
+            safeText(pair.symbol),
+            esc(numText(pair.net_usc, 2, 'USC')),
+            fmt(pair.trades, 0) + ' TRADES · ' + fmt(pair.wins, 0) + ' WINS'
+          );
+        }).join('') + '</div>';
+    }
+
+    var advisories = asTextList(prot.advisories).map(safeText).filter(function (text) {
+      return text !== '—';
+    });
+    var advisoryHtml = advisories.length
+      ? '<div class="guard-advisory-label">LIVE ADVISORIES ' +
+        '<span class="tag" data-tone="warn">' + fmt(advisories.length, 0) + ' ACTIVE</span></div>' +
+        '<ul class="guard-adv">' +
+        advisories.map(function (text) {
+          return '<li' + (/side skew/i.test(text) ? ' data-tone="neg"' : '') + '>' + esc(text) + '</li>';
+        }).join('') + '</ul>'
+      : '';
+
+    wrap.innerHTML =
+      guardCardHtml('Hard Safety', '<span class="tag" data-tone="pos">ARMED</span>', hardRows, '') +
+      guardCardHtml('Entry & Sizing Bounds', dailyTag, entryRows, '') +
+      guardCardHtml('Trade Management', '', mgmtRows, '') +
+      guardCardHtml('Active Rolling Protections', modeBadge, protRows, pairHtml + advisoryHtml);
+  }
+
+  /* ---------- cached market intelligence ---------- */
+  function intelCardHtml(extraClass, title, bodyHtml, tagHtml) {
+    return '<div class="intel-card ' + extraClass + '">' +
+      '<div class="intel-head"><span class="intel-kicker">' + esc(title) + '</span>' + (tagHtml || '') + '</div>' +
+      bodyHtml +
+      '</div>';
+  }
+
+  function renderMarketIntel() {
+    var wrap = $('#intelGrid');
+    if (!wrap) return;
+    var intel = asObject(state.data && state.data.market_intel);
+    if (!Object.keys(intel).length) {
+      wrap.innerHTML = '<div class="intel-card span-all">' +
+        emptyBlock('ยังไม่มีข้อมูล market intelligence', 'รอข้อมูล market_intel ใน data.json') +
+        '</div>';
+      setText('#intelMeta', '—');
+      return;
+    }
+
+    setText('#intelMeta', intel.fetched_at
+      ? 'FETCHED ' + fullICT(intel.fetched_at) + ' · ADVISORY'
+      : '—');
+
+    var regime = asObject(intel.risk_regime);
+    var score = toNum(regime.score);
+    var riskBody = '<div class="intel-value ' + tone(score) + '">' + esc(upperSafe(regime.regime)) + '</div>' +
+      '<div class="intel-sub">SCORE <b>' + signed(score, 3) + '</b>' +
+        (regime.date ? ' · ' + esc(dayStamp(regime.date)) : '') + '</div>' +
+      '<div class="intel-mini-grid">' +
+        '<span>FIN STRESS<b>' + signed(regime.financial_stress, 3) + '</b></span>' +
+        '<span>SAFE HAVEN<b>' + signed(regime.safe_haven, 3) + '</b></span>' +
+        '<span>COMMODITY<b>' + signed(regime.commodity_beta, 3) + '</b></span>' +
+      '</div>';
+
+    var fear = asObject(intel.fear_greed);
+    var fearValue = toNum(fear.value);
+    var fearColor = fearValue === null ? 'var(--text-3)'
+      : fearValue <= 25 ? 'var(--red)'
+      : fearValue <= 50 ? 'var(--brass)'
+      : fearValue <= 75 ? 'var(--steel)'
+      : 'var(--jade)';
+    var fearBody = '<div class="intel-value">' + (fearValue !== null ? fmt(fearValue, 0) : '—') + '</div>' +
+      '<div class="intel-label">' + esc(upperSafe(fear.label)) + '</div>' +
+      '<div class="intel-sub">PREVIOUS ' + (toNum(fear.prev) !== null ? fmt(fear.prev, 0) : '—') + '</div>' +
+      '<div class="intel-meter"><i style="width:' + (fearValue !== null ? clamp(fearValue, 0, 100) : 0).toFixed(1) +
+        '%;background:' + fearColor + '"></i></div>';
+
+    var intermarket = asObject(intel.intermarket);
+    var vixRegime = safeText(asObject(intermarket.VIX).regime);
+    var interTag = vixRegime !== '—'
+      ? '<span class="tag" data-tone="neg">' + esc(upperSafe(vixRegime)) + '</span>'
+      : '';
+    var quoteHtml = ['DXY', 'VIX', 'US10Y'].map(function (key) {
+      var quote = asObject(intermarket[key]);
+      var change = toNum(quote.chg_1d_pct);
+      return '<div class="intel-quote">' +
+        '<span class="iq-key">' + esc(key) + '</span>' +
+        '<b>' + esc(intelPrice(key, quote.price)) + '</b>' +
+        '<span class="iq-chg ' + tone(change) + '">' + signed(change, 2, '%') + '</span>' +
+        '</div>';
+    }).join('');
+    var interBody = Object.keys(intermarket).length
+      ? '<div class="intel-sub">PRICE · 1D CHANGE</div>' + quoteHtml
+      : '<div class="intel-empty">NO INTERMARKET DATA</div>';
+
+    var crypto = asObject(intel.crypto);
+    var cryptoRows = ['BTC', 'ETH'].map(function (key) {
+      var coin = asObject(crypto[key]);
+      var funding = toNum(coin.funding_8h_pct);
+      var ratio = toNum(coin.long_short_ratio);
+      var crowding = safeText(coin.crowding);
+      if (funding === null && ratio === null && crowding === '—') return '';
+      var crowdBadge = crowding !== '—'
+        ? '<span class="tag" data-tone="' + (/CROWD/i.test(crowding) ? 'warn' : 'muted') + '">' +
+          esc(upperSafe(crowding)) + '</span>'
+        : '';
+      return '<div class="crypto-row">' +
+        '<div class="crypto-top"><span class="crypto-sym">' + esc(key) + '</span>' + crowdBadge + '</div>' +
+        '<div class="crypto-meta">' +
+          '<span>FUNDING 8H <b>' + signed(funding, 4, '%') + '</b></span>' +
+          '<span>L/S <b>' + (ratio !== null ? fmt(ratio, 2) : '—') + '</b></span>' +
+        '</div>' +
+        '</div>';
+    }).filter(Boolean).join('');
+    var cryptoBody = cryptoRows || '<div class="intel-empty">NO CRYPTO POSITIONING DATA</div>';
+
+    var events = asObjectList(intel.upcoming_events).filter(function (event) {
+      return safeText(event.title) !== '—';
+    }).slice(0, 6);
+    var calendarBody = events.length
+      ? '<div class="cal-list">' + events.map(function (event) {
+        var impact = safeText(event.impact);
+        var impactTone = /high/i.test(impact) ? 'neg' : /medium/i.test(impact) ? 'brass' : 'muted';
+        var nums = [];
+        var forecast = safeText(event.forecast);
+        var previous = safeText(event.previous);
+        if (forecast !== '—') nums.push('F ' + esc(forecast));
+        if (previous !== '—') nums.push('P ' + esc(previous));
+        return '<div class="cal-item">' +
+          '<div class="cal-head">' +
+            '<span class="cal-time">' + esc(stamp(event.utc)) + ' UTC</span>' +
+            '<span class="cal-ccy">' + esc(safeText(event.ccy)) + '</span>' +
+            '<span class="tag" data-tone="' + impactTone + '">' + esc(impact.toUpperCase()) + '</span>' +
+          '</div>' +
+          '<div class="cal-title">' + esc(safeText(event.title)) + '</div>' +
+          (nums.length ? '<div class="cal-nums">' + nums.join(' · ') + '</div>' : '') +
+          '</div>';
+      }).join('') + '</div>'
+      : '<div class="intel-empty">NO SCHEDULED HIGH / MEDIUM EVENTS</div>';
+
+    var headlines = asObjectList(intel.headlines).filter(function (headline) {
+      return safeText(headline.title) !== '—';
+    });
+    var headlineBody = headlines.length
+      ? '<details class="intel-details" open>' +
+        '<summary>TOP FX HEADLINES · ' + fmt(headlines.length, 0) + '</summary>' +
+        '<div class="headline-list" tabindex="0" role="region" aria-label="Top FX headlines">' + headlines.map(function (headline) {
+          var source = safeText(headline.src);
+          var age = toNum(headline.age_h);
+          return '<div class="headline">' +
+            '<div class="headline-title">' + esc(safeText(headline.title)) + '</div>' +
+            '<div class="headline-meta">' + esc(source === '—' ? 'NEWS' : source) +
+              (age !== null ? ' · ' + fmt(age, 1) + 'H' : '') + '</div>' +
+            '</div>';
+        }).join('') + '</div></details>'
+      : '<div class="intel-empty">NO HEADLINES CACHED</div>';
+
+    wrap.innerHTML =
+      intelCardHtml('i-3', 'Macro Risk Regime', riskBody, '') +
+      intelCardHtml('i-3', 'Crypto Fear & Greed', fearBody, '') +
+      intelCardHtml('i-3', 'Intermarket', interBody, interTag) +
+      intelCardHtml('i-3', 'Crypto Positioning', cryptoBody, '') +
+      intelCardHtml('i-7', 'Economic Calendar', calendarBody, '') +
+      intelCardHtml('i-5', 'Headlines', headlineBody, '');
+  }
+
   /* ---------- orchestration ---------- */
   function renderAll() {
     renderCommand();
     if (!state.data) return;
     renderHero();
     renderKpis();
+    renderQuant();
     renderChart();
     renderSymbols();
     renderLive();
     renderTrades();
     renderStream();
+    renderGuardrails();
+    renderMarketIntel();
   }
 
   function setRange(range) {
@@ -4509,6 +5574,10 @@
       var element = $(selector);
       if (element) element.innerHTML = block;
     });
+    [['#quantGrid', 'quant-cell'], ['#guardGrid', 'guard-card'], ['#intelGrid', 'intel-card']].forEach(function (pair) {
+      var element = $(pair[0]);
+      if (element) element.innerHTML = '<div class="' + pair[1] + ' span-all">' + block + '</div>';
+    });
     var table = $('#tradesTableWrap');
     if (table) {
       table.hidden = true;
@@ -4537,6 +5606,9 @@
     setText('#tradesFootLeft', '—');
     setText('#tradesFootNet', '—');
     setText('#symbolMeta', '—');
+    setText('#quantRange', '—');
+    setText('#guardMeta', '—');
+    setText('#intelMeta', '—');
     setText('#chartFoot', '—');
   }
 

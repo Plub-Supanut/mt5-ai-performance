@@ -8,6 +8,23 @@ Release notes for each version live in [`docs/releases/`](docs/releases/).
 
 ## [Unreleased]
 
+### Added
+- **Quant telemetry strip** under Core Performance, driven by the selected `AI ERA` / `7D` / `ALL` range: Wilson 95% win-rate CI, payoff ratio, Smart Sharpe / Sortino, PSR / DSR, ulcer index (USC), tail ratio, real loss streak (current / max, scratches ignored) and 20% risk of ruin.
+- **Walk-Forward Lab footer** comparing the `ADR <= 60%` out-of-sample result (AvgR, PF, OOS DSR, trade count) with the baseline across 35 symbols, plus the resulting OOS edge per trade.
+- **System Guardrails & Protections panel** rendered from `data.guardrails` and `data.protections`: hard safety limits, entry/sizing bounds (daily trade cap, ADR gate, SL/TP ATR/R bounds, graded sizing, post-loss cooldown), trade management (auto-BE, partial TP, giveback guard, time stop, stale pending, runner trail) and live rolling protections (defensive-recovery size throttle, remaining daily-loss budget, single-trade cap, 24h SL count, 10-trade BUY/SELL split, low-profit pairs and advisories).
+- **Market Intelligence panel** rendered from `data.market_intel`: macro risk regime and score, crypto Fear & Greed, intermarket strip (DXY, VIX with stress regime, US10Y), BTC/ETH funding and crowding, up to six high/medium calendar events and a collapsible headline feed, with the cache timestamp.
+- **Lesson scope badges** (`GLOBAL` vs `SYMBOL`) and an advisory-policy note sourced from `guardrails.ai_policy.lesson_policy`, clarifying that lessons are reminders, not hard bans.
+
+### Changed
+- `data.json` refreshed from the live MT5 export, including tuned guardrails, rolling protections, QuantStats blocks, cached market intelligence and lesson scopes.
+- Quant telemetry updates with the selected range; guardrails, protections and market intelligence reflect the current snapshot on every refresh.
+- README feature list documents the new quant, guardrail/protection and market-intelligence views.
+
+### Fixed
+- README daily loss limit corrected from the outdated `-8.00%` reference to `-3.00%`, matching `mt5_common.py` and `data.json`.
+- New panels degrade cleanly to `—` or hide their rows when a field is missing; external headlines, events, tags and advisories are escaped through `esc()`, never injected as HTML.
+- Responsive rules for the new grids use `minmax(0, 1fr)` and wrapped text to avoid horizontal overflow on desktop and narrow mobile widths.
+
 ### Planned
 - Mobile layout refinements for the positions and ledger tables.
 - Optional timeframe control for the equity curve.
