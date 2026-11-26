@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-11-26T22:05:03+07:00",
+  "generated_at": "2026-11-27T00:03:29+07:00",
   "account": {
     "broker": "Exness USC (Cent)",
     "mode": "AI_TRADER",
     "status": "RUNNING",
-    "balance_usc": 2176.48,
-    "equity_usc": 2175.79,
-    "equity_usd": 21.76,
-    "margin_free_usc": 2169.04,
+    "balance_usc": 2178.38,
+    "equity_usc": 2177.42,
+    "equity_usd": 21.77,
+    "margin_free_usc": 2009.44,
     "peak_equity_usc": 2511.77,
     "target_usc": 8000.0,
     "floor_usc": 1250.0,
-    "progress_pct": 27.2,
-    "daily_pnl_pct": 0.59,
+    "progress_pct": 27.22,
+    "daily_pnl_pct": -0.04,
     "daily_limit_pct": -3.0,
-    "open_positions_count": 2,
+    "open_positions_count": 1,
     "max_open_positions": 2,
     "pending_orders_count": 0,
     "max_pending_orders": 1,
-    "open_risk_usc": 20.15,
-    "max_total_risk_usc": 54.41,
-    "default_trade_risk_usc": 17.41
+    "open_risk_usc": 10.16,
+    "max_total_risk_usc": 54.46,
+    "default_trade_risk_usc": 17.43
   },
   "guardrails": {
     "hard_safety": {
@@ -37,7 +37,7 @@
       "default_risk_pct": 0.8,
       "max_risk_per_trade_pct": 1.2,
       "max_daily_trades": 5,
-      "trades_today": 7,
+      "trades_today": 8,
       "adr_ideal_pct": 60.0,
       "adr_entry_cap_pct": 75.0,
       "adr_warn_pct": 85.0,
@@ -75,18 +75,18 @@
   },
   "protections": {
     "streak": {
-      "current_loss_streak": 0,
+      "current_loss_streak": 1,
       "mode": "NORMAL",
       "recommended_size_mult": 1.0
     },
     "daily_budget": {
-      "daily_loss_used_pct": 0.0,
-      "remaining_daily_loss_pct": 3.0,
-      "remaining_daily_loss_usc": 64.89,
-      "max_single_trade_risk_pct": 0.9,
-      "max_single_trade_risk_usc": 19.47
+      "daily_loss_used_pct": 0.04,
+      "remaining_daily_loss_pct": 2.96,
+      "remaining_daily_loss_usc": 64.39,
+      "max_single_trade_risk_pct": 0.89,
+      "max_single_trade_risk_usc": 19.32
     },
-    "stoploss_guard_24h_count": 4,
+    "stoploss_guard_24h_count": 5,
     "low_profit_pairs_advisory": [
       {
         "symbol": "BTCUSDc",
@@ -102,15 +102,15 @@
       }
     ],
     "recent_10_side_split": {
-      "BUY": 6,
-      "SELL": 4
+      "BUY": 7,
+      "SELL": 3
     },
     "advisories": [
-      "StoplossGuard: 4 SL hits in last 24h - size down and verify clean M15 structure"
+      "StoplossGuard: 5 SL hits in last 24h - size down and verify clean M15 structure"
     ]
   },
   "market_intel": {
-    "fetched_at": "2026-11-26T22:01:13+07:00",
+    "fetched_at": "2026-11-27T00:01:11+07:00",
     "risk_regime": {
       "date": "2026-11-25",
       "score": -0.378,
@@ -126,15 +126,15 @@
     },
     "intermarket": {
       "DXY": {
-        "price": 103.71,
-        "chg_4h_pct": 0.02,
-        "chg_1d_pct": -0.1,
+        "price": 103.785,
+        "chg_4h_pct": 0.09,
+        "chg_1d_pct": -0.02,
         "dir": "FLAT"
       },
       "VIX": {
-        "price": 27.01,
-        "chg_4h_pct": -0.22,
-        "chg_1d_pct": -24.74,
+        "price": 26.8,
+        "chg_4h_pct": -0.89,
+        "chg_1d_pct": -25.33,
         "dir": "DOWN",
         "regime": "HIGH_STRESS"
       },
@@ -166,28 +166,28 @@
     "headlines": [
       {
         "src": "FXStreet",
-        "age_h": 0.8,
-        "title": "US Dollar: Improving cyclical momentum offers support - MUFG"
-      },
-      {
-        "src": "FXStreet",
-        "age_h": 0.9,
-        "title": "Oil: Supply concerns support prices ahead of OPEC+ meeting – ING"
-      },
-      {
-        "src": "FXStreet",
-        "age_h": 1.0,
-        "title": "EU leaders set to confirm Spain's De Cos as next ECB President – Reuters"
-      },
-      {
-        "src": "FXStreet",
-        "age_h": 1.1,
-        "title": "Mexican Peso: Recovery against US Dollar expected by end-2028 - Commerzbank"
-      },
-      {
-        "src": "FXStreet",
         "age_h": 1.3,
-        "title": "Australian Dollar: Upside seen capped as RBA nears rate peak - OCBC"
+        "title": "British Pound flatlines near 1.3100 as Thanksgiving thins trade"
+      },
+      {
+        "src": "FXStreet",
+        "age_h": 1.5,
+        "title": "Japanese Yen struggles for direction amid thin Thanksgiving trading"
+      },
+      {
+        "src": "FXStreet",
+        "age_h": 2.3,
+        "title": "Federal Reserve: Gradual hikes priced – Commerzbank"
+      },
+      {
+        "src": "FXStreet",
+        "age_h": 2.3,
+        "title": "Euro ticks higher as ECB minutes reveal appetite for further tightening"
+      },
+      {
+        "src": "FXStreet",
+        "age_h": 2.7,
+        "title": "US Dollar: Improving cyclical momentum offers support - MUFG"
       }
     ]
   },
@@ -229,40 +229,40 @@
     }
   },
   "stats_all": {
-    "total_trades": 62,
-    "wins": 19,
-    "losses": 43,
-    "winrate_pct": 30.6,
-    "net_usc": -438.0,
-    "gross_profit_usc": 398.69,
-    "gross_loss_usc": -836.69,
-    "profit_factor": 0.48,
-    "avg_win_usc": 20.98,
-    "avg_loss_usc": -19.46,
-    "avg_r": -0.17,
+    "total_trades": 64,
+    "wins": 20,
+    "losses": 44,
+    "winrate_pct": 31.2,
+    "net_usc": -436.1,
+    "gross_profit_usc": 411.59,
+    "gross_loss_usc": -847.69,
+    "profit_factor": 0.49,
+    "avg_win_usc": 20.58,
+    "avg_loss_usc": -19.27,
+    "avg_r": -0.16,
     "max_dd_usc": -515.68,
-    "sl_hits": 40,
-    "tp_hits": 16,
+    "sl_hits": 41,
+    "tp_hits": 17,
     "manual_closes": 6,
     "quant": {
-      "n_trades": 62,
-      "winrate_pct": 30.6,
+      "n_trades": 64,
+      "winrate_pct": 31.2,
       "winrate_ci95": [
-        20.6,
-        43.0
+        21.2,
+        43.4
       ],
-      "payoff_ratio": 1.08,
-      "kelly_pct": -33.7,
-      "sharpe_per_trade": -0.147,
-      "smart_sharpe": -0.136,
-      "sortino_per_trade": -0.185,
-      "t_stat": -1.09,
-      "psr": 0.158,
-      "dsr": 0.158,
-      "ulcer_index_usc": 361.73,
+      "payoff_ratio": 1.07,
+      "kelly_pct": -33.1,
+      "sharpe_per_trade": -0.136,
+      "smart_sharpe": -0.124,
+      "sortino_per_trade": -0.172,
+      "t_stat": -1.03,
+      "psr": 0.1694,
+      "dsr": 0.1694,
+      "ulcer_index_usc": 364.08,
       "tail_ratio": 0.83,
       "max_loss_streak": 11,
-      "current_loss_streak": 0,
+      "current_loss_streak": 1,
       "risk_of_ruin_20pct": 0.9
     },
     "by_symbol": [
@@ -315,6 +315,14 @@
         "winrate_pct": 0.0
       },
       {
+        "symbol": "USOILc",
+        "trades": 4,
+        "wins": 2,
+        "losses": 2,
+        "net_usc": -7.57,
+        "winrate_pct": 50.0
+      },
+      {
         "symbol": "EURNZDc",
         "trades": 2,
         "wins": 1,
@@ -363,14 +371,6 @@
         "winrate_pct": 0.0
       },
       {
-        "symbol": "USOILc",
-        "trades": 3,
-        "wins": 1,
-        "losses": 2,
-        "net_usc": -20.47,
-        "winrate_pct": 33.3
-      },
-      {
         "symbol": "EURAUDc",
         "trades": 1,
         "wins": 0,
@@ -412,11 +412,11 @@
       },
       {
         "symbol": "EURUSDc",
-        "trades": 9,
+        "trades": 10,
         "wins": 3,
-        "losses": 6,
-        "net_usc": -71.14,
-        "winrate_pct": 33.3
+        "losses": 7,
+        "net_usc": -82.14,
+        "winrate_pct": 30.0
       },
       {
         "symbol": "BTCUSDc",
@@ -931,44 +931,60 @@
         "exit_time_utc": "2026-11-26 14:06",
         "net_profit_usc": 15.96,
         "cum_pnl_usc": -438.0
+      },
+      {
+        "position_id": 4796084008,
+        "symbol": "USOILc",
+        "side": "BUY",
+        "exit_time_utc": "2026-11-26 15:50",
+        "net_profit_usc": 12.9,
+        "cum_pnl_usc": -425.1
+      },
+      {
+        "position_id": 4796085544,
+        "symbol": "EURUSDc",
+        "side": "BUY",
+        "exit_time_utc": "2026-11-26 16:38",
+        "net_profit_usc": -11.0,
+        "cum_pnl_usc": -436.1
       }
     ]
   },
   "stats_7d": {
-    "total_trades": 21,
-    "wins": 9,
-    "losses": 12,
-    "winrate_pct": 42.9,
-    "net_usc": 9.03,
-    "gross_profit_usc": 147.49,
-    "gross_loss_usc": -138.46,
+    "total_trades": 23,
+    "wins": 10,
+    "losses": 13,
+    "winrate_pct": 43.5,
+    "net_usc": 10.93,
+    "gross_profit_usc": 160.39,
+    "gross_loss_usc": -149.46,
     "profit_factor": 1.07,
-    "avg_win_usc": 16.39,
-    "avg_loss_usc": -11.54,
+    "avg_win_usc": 16.04,
+    "avg_loss_usc": -11.5,
     "avg_r": 0.19,
     "max_dd_usc": -68.65,
-    "sl_hits": 12,
-    "tp_hits": 9,
+    "sl_hits": 13,
+    "tp_hits": 10,
     "manual_closes": 0,
     "quant": {
-      "n_trades": 21,
-      "winrate_pct": 42.9,
+      "n_trades": 23,
+      "winrate_pct": 43.5,
       "winrate_ci95": [
-        24.5,
-        63.5
+        25.6,
+        63.2
       ],
-      "payoff_ratio": 1.42,
-      "kelly_pct": 2.6,
-      "sharpe_per_trade": 0.133,
-      "smart_sharpe": 0.116,
-      "sortino_per_trade": 0.193,
-      "t_stat": 0.61,
-      "psr": 0.73,
-      "dsr": 0.73,
-      "ulcer_index_usc": 34.78,
-      "tail_ratio": 1.33,
+      "payoff_ratio": 1.4,
+      "kelly_pct": 3.0,
+      "sharpe_per_trade": 0.134,
+      "smart_sharpe": 0.118,
+      "sortino_per_trade": 0.19,
+      "t_stat": 0.64,
+      "psr": 0.7401,
+      "dsr": 0.7401,
+      "ulcer_index_usc": 33.31,
+      "tail_ratio": 1.32,
       "max_loss_streak": 5,
-      "current_loss_streak": 0,
+      "current_loss_streak": 1,
       "risk_of_ruin_20pct": 0.0
     },
     "by_symbol": [
@@ -981,20 +997,20 @@
         "winrate_pct": 66.7
       },
       {
+        "symbol": "USOILc",
+        "trades": 2,
+        "wins": 2,
+        "losses": 0,
+        "net_usc": 29.67,
+        "winrate_pct": 100.0
+      },
+      {
         "symbol": "USTECc",
         "trades": 3,
         "wins": 2,
         "losses": 1,
         "net_usc": 22.6,
         "winrate_pct": 66.7
-      },
-      {
-        "symbol": "USOILc",
-        "trades": 1,
-        "wins": 1,
-        "losses": 0,
-        "net_usc": 16.77,
-        "winrate_pct": 100.0
       },
       {
         "symbol": "ETHUSDc",
@@ -1029,14 +1045,6 @@
         "winrate_pct": 0.0
       },
       {
-        "symbol": "EURUSDc",
-        "trades": 1,
-        "wins": 0,
-        "losses": 1,
-        "net_usc": -10.37,
-        "winrate_pct": 0.0
-      },
-      {
         "symbol": "EURJPYc",
         "trades": 1,
         "wins": 0,
@@ -1050,6 +1058,14 @@
         "wins": 0,
         "losses": 2,
         "net_usc": -17.0,
+        "winrate_pct": 0.0
+      },
+      {
+        "symbol": "EURUSDc",
+        "trades": 2,
+        "wins": 0,
+        "losses": 2,
+        "net_usc": -21.37,
         "winrate_pct": 0.0
       },
       {
@@ -1229,45 +1245,61 @@
         "exit_time_utc": "2026-11-26 14:06",
         "net_profit_usc": 15.96,
         "cum_pnl_usc": 9.03
+      },
+      {
+        "position_id": 4796084008,
+        "symbol": "USOILc",
+        "side": "BUY",
+        "exit_time_utc": "2026-11-26 15:50",
+        "net_profit_usc": 12.9,
+        "cum_pnl_usc": 21.93
+      },
+      {
+        "position_id": 4796085544,
+        "symbol": "EURUSDc",
+        "side": "BUY",
+        "exit_time_utc": "2026-11-26 16:38",
+        "net_profit_usc": -11.0,
+        "cum_pnl_usc": 10.93
       }
     ]
   },
   "stats_ai": {
-    "total_trades": 53,
-    "wins": 17,
-    "losses": 36,
-    "winrate_pct": 32.1,
-    "net_usc": -272.48,
-    "gross_profit_usc": 363.69,
-    "gross_loss_usc": -636.17,
-    "profit_factor": 0.57,
-    "avg_win_usc": 21.39,
-    "avg_loss_usc": -17.67,
-    "avg_r": -0.14,
+    "total_trades": 55,
+    "wins": 18,
+    "losses": 37,
+    "winrate_pct": 32.7,
+    "net_usc": -270.58,
+    "gross_profit_usc": 376.59,
+    "gross_loss_usc": -647.17,
+    "profit_factor": 0.58,
+    "avg_win_usc": 20.92,
+    "avg_loss_usc": -17.49,
+    "avg_r": -0.13,
     "max_dd_usc": -387.01,
-    "sl_hits": 33,
-    "tp_hits": 14,
+    "sl_hits": 34,
+    "tp_hits": 15,
     "manual_closes": 6,
     "quant": {
-      "n_trades": 53,
-      "winrate_pct": 32.1,
+      "n_trades": 55,
+      "winrate_pct": 32.7,
       "winrate_ci95": [
-        21.1,
-        45.5
+        21.8,
+        45.9
       ],
-      "payoff_ratio": 1.21,
-      "kelly_pct": -24.0,
-      "sharpe_per_trade": -0.12,
-      "smart_sharpe": -0.112,
-      "sortino_per_trade": -0.153,
-      "t_stat": -0.87,
-      "psr": 0.2074,
-      "dsr": 0.2074,
-      "ulcer_index_usc": 267.23,
-      "tail_ratio": 0.99,
+      "payoff_ratio": 1.2,
+      "kelly_pct": -23.5,
+      "sharpe_per_trade": -0.11,
+      "smart_sharpe": -0.101,
+      "sortino_per_trade": -0.14,
+      "t_stat": -0.82,
+      "psr": 0.2207,
+      "dsr": 0.2207,
+      "ulcer_index_usc": 268.57,
+      "tail_ratio": 1.01,
       "max_loss_streak": 11,
-      "current_loss_streak": 0,
-      "risk_of_ruin_20pct": 0.7
+      "current_loss_streak": 1,
+      "risk_of_ruin_20pct": 0.6
     },
     "by_symbol": [
       {
@@ -1327,6 +1359,14 @@
         "winrate_pct": 0.0
       },
       {
+        "symbol": "USOILc",
+        "trades": 4,
+        "wins": 2,
+        "losses": 2,
+        "net_usc": -7.57,
+        "winrate_pct": 50.0
+      },
+      {
         "symbol": "EURNZDc",
         "trades": 2,
         "wins": 1,
@@ -1375,14 +1415,6 @@
         "winrate_pct": 0.0
       },
       {
-        "symbol": "USOILc",
-        "trades": 3,
-        "wins": 1,
-        "losses": 2,
-        "net_usc": -20.47,
-        "winrate_pct": 33.3
-      },
-      {
         "symbol": "EURAUDc",
         "trades": 1,
         "wins": 0,
@@ -1391,20 +1423,20 @@
         "winrate_pct": 0.0
       },
       {
-        "symbol": "EURUSDc",
-        "trades": 3,
-        "wins": 1,
-        "losses": 2,
-        "net_usc": -33.14,
-        "winrate_pct": 33.3
-      },
-      {
         "symbol": "GBPNZDc",
         "trades": 2,
         "wins": 0,
         "losses": 2,
         "net_usc": -33.41,
         "winrate_pct": 0.0
+      },
+      {
+        "symbol": "EURUSDc",
+        "trades": 4,
+        "wins": 1,
+        "losses": 3,
+        "net_usc": -44.14,
+        "winrate_pct": 25.0
       },
       {
         "symbol": "UKOILc",
@@ -1855,34 +1887,26 @@
         "exit_time_utc": "2026-11-26 14:06",
         "net_profit_usc": 15.96,
         "cum_pnl_usc": -272.48
+      },
+      {
+        "position_id": 4796084008,
+        "symbol": "USOILc",
+        "side": "BUY",
+        "exit_time_utc": "2026-11-26 15:50",
+        "net_profit_usc": 12.9,
+        "cum_pnl_usc": -259.58
+      },
+      {
+        "position_id": 4796085544,
+        "symbol": "EURUSDc",
+        "side": "BUY",
+        "exit_time_utc": "2026-11-26 16:38",
+        "net_profit_usc": -11.0,
+        "cum_pnl_usc": -270.58
       }
     ]
   },
   "equity_snapshots": [
-    {
-      "ts": "2026-11-19T19:30:56+07:00",
-      "balance_usc": 2167.45,
-      "equity_usc": 2167.45,
-      "margin_free_usc": 2167.45,
-      "peak_equity_usc": 2511.77,
-      "open_positions": 0,
-      "pending_orders": 0,
-      "open_risk_usc": 0.0,
-      "daily_pnl_pct": -5.74,
-      "status": "RUNNING"
-    },
-    {
-      "ts": "2026-11-19T19:34:35+07:00",
-      "balance_usc": 2167.45,
-      "equity_usc": 2167.45,
-      "margin_free_usc": 2167.45,
-      "peak_equity_usc": 2511.77,
-      "open_positions": 0,
-      "pending_orders": 0,
-      "open_risk_usc": 0.0,
-      "daily_pnl_pct": -5.74,
-      "status": "RUNNING"
-    },
     {
       "ts": "2026-11-19T19:34:45+07:00",
       "balance_usc": 2167.45,
@@ -4258,42 +4282,103 @@
       "open_risk_usc": 20.15,
       "daily_pnl_pct": 0.59,
       "status": "RUNNING"
+    },
+    {
+      "ts": "2026-11-27T00:01:46+07:00",
+      "balance_usc": 2178.38,
+      "equity_usc": 2178.38,
+      "margin_free_usc": 2178.38,
+      "peak_equity_usc": 2511.77,
+      "open_positions": 0,
+      "pending_orders": 0,
+      "open_risk_usc": 0.0,
+      "daily_pnl_pct": 0.0,
+      "status": "RUNNING"
+    },
+    {
+      "ts": "2026-11-27T00:03:29+07:00",
+      "balance_usc": 2178.38,
+      "equity_usc": 2177.42,
+      "margin_free_usc": 2009.44,
+      "peak_equity_usc": 2511.77,
+      "open_positions": 1,
+      "pending_orders": 0,
+      "open_risk_usc": 10.16,
+      "daily_pnl_pct": -0.04,
+      "status": "RUNNING"
     }
   ],
   "open_positions": [
     {
-      "ticket": 4796085544,
-      "symbol": "EURUSDc",
-      "side": "BUY",
-      "volume": 0.1,
-      "price_open": 1.0981,
-      "price_current": 1.0981,
-      "sl": 1.097,
-      "tp": 1.0992,
-      "profit_usc": 0.0,
-      "risk_usc": 11.0,
-      "open_time_utc": "2026-11-26 15:04",
-      "reason": "Grade B+ Tactical BUY: H1 TRENDING BULL, Damiani TRADE, CHOP14 39.7, ADR 54%, pullback to EMA20/50 with 77% lower rejection wick at 1.09754, SL below 1.09712 swing low, TP at PDH 1.09922",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
-    },
-    {
-      "ticket": 4796084008,
+      "ticket": 4796587316,
       "symbol": "USOILc",
       "side": "BUY",
-      "volume": 0.03,
-      "price_open": 84.12,
-      "price_current": 84.097,
-      "sl": 83.815,
-      "tp": 84.55,
-      "profit_usc": -0.69,
-      "risk_usc": 9.15,
-      "open_time_utc": "2026-11-26 15:04",
-      "reason": "Grade B+ Tactical BUY: H1/M15 STRONG_TREND BULL (ADX 38.9/34.9), Damiani TRADE, pullback to EMA20 (83.875) + strong bullish bounce, SL below structure 83.825, TP below SwingH20 84.618",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "volume": 0.04,
+      "price_open": 83.99,
+      "price_current": 83.966,
+      "sl": 83.736,
+      "tp": 84.348,
+      "profit_usc": -0.96,
+      "risk_usc": 10.16,
+      "open_time_utc": "2026-11-26 17:03",
+      "reason": "Grade B+ Tactical BUY: H1/M15 STRONG_TREND BULL (ADX 42.9/31.2), Damiani TRADE, pullback to EMA20-EMA50/PDH value zone (21% range), SL 83.736 below SwingL20/YZ sigma, TP 84.348 (1.81R, EV +0.241R)",
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     }
   ],
   "pending_orders": [],
   "trades": [
+    {
+      "position_id": 4796085544,
+      "symbol": "EURUSDc",
+      "side": "BUY",
+      "volume": 0.1,
+      "entry_price": 1.0981,
+      "exit_price": 1.097,
+      "entry_ts": 1795705489,
+      "exit_ts": 1795711116,
+      "entry_time_utc": "2026-11-26 15:04",
+      "exit_time_utc": "2026-11-26 16:38",
+      "duration_min": 93.8,
+      "profit_usc": -11.0,
+      "swap_usc": 0.0,
+      "commission_usc": 0.0,
+      "net_profit_usc": -11.0,
+      "risk_usc": 10.8,
+      "r_mult": -1.02,
+      "outcome": "LOSS",
+      "exit_type": "SL",
+      "comment": "[sl 1.09700]",
+      "original_sl": 1.097,
+      "original_tp": 1.0992,
+      "entry_reason": "Grade B+ Tactical BUY: H1 TRENDING BULL, Damiani TRADE, CHOP14 39.7, ADR 54%, pullback to EMA20/50 with 77% lower rejection wick at 1.09754, SL below 1.09712 swing low, TP at PDH 1.09922",
+      "updated_ts": "2026-11-27T00:03:29+07:00"
+    },
+    {
+      "position_id": 4796084008,
+      "symbol": "USOILc",
+      "side": "BUY",
+      "volume": 0.03,
+      "entry_price": 84.12,
+      "exit_price": 84.55,
+      "entry_ts": 1795705477,
+      "exit_ts": 1795708239,
+      "entry_time_utc": "2026-11-26 15:04",
+      "exit_time_utc": "2026-11-26 15:50",
+      "duration_min": 46.0,
+      "profit_usc": 12.9,
+      "swap_usc": 0.0,
+      "commission_usc": 0.0,
+      "net_profit_usc": 12.9,
+      "risk_usc": 9.57,
+      "r_mult": 1.35,
+      "outcome": "WIN",
+      "exit_type": "TP",
+      "comment": "[tp 84.55000]",
+      "original_sl": 83.815,
+      "original_tp": 84.55,
+      "entry_reason": "Grade B+ Tactical BUY: H1/M15 STRONG_TREND BULL (ADX 38.9/34.9), Damiani TRADE, pullback to EMA20 (83.875) + strong bullish bounce, SL below structure 83.825, TP below SwingH20 84.618",
+      "updated_ts": "2026-11-27T00:03:29+07:00"
+    },
     {
       "position_id": 4794622345,
       "symbol": "AUDUSDc",
@@ -4318,7 +4403,7 @@
       "original_sl": 0.66262,
       "original_tp": 0.66383,
       "entry_reason": "Grade B+ Tactical BUY: M15 SwingL20 (0.66266) sweep & reject aligned with H1 BULL, AUD strongest (+0.705%), ADR 47.5%, EV +0.002R / TimeMachine +0.205R",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4795246920,
@@ -4344,7 +4429,7 @@
       "original_sl": 7222.4,
       "original_tp": 7244.5,
       "entry_reason": "H1/M15 BULL pullback to EMA20 (7227), ADR 26.2%, VR TRENDING (1.34), positive EV (+0.047R / MC +0.136R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4792452454,
@@ -4370,7 +4455,7 @@
       "original_sl": 7211.5,
       "original_tp": 7244.5,
       "entry_reason": "B+ Tactical Pullback BUY LIMIT at M15 EMA20/VWAP aligned with H1/M15 BULL (ADX 42.9, TimeMachine +0.116R, ADR 25.3%)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4791796137,
@@ -4396,7 +4481,7 @@
       "original_sl": 83.291,
       "original_tp": 84.095,
       "entry_reason": "Grade B+ Tactical BUY: H1/M15 BULL pullback into EMA20 with 83.317 sweep & reject, ADR 24.1%, EV +0.255R, TimeMachine +0.222R",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4790710485,
@@ -4422,7 +4507,7 @@
       "original_sl": 1.09676,
       "original_tp": 1.09895,
       "entry_reason": "Grade B+ Tactical: H1/M15 BULL pullback into EMA50/value zone (1.09684 sweep & bounce), ADR 10.1%, EV +0.189R, TimeMachine +0.243R, USD weakest 24h",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4790099213,
@@ -4448,7 +4533,7 @@
       "original_sl": 26142.42,
       "original_tp": 25836.82,
       "entry_reason": "Grade B+ Tactical: H4/H1 BEAR STRONG_TREND pullback reject near EMA200 (26011), SL above SwingH20 (26142.42), TP 25836.82 (1.33R, EV +0.224R, VIX 28.29 risk-off)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4788370217,
@@ -4474,7 +4559,7 @@
       "original_sl": 1660.75,
       "original_tp": 1620.0,
       "entry_reason": "B+ Tactical H4/H1 BEAR STRONG_TREND pullback into M15 EMA50 resistance (ADR 61.4%, VIX 33.66 risk-off, EV +0.136R, MC +0.35R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4787065994,
@@ -4500,7 +4585,7 @@
       "original_sl": 1673.0,
       "original_tp": 1635.0,
       "entry_reason": "B+ Tactical H4/H1 BEAR STRONG_TREND pullback into H1 EMA20/resistance (ADR 61.4%), risk-off VIX 34.78, positive EV +0.176R",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4785445992,
@@ -4526,7 +4611,7 @@
       "original_sl": 2.39132,
       "original_tp": 2.39662,
       "entry_reason": "B+ Tactical H4/H1 BULL pullback to M15 EMA20/50 (2.3941), TimeMachine EV +0.151R (61.3% TP-first), non-USD avoiding 20:30 USD Core PCE/GDP",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4784371434,
@@ -4552,7 +4637,7 @@
       "original_sl": 7117.7,
       "original_tp": 7076.45,
       "entry_reason": "H4/H1/M15 BEAR STRONG_TREND ADX 30.3 below EMA20/50/200, VIX 29.29 HIGH_STRESS risk-off, EV +0.204R",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4782785903,
@@ -4578,7 +4663,7 @@
       "original_sl": 88.17,
       "original_tp": 86.45,
       "entry_reason": "Grade B+ Tactical SELL LIMIT at M15 EMA20 pullback (H4/H1/M15 BEAR, ADR 40.2%, TimeMachine +0.199R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4781731359,
@@ -4604,7 +4689,7 @@
       "original_sl": 59353.89,
       "original_tp": 58414.84,
       "entry_reason": "H4/H1/M15 BEAR STRONG_TREND ADX 25.8, pullback rejection off EMA20/PDL, EV +0.324R, Risk-Off F&G 13",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4781066464,
@@ -4630,7 +4715,7 @@
       "original_sl": 26210.0,
       "original_tp": 25720.0,
       "entry_reason": "B+ Asia pullback SELL LIMIT at M15 breakdown/EMA20 zone (H4/H1/M15 BEAR aligned, VIX 26.36 risk-off, ADR 35.6%)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4779985024,
@@ -4656,7 +4741,7 @@
       "original_sl": 26235.0,
       "original_tp": 25985.0,
       "entry_reason": "B+ Asia pullback SELL LIMIT at M15 EMA20 (H4/H1/M15 BEAR aligned, VIX 26.36 risk-off, EV +0.20R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4777247261,
@@ -4682,7 +4767,7 @@
       "original_sl": 1704.59,
       "original_tp": 1655.11,
       "entry_reason": "H4/H1/M15 BEAR aligned, ADR 43.5% fresh, M15 squeeze & rejection below EMA20/50 at 1703-1704 (mc_ev +0.269R, Grade B+ Tactical 0.35%)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4778889841,
@@ -4708,7 +4793,7 @@
       "original_sl": 60250.47,
       "original_tp": 59259.29,
       "entry_reason": "H4/H1/M15 BEAR aligned, M15 pullback rejection below EMA20/50, EV +0.134R / MC +0.227R, tactical 0.4%",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4776148708,
@@ -4734,7 +4819,7 @@
       "original_sl": 2.00288,
       "original_tp": 2.00595,
       "entry_reason": "H4/H1/M15 BULL aligned (M15 ADX 22.8, Damiani TRADE), pullback to EMA20/50 value zone with mc_ev +0.328R (Grade B+ Tactical 0.4%)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4775144165,
@@ -4760,7 +4845,7 @@
       "original_sl": 87.118,
       "original_tp": 85.533,
       "entry_reason": "H4/H1 BEAR strong trend (ADX 37.9), M15 pullback to EMA50/VWAP +1.46z with upper-wick rejection, ADR 38%, +EV 0.185R",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4773984642,
@@ -4786,7 +4871,7 @@
       "original_sl": 173.845,
       "original_tp": 173.42,
       "entry_reason": "H4/H1 BEAR trend pullback to H1 EMA20 + M15/M5 sweep-reject at 173.821 & M5 EMA20 breakdown (ADR 58.6%, plan EV +0.06R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4764213933,
@@ -4812,7 +4897,7 @@
       "original_sl": 0.66452,
       "original_tp": 0.66232,
       "entry_reason": "MTF BEAR aligned H4/H1/M15 (ADX 25.8), M15 pullback rejection at EMA20, ADR 39.9%, EV +0.304R",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4761010785,
@@ -4838,7 +4923,7 @@
       "original_sl": 59181.78,
       "original_tp": 57861.98,
       "entry_reason": "H4/H1/M15 BEAR aligned; M15 EMA20 pullback reject at 59161 + M5 breakdown below EMA20; ADR 48.9%, EV +0.172R",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4745452603,
@@ -4864,7 +4949,7 @@
       "original_sl": 82.72,
       "original_tp": 81.15,
       "entry_reason": "H4/H1 BEAR trend aligned; H1 07:00 wicked into H1 EMA20 (82.494) & rejected; M15/M5 bearish displacement below M5 EMA20",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4745723126,
@@ -4890,7 +4975,7 @@
       "original_sl": 64250.0,
       "original_tp": 62450.0,
       "entry_reason": "H4/H1 BEAR aligned + H1 SWEEP_HIGH_REJECT at 63858 (1.35x vol) + M5 bearish rejection close; SL 64250 above H1 EMA50/M15 EMA200",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4744402983,
@@ -4916,7 +5001,7 @@
       "original_sl": 1.0979,
       "original_tp": 1.0938,
       "entry_reason": "AI setup",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4743935891,
@@ -4942,7 +5027,7 @@
       "original_sl": 45.66,
       "original_tp": 44.28,
       "entry_reason": "H4/H1/M15 BEAR STRONG_TREND aligned; pullback SELL LIMIT into M15 EMA20 (45.29) / 02:45 high (45.20), SL above 01:45 swing high (45.64) ~1x H1 ATR, TP 2.0R",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4744403392,
@@ -4968,7 +5053,7 @@
       "original_sl": 209.88,
       "original_tp": 208.88,
       "entry_reason": "AI setup",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4744223687,
@@ -4994,7 +5079,7 @@
       "original_sl": 50580.0,
       "original_tp": 50055.0,
       "entry_reason": "H4/H1 aligned BEAR strong trend (ADX 40.1/38.9), pullback limit to M15 EMA50 (50405) with SL above SwingH20 and H1 EMA20 (1x H1 ATR), targeting PDL 50055",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4738984313,
@@ -5020,7 +5105,7 @@
       "original_sl": 87.76,
       "original_tp": 87.02,
       "entry_reason": "H4/H1/M15 BEAR aligned pullback into H1 EMA20 (87.529) and M15 EMA50 (87.500), SL above H1 EMA50 (87.692), TP 87.02 (2.08R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4743272878,
@@ -5046,7 +5131,7 @@
       "original_sl": 63400.0,
       "original_tp": 60700.0,
       "entry_reason": "H4/H1/M15 BEAR aligned (H4 ADX 50.0, H1 ADX 26.7); M15 rejected SwingH 63234.29 & broke EMA20 with 83.3% bear impulse; SL 63400 above today_high & H1 EMA20 (1.58x H1 ATR), TP 60700 (2.0R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4743089792,
@@ -5072,7 +5157,7 @@
       "original_sl": 3766.0,
       "original_tp": 3719.8,
       "entry_reason": "H4/H1 BEAR STRONG_TREND, H1 01:00 bearish rejection below H1 EMA20 3759.26",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4742927975,
@@ -5098,7 +5183,7 @@
       "original_sl": 82.22,
       "original_tp": 80.72,
       "entry_reason": "H4/H1/M15 BEAR aligned (H1 ADX 35.1, RSI 35.4); M15 pullback rejected below EMA20 at 81.866, SL 82.22 above H1 EMA20 (82.067) & M15 swing high (82.132), TP 80.72 (2.0R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4742215690,
@@ -5124,7 +5209,7 @@
       "original_sl": 1786.0,
       "original_tp": 1705.0,
       "entry_reason": "H4/H1/M15 BEAR aligned, M15 EMA20 pullback rejection (76% bear body), SL above H4/M15 EMA20-50 & 1784.91 swing",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4742054502,
@@ -5150,7 +5235,7 @@
       "original_sl": 7382.0,
       "original_tp": 7252.0,
       "entry_reason": "H4/H1/M15 BEAR STRONG_TREND (ADX>31), M15 rejected H1 EMA20 (7363.32) and holding below M15 EMA20",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4738983889,
@@ -5176,7 +5261,7 @@
       "original_sl": 1.2267,
       "original_tp": 1.2214,
       "entry_reason": "H4/H1 BEAR aligned; M15 09:00 and 09:45 rejected 1.2255 resistance at H1 EMA50, SL above H1 swing high 1.22654, TP 1.2214 (2.0R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4741694161,
@@ -5202,7 +5287,7 @@
       "original_sl": 27210.0,
       "original_tp": 26480.0,
       "entry_reason": "H4/H1/M15 BEAR aligned, M15 rejected bounce at 27035, SL above H1 EMA20",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4739961518,
@@ -5228,7 +5313,7 @@
       "original_sl": 1.0989,
       "original_tp": 1.0947,
       "entry_reason": "H4/H1/M15 BEAR aligned (H1 ADX 40.0), SELL LIMIT pullback to M15 EMA50 zone 1.09750, SL 1.09890 above H1 EMA20 & SwingH20 (1.26x H1 ATR), TP 1.09470 (2.0R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4730868105,
@@ -5254,7 +5339,7 @@
       "original_sl": 0.6749,
       "original_tp": 0.6708,
       "entry_reason": "H4/H1/M15 BEAR aligned; M15 swept H1 EMA20 (0.67413) & rejected bearish; SL at today_high (1.5x H1 ATR), TP 0.6708 (2.0R, within ADR)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4736305990,
@@ -5280,7 +5365,7 @@
       "original_sl": 91.45,
       "original_tp": 89.7,
       "entry_reason": "H4/H1/M15 BEAR aligned pullback to M15 EMA20/50 below H1 EMA20, SL above H1 EMA20 & swing high 91.257, targeting PDL 89.70 (2.5R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4738204982,
@@ -5306,7 +5391,7 @@
       "original_sl": 1.629,
       "original_tp": 1.6365,
       "entry_reason": "H4/H1 BULL trend pullback to H4 EMA20 / today_open demand zone below H1 EMA50, SL below PDL, TP above PDH (2.41R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4737849933,
@@ -5332,7 +5417,7 @@
       "original_sl": 7396.0,
       "original_tp": 7295.0,
       "entry_reason": "H4/H1/M15 aligned BEAR + M15 volatility squeeze coil under EMA20, SL above H1 EMA20 (>1x H1 ATR), TP ahead of PDL 7293.1",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4736305893,
@@ -5358,7 +5443,7 @@
       "original_sl": 2.397,
       "original_tp": 2.406,
       "entry_reason": "H4/H1/M15 BULL aligned pullback to 2.4000 support above today_low 2.39727, targeting PDH breakout 2.4060 (2.0R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4730157725,
@@ -5384,7 +5469,7 @@
       "original_sl": 107.62,
       "original_tp": 107.0,
       "entry_reason": "H4/H1/M15 BEAR aligned; H1 RSI 27.5 oversold bounce toward M15 EMA20/50 (107.35-107.43); SL 107.62 above today_high 107.57 (2.7x M15 ATR); TP 107.00 (RR 1.58)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4727540012,
@@ -5410,7 +5495,7 @@
       "original_sl": 3892.0,
       "original_tp": 3833.0,
       "entry_reason": "Aligned H4/H1/M15 BEAR pullback SELL LIMIT into H1 EMA20/M15 EMA50 (3866); SL 3892 above H1 swing high 3889.06; TP 3833 above H4 support 3832.19",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4734028599,
@@ -5436,7 +5521,7 @@
       "original_sl": 65000.0,
       "original_tp": 62750.0,
       "entry_reason": "H4/H1/M15/M5 BEAR aligned; pullback limit into M15 EMA20 / 16:00 resistance (64250), SL 65000 above H1 EMA20/50 (1.2x H1 ATR), TP 62750 (2.0R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4730868232,
@@ -5462,7 +5547,7 @@
       "original_sl": 1.9968,
       "original_tp": 2.0058,
       "entry_reason": "H4/H1 BULL; M15 liquidity sweep low 1.99939 & reclaim above H1 EMA20/PDH; limit pullback retest above today_open, SL below today_low/H1 EMA50, TP 2.0058 (2.21R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4734157766,
@@ -5488,7 +5573,7 @@
       "original_sl": 27240.0,
       "original_tp": 26620.0,
       "entry_reason": "H4/H1/M15 BEAR aligned; M15 EMA20 pullback zone 27040 with SL 27240 above H1 EMA20 (2.1R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4730233561,
@@ -5514,7 +5599,7 @@
       "original_sl": 65220.0,
       "original_tp": 63850.0,
       "entry_reason": "H4/H1/M15 BEAR aligned; pullback limit at M15/H1 EMA20 confluence (64743/64803), SL above today_high 65146, TP above PDL 63826 (1.74R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4731133796,
@@ -5540,7 +5625,7 @@
       "original_sl": 91.32,
       "original_tp": 89.65,
       "entry_reason": "H4/H1 BEAR aligned; M15 09:30 swept H1 EMA20 (91.03) up to 91.219 and printed SWEEP_HIGH_REJECT, M15 09:45 lower high 90.99; SL 91.32 above sweep high 91.219 (1.55x M15 ATR), TP 89.65 above H4 sl20 89.564 (2.63R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4730157614,
@@ -5566,7 +5651,7 @@
       "original_sl": 90.92,
       "original_tp": 89.58,
       "entry_reason": "H4/H1/M15 BEAR aligned; H1 RSI 23.2 oversold pullback into M15 swing high / today_open 90.40-90.49; SL 90.92 above M15 EMA50 (90.72) & today_high; TP 89.58 above H4 swing low 89.564 (RR 1.58)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4728845434,
@@ -5592,7 +5677,7 @@
       "original_sl": 27425.0,
       "original_tp": 27135.0,
       "entry_reason": "H4/H1/M15 BEAR aligned, M15 pullback rejected off EMA50 (27385.88) with bearish candle 01:45, SL 27425 above swing high + ~1.3x M15 ATR, TP 27135 front-running H4 swing low 27127.9 (1.80R)",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4727022737,
@@ -5618,7 +5703,7 @@
       "original_sl": 92.42,
       "original_tp": 90.12,
       "entry_reason": "H4/H1/M15 BEAR aligned (H4 RSI 41.8); M15 pullback to 92.28 rejected below EMA20 (92.35) with lower highs (92.26/92.06/91.84), targeting H4 swing low 90.06",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4726884940,
@@ -5644,7 +5729,7 @@
       "original_sl": 3871.0,
       "original_tp": 3832.5,
       "entry_reason": "H4/H1/M15 BEAR aligned; M15 rejected EMA200 at 3889 and EMA20/50 at 3868.4 then broke 3861.14 support to 3858",
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4725100664,
@@ -5670,7 +5755,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4725046151,
@@ -5696,7 +5781,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4724984903,
@@ -5722,7 +5807,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4724344810,
@@ -5748,7 +5833,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4724339509,
@@ -5774,7 +5859,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4723773624,
@@ -5800,7 +5885,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4722560892,
@@ -5826,7 +5911,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4722681161,
@@ -5852,7 +5937,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4722536898,
@@ -5878,7 +5963,7 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     },
     {
       "position_id": 4722550594,
@@ -5904,10 +5989,36 @@
       "original_sl": null,
       "original_tp": null,
       "entry_reason": null,
-      "updated_ts": "2026-11-26T22:05:03+07:00"
+      "updated_ts": "2026-11-27T00:03:29+07:00"
     }
   ],
   "lessons": [
+    {
+      "id": 15858,
+      "ts": "2026-11-27T00:02:11",
+      "position_id": 4796084008,
+      "symbol": "USOILc",
+      "side": "BUY",
+      "outcome": "WIN",
+      "exit_type": "TP",
+      "profit_usc": 12.9,
+      "tag": "TREND_EMA20_PULLBACK_TP",
+      "scope": "SYMBOL",
+      "lesson": "BUY USOILc ย่อตัวเข้า M15 EMA20 ตามเทรนด์ H1/M15 แข็งแกร่ง และตั้ง TP ต่ำกว่า SwingH20 เล็กน้อยที่ 84.55 ปิดทำกำไร +1.35R (+12.90 USC) ได้สำเร็จก่อนราคาพลิกกลับลงมา 83.99"
+    },
+    {
+      "id": 15857,
+      "ts": "2026-11-27T00:02:07",
+      "position_id": 4796085544,
+      "symbol": "EURUSDc",
+      "side": "BUY",
+      "outcome": "LOSS",
+      "exit_type": "SL",
+      "profit_usc": -11.0,
+      "tag": "TIGHT_SL_THIN_SESSION",
+      "scope": "SYMBOL",
+      "lesson": "BUY EURUSDc pullback เข้า EMA20/50 ช่วงสภาพคล่องเบาบาง วาง SL ชิด swing low เกินไป (1.09700) ทำให้โดนกวาดหลุดลง 1.09681 ก่อนไม่ถึง TP; ควรเผื่อ SL พ้นโครงสร้าง swing หรือรอแท่ง M15 ปิดยืนยันแรงซื้อชัดขึ้น"
+    },
     {
       "id": 15724,
       "ts": "2026-11-26T22:02:33",
@@ -6271,35 +6382,51 @@
       "tag": "EARLY_CUT_EMA20_RECLAIM",
       "scope": "SYMBOL",
       "lesson": "SELL LIMIT US30c 50405 ปิดตัดขาดทุนเร็วที่ 50414.7 (-0.97 USC / -0.06R) เมื่อราคาดีดกลับยืนเหนือ M15 EMA20 (50411.8) จากนั้นราคาขยับขึ้นต่อถึง 50432.3 ยืนยันว่าการตัดขาดทุนทันทีเมื่อแท่งเทียน M15 เสียโครงสร้างช่วยรักษาทุนได้จริง"
-    },
-    {
-      "id": 4129,
-      "ts": "2026-11-19T11:33:10",
-      "position_id": 4744403392,
-      "symbol": "GBPJPYc",
-      "side": "SELL",
-      "outcome": "LOSS",
-      "exit_type": "MANUAL",
-      "profit_usc": -0.5,
-      "tag": "EARLY_CUT_CHOP_BULL_SHIFT",
-      "scope": "SYMBOL",
-      "lesson": "SELL GBPJPYc 209.536 ปิดตัดขาดทุนเร็วที่ 209.544 (-0.50 USC) เมื่อ H1/M15 ADX ต่ำ (15.4/12.2) และราคาพลิกยืนเหนือ M15 EMA20/50 ช่วยลดความเสียหายจากแผน SL 209.88 เหลือแค่ -0.02R และไม่ควรเข้าเมื่อ H1/M15 ขัดกับ H4"
-    },
-    {
-      "id": 3832,
-      "ts": "2026-11-19T11:06:00",
-      "position_id": 4743272878,
-      "symbol": "BTCUSDc",
-      "side": "SELL",
-      "outcome": "LOSS",
-      "exit_type": "SL",
-      "profit_usc": -18.86,
-      "tag": "M15_BREAKOUT_SL_SWEEP",
-      "scope": "SYMBOL",
-      "lesson": "SELL BTCUSDc 62456.78 SL 63400 (-18.86 USC) โดนแท่ง M15 04:00 เบรกเหนือ 15-bar high กวาดขึ้นไป 63401.40 กิน SL พอดี; เมื่อ H1 ADX < 20 (RANGING) และ M15 ยกตัวเบรก EMA20/50 ควรตัดขาดทุนเร็วหรือวาง SL เหนือ M15 EMA200 / H1 EMA50"
     }
   ],
   "journal": [
+    {
+      "ts": "2026-11-27T00:03:18",
+      "action": "OPEN_MARKET",
+      "symbol": "USOILc",
+      "side": "BUY",
+      "lot": 0.04,
+      "entry": 83.989,
+      "sl": 83.736,
+      "tp": 84.348,
+      "risk_usc": 10.12,
+      "ticket": 4796587316,
+      "reason": "Grade B+ Tactical BUY: H1/M15 STRONG_TREND BULL (ADX 42.9/31.2), Damiani TRADE, pullback to EMA20-EMA50/PDH value zone (21% range), SL 83.736 below SwingL20/YZ sigma, TP 84.348 (1.81R, EV +0.241R)",
+      "summary": null
+    },
+    {
+      "ts": "2026-11-27T00:02:11",
+      "action": "LEARN",
+      "symbol": "USOILc",
+      "side": null,
+      "lot": null,
+      "entry": null,
+      "sl": null,
+      "tp": null,
+      "risk_usc": null,
+      "ticket": null,
+      "reason": null,
+      "summary": null
+    },
+    {
+      "ts": "2026-11-27T00:02:07",
+      "action": "LEARN",
+      "symbol": "EURUSDc",
+      "side": null,
+      "lot": null,
+      "entry": null,
+      "sl": null,
+      "tp": null,
+      "risk_usc": null,
+      "ticket": null,
+      "reason": null,
+      "summary": null
+    },
     {
       "ts": "2026-11-26T22:04:49",
       "action": "OPEN_MARKET",
@@ -6816,48 +6943,6 @@
       "risk_usc": 4.77,
       "ticket": 4778889841,
       "reason": "H4/H1/M15 BEAR aligned, M15 pullback rejection below EMA20/50, EV +0.134R / MC +0.227R, tactical 0.4%",
-      "summary": null
-    },
-    {
-      "ts": "2026-11-25T00:02:56",
-      "action": "HOLD",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": null,
-      "reason": null,
-      "summary": "Cancelled stale EURCHFc SELL LIMIT (price already below TP at 0.9158, ADR 114.8%); holding ETHUSDc SELL (+1.15R). No new entries: FX pairs ADR >100%, USOILc M15 above EMA20/50 without bearish close, BTCUSDc extended & correlated with ETHUSDc."
-    },
-    {
-      "ts": "2026-11-25T00:02:55",
-      "action": "CANCEL",
-      "symbol": null,
-      "side": null,
-      "lot": null,
-      "entry": null,
-      "sl": null,
-      "tp": null,
-      "risk_usc": null,
-      "ticket": 4777247684,
-      "reason": "AI cancel",
-      "summary": null
-    },
-    {
-      "ts": "2026-11-24T22:03:33",
-      "action": "OPEN_LIMIT",
-      "symbol": "EURCHFc",
-      "side": "SELL",
-      "lot": 0.05,
-      "entry": 0.91795,
-      "sl": 0.9191,
-      "tp": 0.91645,
-      "risk_usc": 6.88,
-      "ticket": 4777247684,
-      "reason": "H4/H1/M15 BEAR aligned (H1 ADX 34.4, CHF strongest 24h), pullback LIMIT to M15 EMA20 value zone above PDL 0.91638 (Grade B+ Tactical 0.35%)",
       "summary": null
     }
   ]
